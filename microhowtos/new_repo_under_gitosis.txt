@@ -1,0 +1,14 @@
+1. create new repo description in gitosis-conf file with GIT admin account
+
+2. create git directory, link it to repo address:
+ mkdir test
+ cd test
+ vi REAME
+ git init 
+ git remote add origin git@filest.linuxmedialabs.com:test.git
+
+3.add at least one file, commit and push it to the server
+  vi README
+  commit -a -m "initial repo created"
+  git push origin master:refs/heads/master
+
