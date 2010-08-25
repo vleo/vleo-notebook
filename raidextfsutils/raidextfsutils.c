@@ -1,3 +1,5 @@
+// This is a tool to examine ext2 volume
+// ext2 physical layout:
 #define _LARGEFILE64_SOURCE
 #include <unistd.h>
 #include <sys/types.h>
