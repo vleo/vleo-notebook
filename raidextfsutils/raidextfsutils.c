@@ -1,3 +1,6 @@
+// This is a tool to examine ext2 volume
+// ext2 physical layout:
+// 2 boot sectors of 512 bytes eacA
 #define _LARGEFILE64_SOURCE
 #include <unistd.h>
 #include <sys/types.h>
