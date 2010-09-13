@@ -5,7 +5,7 @@ then
   echo 'Cleaning all autoreconf generated files'
   if [ -f Makefile ]
   then 
-    make distcleani
+    make distclean
   else 
     rm -rf \
 config.h \
@@ -20,6 +20,7 @@ stamp-h1 \
 
   fi
   rm -rf \
+Makefile \
 ac_config.h \
 aclocal.m4 \
 autom4te.cache \
