@@ -11,8 +11,8 @@ then
 config.h \
 config.log \
 config.status \
-hw \
-hw.o \
+glibstring \
+glibstring.o \
 libtool \
 stamp-h1 \
 .deps \

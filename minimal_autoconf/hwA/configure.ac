@@ -1,4 +1,4 @@
-AC_INIT([helloworld], [1.0], [vleo@linuxmedialabs.com])
+AC_INIT([helloworldA], [1.0], [vleo@linuxmedialabs.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign nostdinc])
 
 AC_ARG_ENABLE(
@@ -14,12 +14,9 @@ AC_ARG_ENABLE(
 AC_DEFINE_UNQUOTED([PREFIX],"$prefix",[install path (--prefix)])
 
 AC_PROG_CC
-AC_PROG_LIBTOOL
 
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile])
-
-AC_CONFIG_SUBDIRS(hwA)
 
 AC_OUTPUT
