@@ -1,0 +1,20 @@
+1c1
+< # 1 "x.c"
+---
+> # 1 "x.cc"
+3a4
+> #define __cplusplus 1
+7a9
+> #define __GNUG__ 4
+16a19,22
+> #define __GXX_WEAK__ 1
+> #define __DEPRECATED 1
+> #define __GXX_RTTI 1
+> #define __EXCEPTIONS 1
+99a106
+> #define __GCC_HAVE_DWARF2_CFI_ASM 1
+130c137,138
+< # 1 "x.c"
+---
+> #define _GNU_SOURCE 1
+> # 1 "x.cc"
