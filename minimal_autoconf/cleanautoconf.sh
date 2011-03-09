@@ -3,14 +3,17 @@ if [ ! -d ./m4 ] ; then mkdir m4; fi
 
 echo 'Cleaning all autoreconf generated files'
 
+find -name Makefile.in -exec rm {} \;
+find -name .libs -exec rm -rf {} \;
+
 rm -rf \
 config.h \
 config.log \
 config.status \
 libtool \
+compile \
 stamp-h1 \
-.deps \
-.libs
+.deps
 
 rm -rf \
 Makefile \
@@ -25,7 +28,6 @@ depcomp \
 install-sh \
 ltmain.sh \
 m4/*.m4 \
-Makefile.in \
 missing \
 *~
 
