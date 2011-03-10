@@ -5,6 +5,7 @@ echo 'Cleaning all autoreconf generated files'
 
 find -name Makefile.in -exec rm {} \;
 find -name .libs -exec rm -rf {} \;
+find -name .deps -exec rm -rf {} \;
 
 rm -rf \
 config.h \
@@ -13,7 +14,6 @@ config.status \
 libtool \
 compile \
 stamp-h1 \
-.deps
 
 rm -rf \
 Makefile \
