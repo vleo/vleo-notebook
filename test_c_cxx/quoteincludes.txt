@@ -1,0 +1,4 @@
+.
+/usr/local/include/
+/usr/lib/gcc/i686-redhat-linux/4.4.4/include/
+/usr/include/
