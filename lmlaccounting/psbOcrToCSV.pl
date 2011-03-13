@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 use strict;
-use constant MATCH_CSV => qr{:(?=(?:[^"]*"[^"]*")*(?![^"]*"))};
+use constant MATCH_CSV => qr{,(?=(?:[^"]*"[^"]*")*(?![^"]*"))};
 use descriptionToCorrAcct;
 use Getopt::Std;
 getopts("S");
@@ -17,8 +17,18 @@ my $totalWithdrawalsTrans;
 sub unQuote(\$)
 {
  my $sr = shift;
+ chomp $$sr;
  $$sr =~ s/^"//;
  $$sr =~ s/"$//;
+}
+
+sub unQuoteStar(\$)
+{
+ my $sr = shift;
+ unQuote($$sr);
+ $$sr =~ s/\*//g;
+ $$sr =~ s/^\s+//;
+ $$sr =~ s/\s+$//;
 }
 
 my @lin;
@@ -31,6 +41,7 @@ sub readDate($\%$)
     while(<>)
     {
       @lin = split(MATCH_CSV);
+#print "line<",join(":",@lin),">\n";
       last if $lin[0];
     }
   }
@@ -41,10 +52,18 @@ sub readDate($\%$)
   return 1;
 }
 
+sub readUnquote($)
+{
+  my($v) = @_;
+  $v =~ s/^"([^"]*)"$/$1/g;
+  return $v;
+}
+
 sub readAmount($)
 {
   my($v) = @_;
   die "readAmout missing argument" unless $v;
+  $v =~ s/^"([^"]*)"$/$1/g;
   $v =~ s/,//g;
   $v =~ s/\s*//g;
   die "readAmount: incorrect amount format in $_" unless $v =~ m/(-)?(\d+)(\.(\d+))?(-)?/;
@@ -58,21 +77,24 @@ sub readAmount($)
 sub readSummaryAmount($)
 {
   my($fieldName)= @_;
+  my $s;
   my $v;
   die unless $fieldName;
   while(<>)
   {
     @lin = split(MATCH_CSV);
+#print "line<",join(":",@lin),">\n";
     next unless $lin[1];
     die "expected fieldName: $fieldName not found in $_" unless $lin[1] =~ m/$fieldName/;
-    die "unexpected value in field2=$lin[2]: $_" if $lin[2];
+    #die "unexpected value in field2=$lin[2]: $_" if $lin[2];
     #$lin[3] =~ s/,//g;
     #die $_ unless $lin[3] =~ m/(\d+)\.(\d+)/;
     #$v= scalar($1 . "." . $2);
-    $v = readAmount($lin[3]);
+    $v = readAmount($lin[2]);
+    $s = readUnquote($lin[0]);
     last;
   }
-  return ($lin[0],$v);
+  return ($s,$v);
 }
 
 sub readChecks(\@$)
@@ -98,7 +120,7 @@ sub readChecks(\@$)
     unQuote($lin[2]);
     unQuote($lin[3]);
     unQuote($lin[4]);
-    die "Expecting \"Number\"::\"Date\":\"Amount\":: got $_" unless $lin[0] eq 'Number' && $lin[2] eq 'Date' and $lin[3] eq 'Amount';
+    die "Expecting \"Number\",,\"Date\",\"Amount\",, got <$lin[0]:$lin[2]:$lin[3]>" unless $lin[0] eq 'Number' && $lin[2] eq 'Date' and $lin[3] eq 'Amount';
     last;
   }
   while(<>)
@@ -130,9 +152,20 @@ sub readChecks(\@$)
   return 1;
 }
 
+sub reShuffle(\@)
+{
+   my $lin_ref = $_[0];
+   my @tmp = @{$lin_ref};
+   $$lin_ref[0] = $tmp[3]; 
+   $$lin_ref[1] = $tmp[2]; 
+   $$lin_ref[2] = $tmp[0]; 
+   $$lin_ref[3] = $tmp[1]; 
+}
+
 sub readTransactions(\@$$)
 {
   my($accountTransactions_ref,$year,$headlineRead)=@_;
+  my $reshuffle;
   die unless defined($accountTransactions_ref);
 
   unless ($headlineRead)
@@ -145,29 +178,52 @@ sub readTransactions(\@$$)
     }
   }
 
-  unQuote($lin[0]);
-  unQuote($lin[1]);
-  unQuote($lin[2]);
-  unQuote($lin[3]);
-  $lin[0] =~ s/\*//g;
-  $lin[0] =~ s/^\s+//;
-  $lin[0] =~ s/\s+$//;
-  $lin[1] =~ s/\*//g;
-  $lin[1] =~ s/^\s+//;
-  $lin[1] =~ s/\s+$//;
-  unless( $lin[0] eq '' && $lin[1] eq "Other Account Transactions" && $lin[2] eq 'Date' and $lin[3] eq 'Amount')
+  unQuoteStar($lin[0]);
+  unQuoteStar($lin[1]);
+  unQuoteStar($lin[2]);
+  unQuoteStar($lin[3]);
+  if(
+      $lin[0] eq '' && 
+      $lin[1] eq "Other Account Transactions" && 
+      $lin[2] eq 'Date' && 
+      $lin[3] eq 'Amount')
   {
-    return -1;
+   #do nothing 
+   $reshuffle=0;
+  }
+  elsif ( 
+      $lin[3] eq '' && 
+      $lin[2] eq "Other Account Transactions" && 
+      $lin[0] eq 'Date' && 
+      $lin[1] eq 'Amount')
+  {
+   #move around
+   reShuffle(@lin);
+   $reshuffle=1;
+   #print "reshuffled order\n";
+  }
+  else
+  { 
+    #print join(":",@lin),"\n"; 
+    return -1 
   }
 
   while(<>)
   {
+    chomp;
     @lin = split(MATCH_CSV);
-    last unless $lin[3];
     unQuote($lin[0]);
     unQuote($lin[1]);
     unQuote($lin[2]);
     unQuote($lin[3]);
+    if($reshuffle)
+    {
+     reShuffle(@lin);
+    }
+#print "line<",join(":",@lin),">\n";
+    next if $lin[0] && $lin[1] && ! $lin[2] && ! $lin[3];
+    next if ! $lin[0] && $lin[1] && $lin[2] && $lin[3];
+    last unless $lin[3];
     my($month,$day) = $lin[2] =~ m/(\d+)-(\d+)/;
     unless(defined($day) and defined($month))
     {
@@ -243,7 +299,8 @@ while(1)
 
   my $n783;
   ($n783,$balanceForward,)=readSummaryAmount("Balance Forward");
-  die "expected value 783 not found in field0=$n783 in $_" unless $n783 ==783;
+  die "expected value 783 or 084 not found in field0=$n783 in $_" 
+    unless $n783 ==783 || $n783 ==84;
 
   if ($i ==1)
   {
@@ -268,7 +325,8 @@ while(1)
   if ($statusOK == -1)
   {
     # we may have only one check statement (maybe :-)
-    die $lin[1] unless $lin[1] =~ /Other Account Transactions/;
+    die $lin[1] unless ($lin[1] =~ /Other Account Transactions/) ||
+                       ($lin[1] =~ /Amount/);
     $statusOK = readTransactions(@accountTransactions,2000+$statementDate{'year'},1);
   }
   else
