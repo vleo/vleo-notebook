@@ -4,13 +4,13 @@
 char* upcaseName(const char * name)
 {
 #if HAVE_STRNDUP
-  char *ret =strndup(name,100);
+  char *ret =strndup(name,200);
 #else
   char *ret =strdup(name);
 #endif
   char *c = ret;
-  c[99]=0;
-   while(c) 
-     *c=toupper(*c);
+//  c[199]=0;
+   while(*c) 
+     *c++ =toupper(*c);
   return ret;
 }
