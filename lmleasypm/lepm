@@ -1,0 +1,44 @@
+#!/bin/sh
+TEMP=`getopt -o ieh -n 'lepm' -- "$@"`
+
+if [ $? != 0 ] ; then TEMP="-h --" ; fi
+eval set -- "$TEMP"
+while true ; do
+        case "$1" in
+           -e ) shift; opt_r=1 ;;
+           -i ) shift; opt_i=1 ;;
+           -h ) cat <<EOT
+Usage: $0 -r|-i [-h]
+   Installs project with 'make install' and records files installed in
+   /usr/local into install.files
+Options:
+  -e     erase (uninstall) files listed in install.files
+  -i     install package files
+  -h     this help
+EOT
+                shift; exit;;
+           --) shift ; break ;;
+        esac
+done
+
+if [ -f install.files ]; then
+  INSTALLED_FILES=$(cat install.files)
+  if [ -n "$INSTALLED_FILES" ]; then rm $INSTALLED_FILES; fi
+  rm install.files
+  rm install.log
+fi
+
+if [ -n "$opt_e" ]; then exit; fi
+if [ -z "$opt_i" ]; then echo "should specify -i or -e option"; $0 -h; exit 1; fi
+
+find /usr/local -type f > install.files.before
+
+make install &> install.log
+
+if [ $? = 0 ]; then
+  find /usr/local -type f > install.files.after
+fi
+
+diff -u install.files.before install.files.after | perl -n -e 'print "$1\n" if m/^\+(\/.*)/' > install.files
+
+rm -f install.files.before install.files.after
