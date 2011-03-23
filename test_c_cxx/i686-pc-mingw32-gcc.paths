@@ -1,0 +1,15 @@
+for #include:
+
+/usr/lib/gcc/i686-pc-mingw32/4.4.1/include/ --> core gcc
+/usr/lib/gcc/i686-pc-mingw32/4.4.1/include-fixed/ --> core gcc patched
+/usr/i686-pc-mingw32/sys-root/mingw/include/ --> user libs
+
+for -l:
+
+/usr/i686-pc-mingw32/sys-root/lib/ --> NULL
+/usr/i686-pc-mingw32/sys-root/mingw/lib/ --> user libs
+/usr/i686-pc-mingw32/sys-root/usr/lib/ --> NULL
+/usr/i686-pc-mingw32/sys-root/usr/local/lib/ --> NULL
+/usr/lib/gcc/i686-pc-mingw32/4.4.1/ --> core gcc
+/usr/lib/gcc/i686-pc-mingw32/4.4.1/../../../../i686-pc-mingw32/lib/ --> /usr/i686-pc-mingw32/lib --> libiberty (gcc toolchain support)
+

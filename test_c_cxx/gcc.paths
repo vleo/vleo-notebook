@@ -1,0 +1,14 @@
+for #include:
+
+/usr/local/include/
+/usr/lib/gcc/i686-redhat-linux/4.4.4/include/
+/usr/include/
+
+for -l:
+
+/usr/lib/gcc/i686-redhat-linux/4.4.4/ --> core gcc
+/usr/lib/gcc/i686-redhat-linux/4.4.4/../../../  --> /usr/lib --> user libs
+/usr/i686-redhat-linux/lib/ --> NULL
+/usr/local/lib/ --> local user libs
+/lib/
+/usr/lib/ --> duplicate

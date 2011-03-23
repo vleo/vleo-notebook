@@ -1,0 +1,13 @@
+#!/bin/sh
+
+find \
+/usr/local/include/ \
+/usr/lib/gcc/i686-redhat-linux/4.4.4/include/ \
+/usr/include/ \
+\
+/usr/lib/gcc/i686-redhat-linux/4.4.4/ \
+/usr/lib \
+/usr/i686-redhat-linux/lib/ \
+/usr/local/lib/ \
+/lib/ \
+$*
