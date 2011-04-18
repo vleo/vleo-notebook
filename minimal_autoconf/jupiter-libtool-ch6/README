@@ -90,5 +90,7 @@ Installation of Jupiter creates the following files:
 7 - FAQ
 --------
 
-[TBD]
+Cross build for Windows (assumes mingw32- tools are installed)
+./configure --build=i686-pc-linux-gnu --host=i686-pc-mingw32
+
 
