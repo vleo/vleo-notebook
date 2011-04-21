@@ -1,0 +1,26 @@
+1. Apply FineReader template psbreporttemplate.blk
+2. Edit exact scan areas (mostly for Checks and Transactions
+   a) if aux-date goes last in the 1st line and there is one continuation line - merge continuation line as one cell
+     (obsolete) aux-date, description1, date, amount
+                 description2,,,
+     pattern: f1,f2,f3,f4 \n f1,,,
+     exit on null f1 
+ 
+     (current)  date,amount,description,
+               description2,,, 
+     pattern1: f1,f2,f3,f4 \n f1,,,
+          
+     exit on null f1 
+      
+   b) if aux-date goes into 2nd line then 
+      - merge 1st line 3rd and 4th cell into one (for description)
+      - merge 2nd line into continuation field (even if empty) and date field
+
+     (current)  date,amount,description,
+               description2,,,aux-date 
+     option:              ,,,,aux-date 
+        
+     pattern1: f1,f2,f3,f4 \n f1,,,
+
+3. Scan and save into Excel (.xls)
+4. Open .xls in oocalc and save as CSV with "save cell content as shown" option

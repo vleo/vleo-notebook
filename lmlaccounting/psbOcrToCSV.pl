@@ -97,9 +97,9 @@ sub readSummaryAmount($)
   return ($s,$v);
 }
 
-sub readChecks(\@$)
+sub readChecks(\@$\$)
 {
-  my($accountTransactions_ref,$year)=@_;
+  my($accountTransactions_ref,$year,$amountWithdrawalsTrans_ref)=@_;
   die unless defined($accountTransactions_ref);
   while(<>)
   {
@@ -135,6 +135,7 @@ sub readChecks(\@$)
     die unless defined($day) and defined($month);
 
     my $amount = readAmount($lin[3]);
+    $$amountWithdrawalsTrans_ref += $amount;
     push @$accountTransactions_ref,
          [
            $lin[0],
@@ -162,9 +163,10 @@ sub reShuffle(\@)
    $$lin_ref[3] = $tmp[1]; 
 }
 
-sub readTransactions(\@$$)
+sub readTransactions(\@$$\$\$)
 {
-  my($accountTransactions_ref,$year,$headlineRead)=@_;
+  my($accountTransactions_ref,$year,$headlineRead,
+     $amountDepositsTrans_ref, $amountWithdrawalsTrans_ref)=@_;
   my $reshuffle;
   die unless defined($accountTransactions_ref);
 
@@ -216,14 +218,17 @@ sub readTransactions(\@$$)
     unQuote($lin[1]);
     unQuote($lin[2]);
     unQuote($lin[3]);
+    last if ! $lin[0] && ! $lin[1] && ! $lin[2] && ! $lin[3];
     if($reshuffle)
     {
+     next if ! $lin[1] && ! $lin[2] && $lin[3];
      reShuffle(@lin);
     }
+    else
+    {
+      next if $lin[0] && ! $lin[1] && ! $lin[2] && ! $lin[3];
+    }
 #print "line<",join(":",@lin),">\n";
-    next if $lin[0] && $lin[1] && ! $lin[2] && ! $lin[3];
-    next if ! $lin[0] && $lin[1] && $lin[2] && $lin[3];
-    last unless $lin[3];
     my($month,$day) = $lin[2] =~ m/(\d+)-(\d+)/;
     unless(defined($day) and defined($month))
     {
@@ -244,11 +249,13 @@ sub readTransactions(\@$$)
          ];
      if ($amount > 0.0)
      {
-       $totalDepositsTrans += $amount;
+       $totalDepositsTrans+= $amount;
+       $$amountDepositsTrans_ref+= $amount;
      }
      else
      {
-       $totalWithdrawalsTrans += -$amount;
+       $totalWithdrawalsTrans+= -$amount;
+       $$amountWithdrawalsTrans_ref+= -$amount;
      }
      $runningBalance += $amount;
   }
@@ -258,11 +265,13 @@ sub readTransactions(\@$$)
 my %statementDate;
 my %lastStatementDate;
 my $balanceForward;
-my $numberOfDeposits;
-my $amountDeposits;
-my $numberOfWithdrawals;
-my $amountWithdrawals;
+my $numberOfDepositsStmt;
+my $amountDepositsStmt;
+my $numberOfWithdrawalsStmt;
+my $amountWithdrawalsStmt;
 my $endingBalance;
+my $amountDepositsTrans;
+my $amountWithdrawalsTrans;
 
 my @accountTransactions;
 # [
@@ -308,43 +317,53 @@ while(1)
     $runningBalance = $balanceForward;
   }
 
-  ($numberOfDeposits ,$amountDeposits,)=readSummaryAmount("Deposits");
+  ($numberOfDepositsStmt ,$amountDepositsStmt,)=readSummaryAmount("Deposits");
 
-  ($numberOfWithdrawals,$amountWithdrawals)=readSummaryAmount("Withdrawals");
-  print "MDW:$amountDeposits:$amountWithdrawals\n" if $opt_S;
-  $totalDeposits+=$amountDeposits;
-  $totalWithdrawals+=$amountWithdrawals;
+  ($numberOfWithdrawalsStmt,$amountWithdrawalsStmt)=readSummaryAmount("Withdrawals");
+  printf "MDWS:%2d %8.2f:%8.2f\n",$statementDate{'month'},$amountDepositsStmt,$amountWithdrawalsStmt if $opt_S;
+  $totalDeposits+=$amountDepositsStmt;
+  $totalWithdrawals+=$amountWithdrawalsStmt;
+  $amountDepositsTrans=0;
+  $amountWithdrawalsTrans=0;
 
   my $dummy;
   ($dummy,$endingBalance)=readSummaryAmount("Ending Balance");
 
-  $statusOK = readChecks(@accountTransactions,2000+$statementDate{'year'});
+  $statusOK = readChecks(@accountTransactions,2000+$statementDate{'year'},
+                         $amountWithdrawalsTrans);
   die unless $statusOK == 1;
-  $statusOK = readChecks(@accountTransactions,2000+$statementDate{'year'});
+  $statusOK = readChecks(@accountTransactions,2000+$statementDate{'year'},
+                         $amountWithdrawalsTrans);
 
   if ($statusOK == -1)
   {
     # we may have only one check statement (maybe :-)
     die $lin[1] unless ($lin[1] =~ /Other Account Transactions/) ||
                        ($lin[1] =~ /Amount/);
-    $statusOK = readTransactions(@accountTransactions,2000+$statementDate{'year'},1);
+    $statusOK = readTransactions(@accountTransactions,2000+$statementDate{'year'},1,
+                                 $amountDepositsTrans, $amountWithdrawalsTrans);
   }
   else
   {
-    $statusOK = readTransactions(@accountTransactions,2000+$statementDate{'year'},0);
+    $statusOK = readTransactions(@accountTransactions,2000+$statementDate{'year'},0,
+                                 $amountDepositsTrans, $amountWithdrawalsTrans);
   }
   die unless $statusOK == 1; # we expect at least one account transactions block (really?)
 
   # 2nd page account transactions - optional
-  $statusOK = readTransactions(@accountTransactions,2000+$statementDate{'year'},0);
+  $statusOK = readTransactions(@accountTransactions,2000+$statementDate{'year'},0,
+                               $amountDepositsTrans, $amountWithdrawalsTrans);
   #printf "%d. statusOK=%d : $_", ++$i,$statusOK;
+  printf "MDWT:   %8.2f:%8.2f\n",$amountDepositsTrans,$amountWithdrawalsTrans 
+    if $opt_S && (sprintf("%8.2f",$amountDepositsStmt) ne sprintf("%8.2f",$amountDepositsTrans) || sprintf("%8.2f",$amountWithdrawalsStmt) ne sprintf("%8.2f",$amountWithdrawalsTrans) )
 
 }
 if ($opt_S)
 {
-  print "YDWS:$totalDeposits:$totalWithdrawals\n";
-  print "YDWT:$totalDepositsTrans:$totalWithdrawalsTrans\n";
-  print "B:$runningBalanceBeg:$runningBalance:$endingBalance\n";
+  printf "YDWS:%8.2f:%8.2f\n",$totalDeposits,$totalWithdrawals;
+  printf "YDWT:%8.2f:%8.2f\n",$totalDepositsTrans,$totalWithdrawalsTrans if
+    sprintf("%8.2f",$totalDeposits) ne sprintf("%8.2f",$totalDepositsTrans) || sprintf("%8.2f",$totalWithdrawals) ne sprintf("%8.2f",$totalWithdrawalsTrans);
+  printf "BALANCE BEG,ENDT,ENDS:%8.2f:%8.2f:%8.2f\n",$runningBalanceBeg,$runningBalance,$endingBalance;
 }
 else
 {

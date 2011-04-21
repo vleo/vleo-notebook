@@ -14,7 +14,9 @@ my @match1060DebitToCorrAcctCode =
     qr/^INTL WIRE/,
     qr/^SG INTL WIRE/,
     qr/^WIRE INTL/,
-    qr/^Wire/
+    qr/^Wire/,
+    qr/^WIRE TRANSFER/,
+    qr/^WIRE/
   ] ],
 [
   1210,
@@ -45,7 +47,8 @@ my @match1060DebitToCorrAcctCode =
   [
     qr/^$/,
     qr/^Deposit$/,
-    qr/^WIRE$/
+    qr/^WIRE$/,
+    qr/BORROWED/
   ] ]
 );
 
@@ -58,8 +61,7 @@ qr/^TRANSFIRST LLC VMC SETTLE/,
 qr/^ACH TRANSFIRST LLC BKCD STLMT/,
 qr/^CCD TRANSFIRST LLC BKCD STLMT/,
 qr/^AMERICAN EXPRESS SETTLEMENT/,
-qr/^ACH AMERICAN EXPRESS SETTLEMENT/,
-qr/LINUX MEDIA LABS/
+qr/^ACH AMERICAN EXPRESS SETTLEMENT/
 ] ],
 
 [
@@ -105,7 +107,8 @@ qr/^Foreign ATM Fee/,
 qr/^ANNUAL CHECKCARD FEE/,
 qr/^Zions First National Bank/,
 qr/^ZION/,
-qr/^SERVICE CHARGES ASSESSED/
+qr/^SERVICE CHARGES ASSESSED/,
+qr/NSF Paid Item Fee/
 ] ],
 
 [
@@ -178,6 +181,7 @@ qr/^TRANSCEND INFORMATION/,
 qr/^OPELCO/,
 qr/Amazon\.com/,
 qr/IDOTPC INTERNATIONAL/,
+qr/BARNES.NOBLE/,
     # those can also be 5030
 qr/ADEX ELECTRONICS/,
 qr/^CIRCUIT EXPRESS/,

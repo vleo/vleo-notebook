@@ -18,18 +18,20 @@ if ($opt_H)
 print <<EOT;
 Input, CSV with ":" separator file format:
 
-FIELD0:
+Empty line - end of data
+
+
+First line - Checking account information:
+FIELD2:
+<account name> <account number>
+
+Other lines - Transaction description
+(Fields 0-6 contain: CHECK_NO, DATE, AMOUNT, WITHDR., DEPOSIT., CORRESP. ACCOUNT NUMBER)
+
+FIELD1:
 if <number> then transaction is a check
 if "Wire" then it is a wire transaction
 else it is electronic deposit/withdrawl
-
-FIELD1:
-First line - Checking account information:
-<account name> <account number>
-(optionally Fields2-6 contain: DATE, AMOUNT,  WITHDR., DEPOSIT, CORRESP. ACCOUNT NUMBER)
-
-Other lines - Transaction description
-Empty line - end of data
 
 Field2:
 Date, format depends on option -f value:
