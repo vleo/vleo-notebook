@@ -1,26 +1,42 @@
-#include "A.h"
+//@(#) A.cpp
+
+
+extern int errno;
+
+B::B( const int n ) : a(n)
+{
+	
+}
+
+int gVar = 1;
 
 int A::f( const int i )
 {
-	return i+c->g();
+	return 0;
 }
 
-void A::setC( const B & v )
+int main( const int argc, const char * * argv )
 {
-  c = &v;
-}
-
-void A::setCval( const int v )
-{
-  c->s(v);
-}
-
-void B::s( const int n )
-{
- a=n;	
+	return 0;
 }
 
 int B::g( )
 {
-	return a;
+	return 0;
 }
+
+void B::s( const int n )
+{
+	
+}
+
+void A::setC( const B & v )
+{
+	
+}
+
+void A::setCval( const int v )
+{
+	
+}
+
