@@ -4,7 +4,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 	- _myState = 8192;
 	- _properties = { IPropertyContainer 
 		- Subjects = { IRPYRawContainer 
-			- size = 2;
+			- size = 4;
 			- value = 
 			{ IPropertySubject 
 				- _Name = "CPP_CG";
@@ -27,6 +27,80 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 				}
 			}
 			{ IPropertySubject 
+				- _Name = "Format";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Requirement";
+						- Properties = { IRPYRawContainer 
+							- size = 12;
+							- value = 
+							{ IProperty 
+								- _Name = "DefaultSize";
+								- _Value = "0,0,84,96";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "Fill.FillColor";
+								- _Value = "255,255,255";
+								- _Type = Color;
+							}
+							{ IProperty 
+								- _Name = "Font.Font";
+								- _Value = "Arial";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "Font.Font@Child.SpecificationTextCompartment";
+								- _Value = "Arial";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "Font.FontColor";
+								- _Value = "0,0,0";
+								- _Type = Color;
+							}
+							{ IProperty 
+								- _Name = "Font.Italic@Child.SpecificationTextCompartment";
+								- _Value = "0";
+								- _Type = Int;
+							}
+							{ IProperty 
+								- _Name = "Font.Size";
+								- _Value = "10";
+								- _Type = Int;
+							}
+							{ IProperty 
+								- _Name = "Font.Size@Child.NameCompartment@Stereotype";
+								- _Value = "8";
+								- _Type = Int;
+							}
+							{ IProperty 
+								- _Name = "Font.Size@Child.SpecificationTextCompartment";
+								- _Value = "10";
+								- _Type = Int;
+							}
+							{ IProperty 
+								- _Name = "Font.Weight@Child.SpecificationTextCompartment";
+								- _Value = "400";
+								- _Type = Int;
+							}
+							{ IProperty 
+								- _Name = "Line.LineColor";
+								- _Value = "0,0,0";
+								- _Type = Color;
+							}
+							{ IProperty 
+								- _Name = "Line.LineWidth";
+								- _Value = "1";
+								- _Type = Int;
+							}
+						}
+					}
+				}
+			}
+			{ IPropertySubject 
 				- _Name = "General";
 				- Metaclasses = { IRPYRawContainer 
 					- size = 1;
@@ -41,6 +115,55 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 								- _Value = "One";
 								- _Type = Enum;
 								- _ExtraTypeInfo = "None,One,Two";
+							}
+						}
+					}
+				}
+			}
+			{ IPropertySubject 
+				- _Name = "UseCaseGe";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Requirement";
+						- Properties = { IRPYRawContainer 
+							- size = 6;
+							- value = 
+							{ IProperty 
+								- _Name = "Compartments";
+								- _Value = "Specification,";
+								- _Type = MultiLine;
+							}
+							{ IProperty 
+								- _Name = "RequirementNotation";
+								- _Value = "Box_Style";
+								- _Type = Enum;
+								- _ExtraTypeInfo = "Note_Style,Box_Style";
+							}
+							{ IProperty 
+								- _Name = "ShowAnnotationContents";
+								- _Value = "Description";
+								- _Type = Enum;
+								- _ExtraTypeInfo = "Name,Specification,Description,Label";
+							}
+							{ IProperty 
+								- _Name = "ShowForm";
+								- _Value = "Pushpin";
+								- _Type = Enum;
+								- _ExtraTypeInfo = "Plain,Note,Pushpin";
+							}
+							{ IProperty 
+								- _Name = "ShowName";
+								- _Value = "Name_only";
+								- _Type = Enum;
+								- _ExtraTypeInfo = "Full_path,Relative,Name_only,Label";
+							}
+							{ IProperty 
+								- _Name = "ShowStereotype";
+								- _Value = "Label";
+								- _Type = Enum;
+								- _ExtraTypeInfo = "Label,Bitmap,None";
 							}
 						}
 					}
@@ -87,7 +210,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 		- value = 
 		{ IMultiplicityItem 
 			- _name = "1";
-			- _count = -1;
+			- _count = 1;
 		}
 		{ IMultiplicityItem 
 			- _name = "*";
@@ -141,7 +264,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					{ IPropertySubject 
 						- _Name = "Format";
 						- Metaclasses = { IRPYRawContainer 
-							- size = 2;
+							- size = 3;
 							- value = 
 							{ IPropertyMetaclass 
 								- _Name = "DiagramFrame";
@@ -247,6 +370,73 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 									}
 								}
 							}
+							{ IPropertyMetaclass 
+								- _Name = "Requirement";
+								- Properties = { IRPYRawContainer 
+									- size = 12;
+									- value = 
+									{ IProperty 
+										- _Name = "DefaultSize";
+										- _Value = "0,0,84,96";
+										- _Type = String;
+									}
+									{ IProperty 
+										- _Name = "Fill.FillColor";
+										- _Value = "255,255,255";
+										- _Type = Color;
+									}
+									{ IProperty 
+										- _Name = "Font.Font";
+										- _Value = "Arial";
+										- _Type = String;
+									}
+									{ IProperty 
+										- _Name = "Font.Font@Child.SpecificationTextCompartment";
+										- _Value = "Arial";
+										- _Type = String;
+									}
+									{ IProperty 
+										- _Name = "Font.FontColor";
+										- _Value = "0,0,0";
+										- _Type = Color;
+									}
+									{ IProperty 
+										- _Name = "Font.Italic@Child.SpecificationTextCompartment";
+										- _Value = "0";
+										- _Type = Int;
+									}
+									{ IProperty 
+										- _Name = "Font.Size";
+										- _Value = "10";
+										- _Type = Int;
+									}
+									{ IProperty 
+										- _Name = "Font.Size@Child.NameCompartment@Stereotype";
+										- _Value = "8";
+										- _Type = Int;
+									}
+									{ IProperty 
+										- _Name = "Font.Size@Child.SpecificationTextCompartment";
+										- _Value = "10";
+										- _Type = Int;
+									}
+									{ IProperty 
+										- _Name = "Font.Weight@Child.SpecificationTextCompartment";
+										- _Value = "400";
+										- _Type = Int;
+									}
+									{ IProperty 
+										- _Name = "Line.LineColor";
+										- _Value = "0,0,0";
+										- _Type = Color;
+									}
+									{ IProperty 
+										- _Name = "Line.LineWidth";
+										- _Value = "1";
+										- _Type = Int;
+									}
+								}
+							}
 						}
 					}
 				}
@@ -264,7 +454,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _id = GUID 38dfec39-1968-4f0a-87ef-c2fde9a5d5e1;
 				}
 			}
-			- _lastModifiedTime = "5.15.2011::17:13:27";
+			- _lastModifiedTime = "5.15.2011::19:36:19";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 66bb39b7-5f5e-4dbd-af26-4bfc9a13769d;
 				- m_type = 0;

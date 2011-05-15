@@ -9,13 +9,42 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 		{ IRequirement 
 			- _id = GUID b19a841a-6e90-47c3-b979-2a93f513929d;
 			- _name = "req.1.1";
+			- Dependencies = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IDependency 
+					- _id = GUID 32cc2b2f-9cbd-452b-a4b3-fdb98efc4152;
+					- _myState = 2048;
+					- _name = "PlaceCall";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "trace";
+							- _id = GUID eba444ab-8581-4b96-9d6b-f99c142d15a9;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IUseCase";
+						- _filename = "Analysis.sbs";
+						- _subsystem = "Analysis";
+						- _class = "";
+						- _name = "PlaceCall";
+						- _id = GUID d2706d31-66b9-44db-8c2c-581489ac366a;
+					}
+				}
+			}
 			- _body = "The mobile shall be fully registered before a place call sequence can begin";
 		}
 		{ IRequirement 
 			- _id = GUID 62c9804b-10d2-4bc6-b184-f72611e09b39;
 			- _name = "req.4.2";
 			- Dependencies = { IRPYRawContainer 
-				- size = 1;
+				- size = 2;
 				- value = 
 				{ IDependency 
 					- _id = GUID 5b1e6c71-17c2-42c9-9507-6c3d0e1b2770;
@@ -37,6 +66,31 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 						- _id = GUID 2c18b91d-1ecb-4c5b-9c33-71a09b144112;
 					}
 				}
+				{ IDependency 
+					- _id = GUID 2f0ed8e1-09f9-4562-8607-a06020cdd78d;
+					- _myState = 2048;
+					- _name = "DataCall";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "trace";
+							- _id = GUID eba444ab-8581-4b96-9d6b-f99c142d15a9;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IUseCase";
+						- _filename = "Analysis.sbs";
+						- _subsystem = "Analysis";
+						- _class = "";
+						- _name = "DataCall";
+						- _id = GUID a4be6e9d-cc27-4288-aea2-eec84a2adc34;
+					}
+				}
 			}
 			- _body = "The mobile shall be able to receive streaming video at 384 kbps.";
 		}
@@ -50,7 +104,7 @@ acceptable signal.";
 			- _id = GUID 2c18b91d-1ecb-4c5b-9c33-71a09b144112;
 			- _name = "req.4.1";
 			- Dependencies = { IRPYRawContainer 
-				- size = 1;
+				- size = 3;
 				- value = 
 				{ IDependency 
 					- _id = GUID 51725862-f41a-499f-9bfe-1065c8b6b540;
@@ -71,6 +125,52 @@ acceptable signal.";
 					- _dependsOn = { INObjectHandle 
 						- _m2Class = "IRequirement";
 						- _id = GUID 573909cb-3226-451c-ba63-ba9e3f8c1f0c;
+					}
+				}
+				{ IDependency 
+					- _id = GUID 3a399ac8-c3d1-4b78-9230-64d3027f359b;
+					- _myState = 2048;
+					- _name = "req_4_2";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "derive";
+							- _id = GUID 77e51128-5c12-48fa-9a18-d782ae0ec76a;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IRequirement";
+						- _id = GUID 62c9804b-10d2-4bc6-b184-f72611e09b39;
+					}
+				}
+				{ IDependency 
+					- _id = GUID 7baf1820-59cd-4fa3-81bd-f5dfbc82cd8d;
+					- _myState = 2048;
+					- _name = "DataCall";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "PredefinedTypes.sbs";
+							- _subsystem = "PredefinedTypes";
+							- _class = "";
+							- _name = "trace";
+							- _id = GUID eba444ab-8581-4b96-9d6b-f99c142d15a9;
+						}
+					}
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IUseCase";
+						- _filename = "Analysis.sbs";
+						- _subsystem = "Analysis";
+						- _class = "";
+						- _name = "DataCall";
+						- _id = GUID a4be6e9d-cc27-4288-aea2-eec84a2adc34;
 					}
 				}
 			}
@@ -179,7 +279,7 @@ message.";
 characters.";
 		}
 	}
-	- _lastID = 10;
+	- _lastID = 11;
 	- Declaratives = { IRPYRawContainer 
 		- size = 1;
 		- value = 
@@ -405,7 +505,7 @@ characters.";
 				}
 			}
 			- _name = "Requirements";
-			- _lastModifiedTime = "5.15.2011::19:19:35";
+			- _lastModifiedTime = "5.15.2011::19:36:19";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 57665715-6c23-48a7-95cf-263c3696ff1e;
 				- m_type = 0;
@@ -1344,7 +1444,7 @@ characters.";
 			}
 		}
 	}
-	- weakCGTime = 5.15.2011::19:19:35;
+	- weakCGTime = 5.15.2011::19:40:48;
 	- strongCGTime = 5.15.2011::19:7:45;
 	- _defaultComposite = GUID b8ee7ea5-4796-490d-b1c8-e02945c44b75;
 	- _eventsBaseID = -1;
