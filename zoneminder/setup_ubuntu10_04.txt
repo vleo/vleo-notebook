@@ -1,0 +1,16 @@
+sudo apt-get install openssh-server zoneminder
+sudo usermod -a -G video www-data
+sudo ln -s /etc/zm/apache.conf /etc/apache2/sites-enabled/001-zoneminder
+wget http://www.charliemouse.com:8080/code/cambozola/cambozola-latest.tar.gz
+tar -zxvf cambozola-latest.tar.gz
+sudo cp cambozola-0.??/dist/cambozola.jar /usr/share
+
+sudo cat >> /etc/sysctl.conf <<EOT
+# approx 1280*1024*3*65
+kernel.shmmax = 256000000 
+# pages of 4096 == 8 GB
+kernal.shmall = 2097152 
+EOT
+
+sudo sysctl -p
+
