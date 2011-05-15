@@ -1,0 +1,81 @@
+I-Logix-RPY-Archive version 8.5.2 * 1164537
+{ CGEMdiWorkspace 
+	- stubList = { IRPYRawContainer 
+		- size = 0;
+	}
+	- myViewsWithID = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 2;
+				- m_showCmd = 3;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 44;
+				- m_nTop = 44;
+				- m_nRight = 820;
+				- m_nBottom = 404;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IUCDiagram";
+				- _filename = "HandsetRequirements.sbs";
+				- _subsystem = "HandsetRequirements";
+				- _class = "";
+				- _name = "Requirements";
+				- _id = GUID 41404676-cfdc-4cf4-88d9-02edc1be64ad;
+			}
+			- _UpLeft = 0 0 ;
+			- _DownRight = 910 518 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 0;
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 0;
+				- m_showCmd = 1;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 22;
+				- m_nTop = 22;
+				- m_nRight = 944;
+				- m_nBottom = 382;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IStructureDiagram";
+				- _filename = "";
+				- _subsystem = "";
+				- _class = "";
+				- _name = "Structure1";
+				- _id = GUID 240036a7-c9a6-4064-9b21-85d00a9cb103;
+			}
+			- _UpLeft = 0 0 ;
+			- _DownRight = 1489 521 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 1;
+		}
+	}
+	- _fullName = "Q:\\LML\\notebook\\RR\\Handset\\Handset";
+	- m_SearchScopeList = { IRPYRawContainer 
+		- size = 0;
+	}
+
+	- m_favoritesTree = {
+		count=1;
+		{ - favoritesItem
+			generation = 0;
+			name = Favorites;
+			idOrFolder = folder;
+		}
+	}
+
+}
+
