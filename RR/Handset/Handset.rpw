@@ -4,69 +4,13 @@ I-Logix-RPY-Archive version 8.5.2 * 1164537
 		- size = 0;
 	}
 	- myViewsWithID = { IRPYRawContainer 
-		- size = 5;
+		- size = 8;
 		- value = 
 		{ CGEMdiDiagramParams 
 			- _placement = { CCommon_WINDOWPLACEMENT 
 				- m_nLength = 44;
 				- m_nFlags = 0;
 				- m_showCmd = 1;
-				- m_ptMinPositionX = -1;
-				- m_ptMinPositionY = -1;
-				- m_ptMaxPositionX = -4;
-				- m_ptMaxPositionY = -23;
-				- m_nLeft = 66;
-				- m_nTop = 66;
-				- m_nRight = 776;
-				- m_nBottom = 541;
-			}
-			- _wasOpenedOnCloseProject = 0;
-			- _theDiagram = { IHandle 
-				- _m2Class = "IUCDiagram";
-				- _filename = "Analysis.sbs";
-				- _subsystem = "Analysis";
-				- _class = "";
-				- _name = "FunctionalOverview";
-				- _id = GUID 37d87ff9-b288-4799-bff9-d05eb846dc20;
-			}
-			- _UpLeft = 0 0 ;
-			- _DownRight = 682 428 ;
-			- _instanceName = "";
-			- m_nDiagramIndex = 0;
-		}
-		{ CGEMdiDiagramParams 
-			- _placement = { CCommon_WINDOWPLACEMENT 
-				- m_nLength = 44;
-				- m_nFlags = 0;
-				- m_showCmd = 1;
-				- m_ptMinPositionX = -1;
-				- m_ptMinPositionY = -1;
-				- m_ptMaxPositionX = -4;
-				- m_ptMaxPositionY = -23;
-				- m_nLeft = 88;
-				- m_nTop = 88;
-				- m_nRight = 798;
-				- m_nBottom = 563;
-			}
-			- _wasOpenedOnCloseProject = 0;
-			- _theDiagram = { IHandle 
-				- _m2Class = "IUCDiagram";
-				- _filename = "Analysis.sbs";
-				- _subsystem = "Analysis";
-				- _class = "";
-				- _name = "Place Call Overview";
-				- _id = GUID f1733642-6444-4ff0-a8f3-c22f37d626b0;
-			}
-			- _UpLeft = 0 0 ;
-			- _DownRight = 682 428 ;
-			- _instanceName = "";
-			- m_nDiagramIndex = 0;
-		}
-		{ CGEMdiDiagramParams 
-			- _placement = { CCommon_WINDOWPLACEMENT 
-				- m_nLength = 44;
-				- m_nFlags = 2;
-				- m_showCmd = 3;
 				- m_ptMinPositionX = -1;
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
@@ -86,9 +30,37 @@ I-Logix-RPY-Archive version 8.5.2 * 1164537
 				- _id = GUID 22f77d89-9d5b-49f0-b773-e966bc5985ea;
 			}
 			- _UpLeft = 0 0 ;
-			- _DownRight = 910 675 ;
+			- _DownRight = 858 536 ;
 			- _instanceName = "";
-			- m_nDiagramIndex = 1;
+			- m_nDiagramIndex = 7;
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 2;
+				- m_showCmd = 3;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 44;
+				- m_nTop = 44;
+				- m_nRight = 746;
+				- m_nBottom = 461;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IMSC";
+				- _filename = "Subsystems.sbs";
+				- _subsystem = "Subsystems";
+				- _class = "";
+				- _name = "ConnectionManagement Place Call";
+				- _id = GUID e6903163-464e-49aa-b7a2-6b5d46effae0;
+			}
+			- _UpLeft = 0 20 ;
+			- _DownRight = 880 595 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 0;
 		}
 		{ CGEMdiDiagramParams 
 			- _placement = { CCommon_WINDOWPLACEMENT 
@@ -99,24 +71,108 @@ I-Logix-RPY-Archive version 8.5.2 * 1164537
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
 				- m_ptMaxPositionY = -23;
-				- m_nLeft = 44;
-				- m_nTop = 44;
-				- m_nRight = 820;
-				- m_nBottom = 404;
+				- m_nLeft = 66;
+				- m_nTop = 66;
+				- m_nRight = 768;
+				- m_nBottom = 483;
 			}
-			- _wasOpenedOnCloseProject = 0;
+			- _wasOpenedOnCloseProject = 1;
 			- _theDiagram = { IHandle 
-				- _m2Class = "IUCDiagram";
-				- _filename = "HandsetRequirements.sbs";
-				- _subsystem = "HandsetRequirements";
-				- _class = "";
-				- _name = "Requirements";
-				- _id = GUID 41404676-cfdc-4cf4-88d9-02edc1be64ad;
+				- _m2Class = "IStructureDiagram";
+				- _filename = "ConnectionManagement.sbs";
+				- _subsystem = "Subsystems::ConnectionManagement";
+				- _class = "ConnectionManagementBlock";
+				- _name = "ConnectionManagement";
+				- _id = GUID 256b12b3-983e-4742-b06f-0b01dcc6927e;
 			}
 			- _UpLeft = 0 0 ;
-			- _DownRight = 748 313 ;
+			- _DownRight = 674 370 ;
 			- _instanceName = "";
-			- m_nDiagramIndex = 0;
+			- m_nDiagramIndex = 6;
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 0;
+				- m_showCmd = 1;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 132;
+				- m_nTop = 132;
+				- m_nRight = 834;
+				- m_nBottom = 549;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IStructureDiagram";
+				- _filename = "DataLink.sbs";
+				- _subsystem = "Subsystems::DataLink";
+				- _class = "DataLinkBlock";
+				- _name = "DataLink";
+				- _id = GUID 98b104ee-2c91-427f-9aac-d281dd3bf84a;
+			}
+			- _UpLeft = -13 20 ;
+			- _DownRight = 661 390 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 5;
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 0;
+				- m_showCmd = 1;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 154;
+				- m_nTop = 154;
+				- m_nRight = 856;
+				- m_nBottom = 571;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IStructureDiagram";
+				- _filename = "MobilityManagement.sbs";
+				- _subsystem = "Subsystems::MobilityManagement";
+				- _class = "MobilityManagementBlock";
+				- _name = "MobilityManagement";
+				- _id = GUID e790f167-122c-4bc5-9327-42524aafb0ed;
+			}
+			- _UpLeft = 0 20 ;
+			- _DownRight = 674 390 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 4;
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 0;
+				- m_showCmd = 1;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 176;
+				- m_nTop = 176;
+				- m_nRight = 878;
+				- m_nBottom = 593;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = "MobilityManagement.sbs";
+				- _subsystem = "Subsystems::MobilityManagement";
+				- _class = "";
+				- _name = "Update location";
+				- _id = GUID 414b8d61-c234-4137-84db-effda2f79b39;
+			}
+			- _UpLeft = 0 10 ;
+			- _DownRight = 674 380 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 3;
 		}
 		{ CGEMdiDiagramParams 
 			- _placement = { CCommon_WINDOWPLACEMENT 
@@ -129,22 +185,50 @@ I-Logix-RPY-Archive version 8.5.2 * 1164537
 				- m_ptMaxPositionY = -23;
 				- m_nLeft = 22;
 				- m_nTop = 22;
-				- m_nRight = 944;
-				- m_nBottom = 382;
+				- m_nRight = 724;
+				- m_nBottom = 439;
 			}
 			- _wasOpenedOnCloseProject = 1;
 			- _theDiagram = { IHandle 
-				- _m2Class = "IStructureDiagram";
-				- _filename = "";
-				- _subsystem = "";
+				- _m2Class = "IMSC";
+				- _filename = "Subsystems.sbs";
+				- _subsystem = "Subsystems";
 				- _class = "";
-				- _name = "Structure1";
-				- _id = GUID 240036a7-c9a6-4064-9b21-85d00a9cb103;
+				- _name = "NetworkConnect";
+				- _id = GUID 170312d4-5446-40c9-b068-7379e12b357c;
+			}
+			- _UpLeft = 0 22 ;
+			- _DownRight = 674 372 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 1;
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 0;
+				- m_showCmd = 1;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 0;
+				- m_nTop = 0;
+				- m_nRight = 702;
+				- m_nBottom = 417;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IMSC";
+				- _filename = "Subsystems.sbs";
+				- _subsystem = "Subsystems";
+				- _class = "";
+				- _name = "Place Call Request Successful";
+				- _id = GUID a2cb7251-9141-438b-a2e1-2ddacfc09284;
 			}
 			- _UpLeft = 0 0 ;
-			- _DownRight = 1489 521 ;
+			- _DownRight = 674 350 ;
 			- _instanceName = "";
-			- m_nDiagramIndex = 0;
+			- m_nDiagramIndex = 2;
 		}
 	}
 	- _fullName = "Q:\\LML\\notebook\\RR\\Handset\\Handset";

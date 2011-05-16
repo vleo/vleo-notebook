@@ -345,7 +345,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _id = GUID 6c142614-3349-49e9-8c6b-0236be5f6b61;
 				}
 			}
-			- _lastModifiedTime = "5.15.2011::20:18:56";
+			- _lastModifiedTime = "5.16.2011::9:51:8";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID dc23b7bd-9b69-4bed-8579-92a3c17592fd;
 				- m_type = 0;
@@ -461,6 +461,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- m_type = 57;
 					- m_pModelObject = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "ConnectionManagement.sbs";
+						- _subsystem = "Subsystems::ConnectionManagement";
+						- _class = "ConnectionManagementBlock";
+						- _name = "call_req";
 						- _id = GUID 92e81fdd-2ba4-4a1f-98d8-230f38a960c6;
 					}
 					- m_pParent = GUID 274ca9a2-9ab9-44dc-8f13-94f8f4762b27;
@@ -523,6 +527,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- m_type = 57;
 					- m_pModelObject = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "ConnectionManagement.sbs";
+						- _subsystem = "Subsystems::ConnectionManagement";
+						- _class = "ConnectionManagementBlock";
+						- _name = "network";
 						- _id = GUID 21e4e3dd-0e7e-49bd-81f8-aad5d6aa2c1e;
 					}
 					- m_pParent = GUID 274ca9a2-9ab9-44dc-8f13-94f8f4762b27;
@@ -585,6 +593,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- m_type = 57;
 					- m_pModelObject = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "MobilityManagement.sbs";
+						- _subsystem = "Subsystems::MobilityManagement";
+						- _class = "MobilityManagementBlock";
+						- _name = "mm_network";
 						- _id = GUID 8b6f8c4f-3b14-43bf-8e2c-146418835ac6;
 					}
 					- m_pParent = GUID 903fbd95-506b-4dc9-b3ea-f2b49337951e;
@@ -648,6 +660,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- m_type = 57;
 					- m_pModelObject = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "MobilityManagement.sbs";
+						- _subsystem = "Subsystems::MobilityManagement";
+						- _class = "MobilityManagementBlock";
+						- _name = "mm_dl";
 						- _id = GUID 769ba84d-f1c5-4c4d-b698-c4b5a668cc87;
 					}
 					- m_pParent = GUID 903fbd95-506b-4dc9-b3ea-f2b49337951e;
@@ -711,6 +727,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- m_type = 57;
 					- m_pModelObject = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "DataLink.sbs";
+						- _subsystem = "Subsystems::DataLink";
+						- _class = "DataLinkBlock";
+						- _name = "dl_in";
 						- _id = GUID 3e2aa08d-91eb-4129-8e31-dcbb4eb58753;
 					}
 					- m_pParent = GUID 1e9cf849-2a02-429d-aa98-aeefc0ae31c0;
@@ -774,6 +794,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- m_type = 57;
 					- m_pModelObject = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "DataLink.sbs";
+						- _subsystem = "Subsystems::DataLink";
+						- _class = "DataLinkBlock";
+						- _name = "data_net";
 						- _id = GUID e4ff1a2c-b2e0-40fd-b951-dbf3c9bee0c0;
 					}
 					- m_pParent = GUID 1e9cf849-2a02-429d-aa98-aeefc0ae31c0;
@@ -2251,6 +2275,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			}
 			- end2_ = { IHandle 
 				- _m2Class = "IPort";
+				- _filename = "ConnectionManagement.sbs";
+				- _subsystem = "Subsystems::ConnectionManagement";
+				- _class = "ConnectionManagementBlock";
+				- _name = "call_req";
 				- _id = GUID 92e81fdd-2ba4-4a1f-98d8-230f38a960c6;
 			}
 			- direction_ = toEnd2;
@@ -2277,10 +2305,18 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			}
 			- end1_ = { IHandle 
 				- _m2Class = "IPort";
+				- _filename = "ConnectionManagement.sbs";
+				- _subsystem = "Subsystems::ConnectionManagement";
+				- _class = "ConnectionManagementBlock";
+				- _name = "network";
 				- _id = GUID 21e4e3dd-0e7e-49bd-81f8-aad5d6aa2c1e;
 			}
 			- end2_ = { IHandle 
 				- _m2Class = "IPort";
+				- _filename = "MobilityManagement.sbs";
+				- _subsystem = "Subsystems::MobilityManagement";
+				- _class = "MobilityManagementBlock";
+				- _name = "mm_network";
 				- _id = GUID 8b6f8c4f-3b14-43bf-8e2c-146418835ac6;
 			}
 			- direction_ = bidirectional;
@@ -2299,10 +2335,18 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			}
 			- end1_ = { IHandle 
 				- _m2Class = "IPort";
+				- _filename = "MobilityManagement.sbs";
+				- _subsystem = "Subsystems::MobilityManagement";
+				- _class = "MobilityManagementBlock";
+				- _name = "mm_dl";
 				- _id = GUID 769ba84d-f1c5-4c4d-b698-c4b5a668cc87;
 			}
 			- end2_ = { IHandle 
 				- _m2Class = "IPort";
+				- _filename = "DataLink.sbs";
+				- _subsystem = "Subsystems::DataLink";
+				- _class = "DataLinkBlock";
+				- _name = "dl_in";
 				- _id = GUID 3e2aa08d-91eb-4129-8e31-dcbb4eb58753;
 			}
 			- direction_ = bidirectional;
@@ -2329,6 +2373,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			}
 			- end2_ = { IHandle 
 				- _m2Class = "IPort";
+				- _filename = "DataLink.sbs";
+				- _subsystem = "Subsystems::DataLink";
+				- _class = "DataLinkBlock";
+				- _name = "data_net";
 				- _id = GUID e4ff1a2c-b2e0-40fd-b951-dbf3c9bee0c0;
 			}
 			- direction_ = bidirectional;
@@ -2372,20 +2420,20 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			- _name = "NetworkRequests";
 		}
 	}
-	- weakCGTime = 5.15.2011::20:12:57;
+	- weakCGTime = 5.16.2011::9:51:8;
 	- strongCGTime = 5.15.2011::19:56:54;
 	- _defaultComposite = GUID ac33f2f5-6769-46b8-8292-a322ac0a8892;
 	- _eventsBaseID = 11201;
 	- Classes = { IRPYRawContainer 
-		- size = 6;
+		- size = 3;
 		- value = 
 		{ IClass 
 			- _id = GUID ac33f2f5-6769-46b8-8292-a322ac0a8892;
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 4;
-			- weakCGTime = 5.15.2011::19:56:54;
-			- strongCGTime = 5.15.2011::18:31:54;
+			- weakCGTime = 5.15.2011::20:12:57;
+			- strongCGTime = 5.15.2011::19:56:54;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
@@ -2400,6 +2448,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
+						- _filename = "ConnectionManagement.sbs";
+						- _subsystem = "Subsystems::ConnectionManagement";
+						- _class = "";
+						- _name = "ConnectionManagementBlock";
 						- _id = GUID e33e926f-fc58-4901-84ba-8bfe6a39ad91;
 					}
 					- _inverse = { IHandle 
@@ -2413,6 +2465,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
+						- _filename = "MobilityManagement.sbs";
+						- _subsystem = "Subsystems::MobilityManagement";
+						- _class = "";
+						- _name = "MobilityManagementBlock";
 						- _id = GUID 2095a5c4-4119-4506-99aa-8f55018a5fde;
 					}
 					- _inverse = { IHandle 
@@ -2426,6 +2482,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _multiplicity = "1";
 					- _otherClass = { IClassifierHandle 
 						- _m2Class = "IClass";
+						- _filename = "DataLink.sbs";
+						- _subsystem = "Subsystems::DataLink";
+						- _class = "";
+						- _name = "DataLinkBlock";
 						- _id = GUID bf81d3a1-888e-47b2-9823-21fb05187519;
 					}
 					- _inverse = { IHandle 
@@ -2501,6 +2561,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _end2Multiplicity = "1";
 					- _toPort = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "ConnectionManagement.sbs";
+						- _subsystem = "Subsystems::ConnectionManagement";
+						- _class = "ConnectionManagementBlock";
+						- _name = "call_req";
 						- _id = GUID 92e81fdd-2ba4-4a1f-98d8-230f38a960c6;
 					}
 					- _fromPort = { IHandle 
@@ -2543,10 +2607,18 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _end2Multiplicity = "1";
 					- _toPort = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "MobilityManagement.sbs";
+						- _subsystem = "Subsystems::MobilityManagement";
+						- _class = "MobilityManagementBlock";
+						- _name = "mm_network";
 						- _id = GUID 8b6f8c4f-3b14-43bf-8e2c-146418835ac6;
 					}
 					- _fromPort = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "ConnectionManagement.sbs";
+						- _subsystem = "Subsystems::ConnectionManagement";
+						- _class = "ConnectionManagementBlock";
+						- _name = "network";
 						- _id = GUID 21e4e3dd-0e7e-49bd-81f8-aad5d6aa2c1e;
 					}
 				}
@@ -2581,10 +2653,18 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _end2Multiplicity = "1";
 					- _toPort = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "DataLink.sbs";
+						- _subsystem = "Subsystems::DataLink";
+						- _class = "DataLinkBlock";
+						- _name = "dl_in";
 						- _id = GUID 3e2aa08d-91eb-4129-8e31-dcbb4eb58753;
 					}
 					- _fromPort = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "MobilityManagement.sbs";
+						- _subsystem = "Subsystems::MobilityManagement";
+						- _class = "MobilityManagementBlock";
+						- _name = "mm_dl";
 						- _id = GUID 769ba84d-f1c5-4c4d-b698-c4b5a668cc87;
 					}
 				}
@@ -2619,6 +2699,10 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					- _end2Multiplicity = "1";
 					- _toPort = { IHandle 
 						- _m2Class = "IPort";
+						- _filename = "DataLink.sbs";
+						- _subsystem = "Subsystems::DataLink";
+						- _class = "DataLinkBlock";
+						- _name = "data_net";
 						- _id = GUID e4ff1a2c-b2e0-40fd-b951-dbf3c9bee0c0;
 					}
 					- _fromPort = { IHandle 
@@ -2630,414 +2714,6 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 						- _id = GUID b2f075da-ddb9-492c-bf70-0f0a51b29205;
 					}
 				}
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID e33e926f-fc58-4901-84ba-8bfe6a39ad91;
-			- _myState = 8192;
-			- _name = "ConnectionManagementBlock";
-			- Stereotypes = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IHandle 
-					- _m2Class = "IStereotype";
-					- _filename = "SysML.sbs";
-					- _subsystem = "SysML::Blocks";
-					- _class = "";
-					- _name = "block";
-					- _id = GUID f685432f-691e-4ff1-be70-4d09d19457e1;
-				}
-			}
-			- _theMainDiagram = { IHandle 
-				- _m2Class = "IDiagram";
-				- _id = GUID 22f77d89-9d5b-49f0-b773-e966bc5985ea;
-			}
-			- _lastID = 4;
-			- weakCGTime = 5.15.2011::19:50:5;
-			- strongCGTime = 5.15.2011::19:46:28;
-			- Ports = { IRPYRawContainer 
-				- size = 2;
-				- value = 
-				{ IPort 
-					- _id = GUID 92e81fdd-2ba4-4a1f-98d8-230f38a960c6;
-					- _myState = 8192;
-					- _name = "call_req";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "SysML.sbs";
-							- _subsystem = "SysML::PortsAndFlows";
-							- _class = "";
-							- _name = "standardPort";
-							- _id = GUID b87e4708-8d1e-42e3-ae41-e4e033d6767e;
-						}
-					}
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID e19478dc-790c-43db-8514-7cd95ed546a4;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _implicitClass = { IClass 
-						- _id = GUID e19478dc-790c-43db-8514-7cd95ed546a4;
-						- _myState = 10240;
-						- _name = "call_req_implicitContract";
-						- Stereotypes = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IHandle 
-								- _m2Class = "IStereotype";
-								- _filename = "PredefinedTypes.sbs";
-								- _subsystem = "PredefinedTypes";
-								- _class = "";
-								- _name = "Interface";
-								- _id = GUID 2a7b8a63-f54f-4379-bab0-02800a5084e1;
-							}
-						}
-						- weakCGTime = 5.15.2011::19:49:18;
-						- strongCGTime = 5.15.2011::19:49:18;
-						- _multiplicity = "";
-						- _itsStateChart = { IHandle 
-							- _m2Class = "";
-						}
-						- _classModifier = Unspecified;
-					}
-				}
-				{ IPort 
-					- _id = GUID 21e4e3dd-0e7e-49bd-81f8-aad5d6aa2c1e;
-					- _myState = 8192;
-					- _name = "network";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "SysML.sbs";
-							- _subsystem = "SysML::PortsAndFlows";
-							- _class = "";
-							- _name = "standardPort";
-							- _id = GUID b87e4708-8d1e-42e3-ae41-e4e033d6767e;
-						}
-					}
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 771d3b7e-6678-4b70-b623-8cc8b40329d5;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _implicitClass = { IClass 
-						- _id = GUID 771d3b7e-6678-4b70-b623-8cc8b40329d5;
-						- _myState = 10240;
-						- _name = "network_implicitContract";
-						- Stereotypes = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IHandle 
-								- _m2Class = "IStereotype";
-								- _filename = "PredefinedTypes.sbs";
-								- _subsystem = "PredefinedTypes";
-								- _class = "";
-								- _name = "Interface";
-								- _id = GUID 2a7b8a63-f54f-4379-bab0-02800a5084e1;
-							}
-						}
-						- weakCGTime = 5.15.2011::19:50:5;
-						- strongCGTime = 5.15.2011::19:50:5;
-						- _multiplicity = "";
-						- _itsStateChart = { IHandle 
-							- _m2Class = "";
-						}
-						- _classModifier = Unspecified;
-					}
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID 2095a5c4-4119-4506-99aa-8f55018a5fde;
-			- _myState = 8192;
-			- _name = "MobilityManagementBlock";
-			- Stereotypes = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IHandle 
-					- _m2Class = "IStereotype";
-					- _filename = "SysML.sbs";
-					- _subsystem = "SysML::Blocks";
-					- _class = "";
-					- _name = "block";
-					- _id = GUID f685432f-691e-4ff1-be70-4d09d19457e1;
-				}
-			}
-			- _theMainDiagram = { IHandle 
-				- _m2Class = "IDiagram";
-				- _id = GUID 22f77d89-9d5b-49f0-b773-e966bc5985ea;
-			}
-			- _lastID = 4;
-			- weakCGTime = 5.15.2011::20:10:16;
-			- strongCGTime = 5.15.2011::19:46:51;
-			- Ports = { IRPYRawContainer 
-				- size = 2;
-				- value = 
-				{ IPort 
-					- _id = GUID 8b6f8c4f-3b14-43bf-8e2c-146418835ac6;
-					- _myState = 8192;
-					- _name = "mm_network";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "SysML.sbs";
-							- _subsystem = "SysML::PortsAndFlows";
-							- _class = "";
-							- _name = "standardPort";
-							- _id = GUID b87e4708-8d1e-42e3-ae41-e4e033d6767e;
-						}
-					}
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID 7450964e-3540-4767-acd8-fd415b41ada9;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _implicitClass = { IClass 
-						- _id = GUID 7450964e-3540-4767-acd8-fd415b41ada9;
-						- _myState = 10240;
-						- _name = "mm_network_implicitContract";
-						- Stereotypes = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IHandle 
-								- _m2Class = "IStereotype";
-								- _filename = "PredefinedTypes.sbs";
-								- _subsystem = "PredefinedTypes";
-								- _class = "";
-								- _name = "Interface";
-								- _id = GUID 2a7b8a63-f54f-4379-bab0-02800a5084e1;
-							}
-						}
-						- weakCGTime = 5.15.2011::19:50:25;
-						- strongCGTime = 5.15.2011::19:50:25;
-						- _multiplicity = "";
-						- _itsStateChart = { IHandle 
-							- _m2Class = "";
-						}
-						- _classModifier = Unspecified;
-					}
-				}
-				{ IPort 
-					- _id = GUID 769ba84d-f1c5-4c4d-b698-c4b5a668cc87;
-					- _myState = 8192;
-					- _name = "mm_dl";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "SysML.sbs";
-							- _subsystem = "SysML::PortsAndFlows";
-							- _class = "";
-							- _name = "standardPort";
-							- _id = GUID b87e4708-8d1e-42e3-ae41-e4e033d6767e;
-						}
-					}
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID d6eac053-e0f7-42be-8d02-c8113876ea46;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _implicitClass = { IClass 
-						- _id = GUID d6eac053-e0f7-42be-8d02-c8113876ea46;
-						- _myState = 10240;
-						- _name = "mm_dl_implicitContract";
-						- Dependencies = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IDependency 
-								- _id = GUID 4b37e90e-68b9-460c-a433-47affa6ef513;
-								- _myState = 2048;
-								- _name = "Out";
-								- Stereotypes = { IRPYRawContainer 
-									- size = 1;
-									- value = 
-									{ IHandle 
-										- _m2Class = "IStereotype";
-										- _filename = "PredefinedTypes.sbs";
-										- _subsystem = "PredefinedTypes";
-										- _class = "";
-										- _name = "Usage";
-										- _id = GUID 42aa4325-6112-4e88-87ce-66008878f1db;
-									}
-								}
-								- _dependsOn = { INObjectHandle 
-									- _m2Class = "IClass";
-									- _id = GUID 572e526e-bad5-41a6-99b2-e39f0299e02a;
-								}
-							}
-						}
-						- Stereotypes = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IHandle 
-								- _m2Class = "IStereotype";
-								- _filename = "PredefinedTypes.sbs";
-								- _subsystem = "PredefinedTypes";
-								- _class = "";
-								- _name = "Interface";
-								- _id = GUID 2a7b8a63-f54f-4379-bab0-02800a5084e1;
-							}
-						}
-						- weakCGTime = 5.15.2011::20:10:16;
-						- strongCGTime = 5.15.2011::19:50:35;
-						- Inheritances = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IGeneralization 
-								- _id = GUID 7889c72b-8a00-4ab4-8f2b-31bb7556eb98;
-								- _dependsOn = { INObjectHandle 
-									- _m2Class = "IClass";
-									- _id = GUID a439983e-13bf-4c3d-abf3-19beecf04af6;
-								}
-								- _inheritanceType = iPublic;
-								- _isVirtual = 0;
-							}
-						}
-						- _multiplicity = "";
-						- _itsStateChart = { IHandle 
-							- _m2Class = "";
-						}
-						- _classModifier = Unspecified;
-					}
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
-			}
-			- _classModifier = Unspecified;
-		}
-		{ IClass 
-			- _id = GUID bf81d3a1-888e-47b2-9823-21fb05187519;
-			- _myState = 8192;
-			- _name = "DataLinkBlock";
-			- Stereotypes = { IRPYRawContainer 
-				- size = 1;
-				- value = 
-				{ IHandle 
-					- _m2Class = "IStereotype";
-					- _filename = "SysML.sbs";
-					- _subsystem = "SysML::Blocks";
-					- _class = "";
-					- _name = "block";
-					- _id = GUID f685432f-691e-4ff1-be70-4d09d19457e1;
-				}
-			}
-			- _theMainDiagram = { IHandle 
-				- _m2Class = "IDiagram";
-				- _id = GUID 22f77d89-9d5b-49f0-b773-e966bc5985ea;
-			}
-			- _lastID = 4;
-			- weakCGTime = 5.15.2011::20:17:4;
-			- strongCGTime = 5.15.2011::19:47:7;
-			- Ports = { IRPYRawContainer 
-				- size = 2;
-				- value = 
-				{ IPort 
-					- _id = GUID 3e2aa08d-91eb-4129-8e31-dcbb4eb58753;
-					- _myState = 8192;
-					- _name = "dl_in";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "SysML.sbs";
-							- _subsystem = "SysML::PortsAndFlows";
-							- _class = "";
-							- _name = "standardPort";
-							- _id = GUID b87e4708-8d1e-42e3-ae41-e4e033d6767e;
-						}
-					}
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID a439983e-13bf-4c3d-abf3-19beecf04af6;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _reversed = 1;
-				}
-				{ IPort 
-					- _id = GUID e4ff1a2c-b2e0-40fd-b951-dbf3c9bee0c0;
-					- _myState = 8192;
-					- _name = "data_net";
-					- Stereotypes = { IRPYRawContainer 
-						- size = 1;
-						- value = 
-						{ IHandle 
-							- _m2Class = "IStereotype";
-							- _filename = "SysML.sbs";
-							- _subsystem = "SysML::PortsAndFlows";
-							- _class = "";
-							- _name = "standardPort";
-							- _id = GUID b87e4708-8d1e-42e3-ae41-e4e033d6767e;
-						}
-					}
-					- _multiplicity = "1";
-					- _otherClass = { IClassifierHandle 
-						- _m2Class = "IClass";
-						- _id = GUID efa77a0e-169c-41c1-b5fe-6aec12bdf6ab;
-					}
-					- _inverse = { IHandle 
-						- _m2Class = "";
-					}
-					- _implicitClass = { IClass 
-						- _id = GUID efa77a0e-169c-41c1-b5fe-6aec12bdf6ab;
-						- _myState = 10240;
-						- _name = "data_net_implicitContract";
-						- Stereotypes = { IRPYRawContainer 
-							- size = 1;
-							- value = 
-							{ IHandle 
-								- _m2Class = "IStereotype";
-								- _filename = "PredefinedTypes.sbs";
-								- _subsystem = "PredefinedTypes";
-								- _class = "";
-								- _name = "Interface";
-								- _id = GUID 2a7b8a63-f54f-4379-bab0-02800a5084e1;
-							}
-						}
-						- weakCGTime = 5.15.2011::19:50:57;
-						- strongCGTime = 5.15.2011::19:50:57;
-						- _multiplicity = "";
-						- _itsStateChart = { IHandle 
-							- _m2Class = "";
-						}
-						- _classModifier = Unspecified;
-					}
-				}
-			}
-			- _multiplicity = "";
-			- _itsStateChart = { IHandle 
-				- _m2Class = "";
 			}
 			- _classModifier = Unspecified;
 		}
@@ -3211,6 +2887,6 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			}
 		}
 	}
-	- _configurationRelatedTime = 5.15.2011::19:53:8;
+	- _configurationRelatedTime = 5.16.2011::9:51:8;
 }
 
