@@ -1,18 +1,18 @@
-I-Logix-RPY-Archive version 8.5.2 * 1164537
+I-Logix-RPY-Archive version 8.5.2 * 2030848
 
 - filesTable = { IRPYRawContainer 
 	- size = 11;
-	- value = "C:\\Program Files\\IBM\\Rational\\Rhapsody\\7.5\\Share\\Profiles\\CGSimplifiedModelProfileCpp.sbs" "CGSimplifiedModelProfileCpp"
-	"Handset.rpy" ""
+	- value = "Handset.rpy" ""
 	"Handset_rpy\\Analysis.sbs" "Analysis"
 	"Handset_rpy\\Architecture.sbs" "Architecture"
+	"Handset_rpy\\CGCompatibilityPre751Cpp.sbs" "CGCompatibilityPre751Cpp"
+	"Handset_rpy\\CGCompatibilityPre753Cpp.sbs" "CGCompatibilityPre753Cpp"
 	"Handset_rpy\\ConnectionManagement.sbs" "Subsystems::ConnectionManagement"
 	"Handset_rpy\\DataLink.sbs" "Subsystems::DataLink"
 	"Handset_rpy\\HandsetRequirements.sbs" "HandsetRequirements"
 	"Handset_rpy\\MobilityManagement.sbs" "Subsystems::MobilityManagement"
 	"Handset_rpy\\Simulation.cmp" "Simulation"
 	"Handset_rpy\\Subsystems.sbs" "Subsystems"
-	"Projects.rpl" ""
 	
 }
 

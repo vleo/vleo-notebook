@@ -1455,8 +1455,8 @@ characters.";
 			- _id = GUID b8ee7ea5-4796-490d-b1c8-e02945c44b75;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 5.15.2011::17:15:2;
-			- strongCGTime = 5.15.2011::17:15:2;
+			- weakCGTime = 5.15.2011::19:40:48;
+			- strongCGTime = 5.15.2011::19:7:45;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";

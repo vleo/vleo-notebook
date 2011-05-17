@@ -374,7 +374,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					}
 					- m_pParent = GUID 359ae7db-77b2-4e70-a706-e6e62387c2c5;
 					- m_name = { CGIText 
-						- m_str = ":MMI";
+						- m_str = "MMI";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -443,7 +443,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					}
 					- m_pParent = GUID 359ae7db-77b2-4e70-a706-e6e62387c2c5;
 					- m_name = { CGIText 
-						- m_str = ":Network";
+						- m_str = "Network";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -512,7 +512,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					}
 					- m_pParent = GUID 359ae7db-77b2-4e70-a706-e6e62387c2c5;
 					- m_name = { CGIText 
-						- m_str = ":ConnectionManagementBlock";
+						- m_str = "ConnectionManagementBlock";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -581,7 +581,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					}
 					- m_pParent = GUID 359ae7db-77b2-4e70-a706-e6e62387c2c5;
 					- m_name = { CGIText 
-						- m_str = ":MobilityManagementBlock";
+						- m_str = "MobilityManagementBlock";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -650,7 +650,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 					}
 					- m_pParent = GUID 359ae7db-77b2-4e70-a706-e6e62387c2c5;
 					- m_name = { CGIText 
-						- m_str = ":DataLinkBlock";
+						- m_str = "DataLinkBlock";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -4283,7 +4283,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			- _id = GUID bd64d97f-3c08-4f28-aa5b-eaf8a26a0842;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 5.15.2011::18:32:7;
+			- weakCGTime = 5.16.2011::14:36:15;
 			- strongCGTime = 5.15.2011::18:32:7;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
