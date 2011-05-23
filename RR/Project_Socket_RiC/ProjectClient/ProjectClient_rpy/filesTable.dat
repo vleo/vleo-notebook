@@ -1,0 +1,15 @@
+I-Logix-RPY-Archive version 8.5.2 * 1159120
+
+- filesTable = { IRPYRawContainer 
+	- size = 8;
+	- value = "ProjectClient.rpy" ""
+	"ProjectClient_rpy\\CGCompatibilityPre72C.sbs" "CGCompatibilityPre72C"
+	"ProjectClient_rpy\\CGCompatibilityPre73C.sbs" "CGCompatibilityPre73C"
+	"ProjectClient_rpy\\CGCompatibilityPre75C.sbs" "CGCompatibilityPre75C"
+	"ProjectClient_rpy\\Default.sbs" "Default"
+	"ProjectClient_rpy\\DefaultComponent.cmp" "DefaultComponent"
+	"ProjectClient_rpy\\Model1.omd" "Model1"
+	"Projects.rpl" ""
+	
+}
+

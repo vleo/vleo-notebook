@@ -1,0 +1,95 @@
+I-Logix-RPY-Archive version 8.5.2 C 1159120
+{ IProfile 
+	- _id = GUID 7b5e6f1d-ba31-4da4-8f5e-e123f8bd830d;
+	- _properties = { IPropertyContainer 
+		- Subjects = { IRPYRawContainer 
+			- size = 2;
+			- value = 
+			{ IPropertySubject 
+				- _Name = "C_CG";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Configuration";
+						- Properties = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IProperty 
+								- _Name = "CodeGenerationDirectoryLevel";
+								- _Value = "Top";
+								- _Type = Enum;
+								- _ExtraTypeInfo = "Top, Bottom";
+							}
+							{ IProperty 
+								- _Name = "EmptyArgumentListName";
+								- _Value = "";
+								- _Type = MultiLine;
+							}
+						}
+					}
+				}
+			}
+			{ IPropertySubject 
+				- _Name = "C_ReverseEngineering";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "ImplementationTrait";
+						- Properties = { IRPYRawContainer 
+							- size = 2;
+							- value = 
+							{ IProperty 
+								- _Name = "CreateDependencies";
+								- _Value = "All";
+								- _Type = Enum;
+								- _ExtraTypeInfo = "None, DependenciesOnly, All, SmartPackageAndComponent";
+							}
+							{ IProperty 
+								- _Name = "MacroExpansion";
+								- _Value = "True";
+								- _Type = Bool;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	- _name = "CGCompatibilityPre72C";
+	- Stereotypes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IHandle 
+			- _m2Class = "IStereotype";
+			- _filename = "PredefinedTypes.sbs";
+			- _subsystem = "PredefinedTypes";
+			- _class = "";
+			- _name = "Settings";
+			- _id = GUID c4916b7f-5ca2-41a3-b8a9-6ac22b145b51;
+		}
+	}
+	- weakCGTime = 2.6.2008::14:8:12;
+	- strongCGTime = 2.6.2008::14:8:12;
+	- _defaultComposite = GUID 3960afec-e79f-4311-963c-32909ff689d7;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID 3960afec-e79f-4311-963c-32909ff689d7;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- weakCGTime = 2.6.2008::14:8:12;
+			- strongCGTime = 2.6.2008::14:8:12;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
+}
+

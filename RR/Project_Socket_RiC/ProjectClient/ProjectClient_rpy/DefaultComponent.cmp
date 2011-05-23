@@ -1,0 +1,151 @@
+I-Logix-RPY-Archive version 8.5.2 C 1159120
+{ IComponent 
+	- _id = GUID e06c73df-abfb-41aa-8744-c52a2c33f8e3;
+	- _myState = 139264;
+	- _name = "DefaultComponent";
+	- m_buildType = Executable;
+	- m_libraries = "WSOCK32.LIB";
+	- m_additionalSources = "";
+	- m_standardHeaders = "";
+	- m_includePath = "C:\\Program Files\\Microsoft Visual Studio 8\\VC\\PlatformSDK\\Lib";
+	- m_initializationCode = "";
+	- m_folder = { IFolder 
+		- _id = GUID 0f2bec98-c233-466a-a66a-3efaa8d02b6f;
+		- _myState = 73728;
+		- _name = "Files";
+		- m_path = "";
+		- Elements = { IRPYRawContainer 
+			- size = 0;
+		}
+		- Files = { IRPYRawContainer 
+			- size = 0;
+		}
+	}
+	- m_configActive = { ICodeGenConfigInfoHandle 
+		- _m2Class = "ICodeGenConfigInfo";
+		- _id = GUID 1019b1ff-9620-4164-8a40-17c11330df3c;
+	}
+	- Configs = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ ICodeGenConfigInfo 
+			- _id = GUID 1019b1ff-9620-4164-8a40-17c11330df3c;
+			- _myState = 8192;
+			- _name = "DefaultConfig";
+			- HyperLinks = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IMHyperLink 
+					- _id = GUID fe61d6a2-367e-491a-882e-71f9ea599bc2;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Makefile";
+					- _linkType = "FREE";
+					- _linkTarget = "C:\\Work\\Rhapsody713\\ProjectClient\\DefaultComponent\\DefaultConfig\\DefaultComponent.mak";
+					- isConfigurationFileHyperLink = 1;
+				}
+				{ IMHyperLink 
+					- _id = GUID df503b8e-5190-49d4-89fa-689aaa3a3306;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Main File";
+					- _linkType = "FREE";
+					- _linkTarget = "C:\\Work\\Rhapsody713\\ProjectClient\\DefaultComponent\\DefaultConfig\\MainDefaultComponent";
+					- isConfigurationFileHyperLink = 1;
+				}
+			}
+			- _scopeType = Explicit;
+			- _libraries = "";
+			- _additionalSources = "";
+			- _standardHeaders = "\"stdio.h\",\"winsock.h\"";
+			- _includePath = "";
+			- _targetMain = "";
+			- _instrumentation = None;
+			- _timeModel = RealTime;
+			- m_generateActors = 1;
+			- _statechartImplementation = Flat;
+			- _initializationCode = "";
+			- _checksList = 0 ;
+			- ScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- InitialInstances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IClass";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "";
+					- _name = "Client";
+					- _id = GUID 9bb9d5bd-4d7d-4930-b85d-a0f29c96bd72;
+				}
+			}
+			- _root = { IFolder 
+				- _id = GUID 4d9d1fc3-52b4-4d40-b5ad-3f86fd305580;
+				- _myState = 8192;
+				- _name = "DefaultConfig";
+				- m_path = "";
+				- Elements = { IRPYRawContainer 
+					- size = 0;
+				}
+				- Files = { IRPYRawContainer 
+					- size = 0;
+				}
+			}
+			- weakCGTime = 12.22.2008::17:40:31;
+			- strongCGTime = 12.22.2008::17:40:31;
+			- AnimScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- m_allInAnimScope = 1;
+		}
+	}
+	- HandlesInMe = { IRPYRawContainer 
+		- size = 4;
+		- value = 
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "Default.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "Default";
+			- _id = GUID 458c9734-3566-4dff-9210-f2c4cd221112;
+		}
+		{ IHandle 
+			- _m2Class = "IProfile";
+			- _filename = "CGCompatibilityPre72C.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "CGCompatibilityPre72C";
+			- _id = GUID 7b5e6f1d-ba31-4da4-8f5e-e123f8bd830d;
+		}
+		{ IHandle 
+			- _m2Class = "IProfile";
+			- _filename = "CGCompatibilityPre73C.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "CGCompatibilityPre73C";
+			- _id = GUID 124c1307-9871-4403-816f-10b2719907f8;
+		}
+		{ IHandle 
+			- _m2Class = "IProfile";
+			- _filename = "CGCompatibilityPre75C.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "CGCompatibilityPre75C";
+			- _id = GUID c31f72ca-ad02-4bd6-83c3-c4a04a0013ad;
+		}
+	}
+	- VariationPoints = { IRPYRawContainer 
+		- size = 0;
+	}
+	- SelectedVariants = { IRPYRawContainer 
+		- size = 0;
+	}
+	- weakCGTime = 12.22.2008::17:42:5;
+	- strongCGTime = 1.2.1990::0:0:0;
+}
+
