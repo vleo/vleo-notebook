@@ -14,12 +14,23 @@ I-Logix-RPY-Archive version 8.5.2 C 2030848
 					{ IPropertyMetaclass 
 						- _Name = "Model";
 						- Properties = { IRPYRawContainer 
-							- size = 1;
+							- size = 3;
 							- value = 
+							{ IProperty 
+								- _Name = "ClassCodeEditor";
+								- _Value = "CommandLine";
+								- _Type = Enum;
+								- _ExtraTypeInfo = "Internal,Associate,CommandLine";
+							}
 							{ IProperty 
 								- _Name = "DiagramIsSavedUnit";
 								- _Value = "True";
 								- _Type = Bool;
+							}
+							{ IProperty 
+								- _Name = "EditorCommandLine";
+								- _Value = "C:\\Cygwin\\bin\\vim";
+								- _Type = File;
 							}
 						}
 					}

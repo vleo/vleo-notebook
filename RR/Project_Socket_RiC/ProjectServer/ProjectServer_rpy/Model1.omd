@@ -2,8 +2,68 @@ I-Logix-RPY-Archive version 8.5.2 C 2030848
 { IDiagram 
 	- _id = GUID 4d0f1577-d591-4a69-93c7-2d7cc1f55159;
 	- _myState = 8192;
+	- _properties = { IPropertyContainer 
+		- Subjects = { IRPYRawContainer 
+			- size = 1;
+			- value = 
+			{ IPropertySubject 
+				- _Name = "Format";
+				- Metaclasses = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertyMetaclass 
+						- _Name = "Class";
+						- Properties = { IRPYRawContainer 
+							- size = 8;
+							- value = 
+							{ IProperty 
+								- _Name = "DefaultSize";
+								- _Value = "0,34,84,148";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "Fill.FillColor";
+								- _Value = "255,255,255";
+								- _Type = Color;
+							}
+							{ IProperty 
+								- _Name = "Font.Font";
+								- _Value = "Arial";
+								- _Type = String;
+							}
+							{ IProperty 
+								- _Name = "Font.FontColor";
+								- _Value = "0,0,0";
+								- _Type = Color;
+							}
+							{ IProperty 
+								- _Name = "Font.Size";
+								- _Value = "10";
+								- _Type = Int;
+							}
+							{ IProperty 
+								- _Name = "Line.LineColor";
+								- _Value = "121,122,0";
+								- _Type = Color;
+							}
+							{ IProperty 
+								- _Name = "Line.LineStyle";
+								- _Value = "0";
+								- _Type = Int;
+							}
+							{ IProperty 
+								- _Name = "Line.LineWidth";
+								- _Value = "1";
+								- _Type = Int;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	- _name = "Model1";
-	- _lastModifiedTime = "12.22.2008::12:23:17";
+	- _lastModifiedTime = "5.23.2011::16:48:15";
 	- _graphicChart = { CGIClassChart 
 		- _id = GUID eda379ec-7e4a-48b9-a20e-717d4dd2d19d;
 		- m_type = 0;
@@ -27,7 +87,7 @@ I-Logix-RPY-Archive version 8.5.2 C 2030848
 		}
 		- m_drawBehavior = 0;
 		- m_bIsPreferencesInitialized = 0;
-		- elementList = 1;
+		- elementList = 2;
 		{ CGIClass 
 			- _id = GUID f2b6b8cb-1142-4b16-9bc3-9ef5887606ae;
 			- m_type = 78;
@@ -76,6 +136,175 @@ I-Logix-RPY-Archive version 8.5.2 C 2030848
 			}
 			- Operations = { IRPYRawContainer 
 				- size = 0;
+			}
+		}
+		{ CGIClass 
+			- _id = GUID 4a00511b-5727-4135-996d-e95d99e5251d;
+			- _properties = { IPropertyContainer 
+				- Subjects = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertySubject 
+						- _Name = "General";
+						- Metaclasses = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertyMetaclass 
+								- _Name = "Graphics";
+								- Properties = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IProperty 
+										- _Name = "FitBoxToItsTextuals";
+										- _Value = "False";
+										- _Type = Bool;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			- m_type = 87;
+			- m_pModelObject = { IHandle 
+				- _m2Class = "IClass";
+				- _filename = "Default.sbs";
+				- _subsystem = "Default";
+				- _class = "";
+				- _name = "Server";
+				- _id = GUID ba1b6515-be37-4d54-a6b8-593d5dd86e1e;
+			}
+			- m_pParent = GUID f2b6b8cb-1142-4b16-9bc3-9ef5887606ae;
+			- m_name = { CGIText 
+				- m_str = "Server";
+				- m_style = "Arial" 10 0 0 0 1 ;
+				- m_color = { IColor 
+					- m_fgColor = 0;
+					- m_bgColor = 0;
+					- m_bgFlag = 0;
+				}
+				- m_position = 1 0 0  ;
+				- m_nIdent = 0;
+				- m_bImplicitSetRectPoints = 0;
+				- m_nOrientationCtrlPt = 5;
+			}
+			- m_drawBehavior = 2056;
+			- m_transform = 0.393768 0 0 0.257576 77.2125 -9.74237 ;
+			- m_bIsPreferencesInitialized = 1;
+			- m_AdditionalLabel = { CGIText 
+				- m_str = "";
+				- m_style = "Arial" 10 0 0 0 1 ;
+				- m_color = { IColor 
+					- m_fgColor = 0;
+					- m_bgColor = 0;
+					- m_bgFlag = 0;
+				}
+				- m_position = 1 0 0  ;
+				- m_nIdent = 0;
+				- m_bImplicitSetRectPoints = 0;
+				- m_nOrientationCtrlPt = 1;
+			}
+			- m_polygon = 4 2 329  2 1451  1061 1451  1061 329  ;
+			- m_nNameFormat = 0;
+			- m_nIsNameFormat = 0;
+			- frameset = "<frameset rows=50%,50%>
+<frame name=AttributeListCompartment>
+<frame name=PrimitiveOperationListCompartment>";
+			- Attrs = { IRPYRawContainer 
+				- size = 5;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IAttribute";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "PORT";
+					- _id = GUID 5a606eee-e83a-42cb-bfa7-4a0e6bf90638;
+				}
+				{ IHandle 
+					- _m2Class = "IAttribute";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "sockFd";
+					- _id = GUID ef2eedf5-e006-4b0f-8888-283fce670a08;
+				}
+				{ IHandle 
+					- _m2Class = "IAttribute";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "serverAddr";
+					- _id = GUID 346035ed-2468-4b87-a709-45b7af335f33;
+				}
+				{ IHandle 
+					- _m2Class = "IAttribute";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "connectionFrom";
+					- _id = GUID b4858972-6eb2-4636-8a17-fdfbf6970913;
+				}
+				{ IHandle 
+					- _m2Class = "IAttribute";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "connectionsBacklog";
+					- _id = GUID 34b7ae35-9dcb-43ef-a4ec-70596b80440d;
+				}
+			}
+			- Operations = { IRPYRawContainer 
+				- size = 6;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IPrimitiveOperation";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "createSocket()";
+					- _id = GUID 09085362-b430-43e8-9726-42141ccac828;
+				}
+				{ IHandle 
+					- _m2Class = "IPrimitiveOperation";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "bindSocket(int)";
+					- _id = GUID 53568175-1c77-4c69-a11b-09704157cf9f;
+				}
+				{ IHandle 
+					- _m2Class = "IPrimitiveOperation";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "listenToSocket()";
+					- _id = GUID 5836bb96-6c99-4a46-8ad4-c56307a182c8;
+				}
+				{ IHandle 
+					- _m2Class = "IPrimitiveOperation";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "acceptConnection()";
+					- _id = GUID 4fde37f8-1824-4790-b6b0-cd434908c6ac;
+				}
+				{ IHandle 
+					- _m2Class = "IPrimitiveOperation";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "receiveToBuffer(int,char*,int)";
+					- _id = GUID 76010e2a-5b4b-4979-a3d9-a881f1ea052a;
+				}
+				{ IHandle 
+					- _m2Class = "IPrimitiveOperation";
+					- _filename = "Default.sbs";
+					- _subsystem = "Default";
+					- _class = "Server";
+					- _name = "sendBuffer(int,char*,int)";
+					- _id = GUID f76a1a30-db84-44dc-999e-4c4c411f834c;
+				}
 			}
 		}
 		

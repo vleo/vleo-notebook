@@ -59,7 +59,7 @@ I-Logix-RPY-Archive version 8.5.2 C 2030848
 			}
 			- _name = "DefaultConfig";
 			- HyperLinks = { IRPYRawContainer 
-				- size = 2;
+				- size = 4;
 				- value = 
 				{ IMHyperLink 
 					- _id = GUID 308bff8a-89b7-46f6-bf49-e8993d822603;
@@ -80,6 +80,26 @@ I-Logix-RPY-Archive version 8.5.2 C 2030848
 					- _linkType = "FREE";
 					- _linkTarget = "C:\\Work\\Rhapsody713\\ProjectServer\\DefaultComponent\\DefaultConfig\\MainDefaultComponent";
 					- isConfigurationFileHyperLink = 1;
+				}
+				{ IMHyperLink 
+					- _id = GUID 48d67d55-edcd-4c0b-948a-b70d05cc3930;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Server.c";
+					- _linkType = "FREE";
+					- _linkTarget = "Q:\\LML\\notebook\\RR\\Project_Socket_RiC\\ProjectServer\\DefaultComponent\\DefaultConfig\\Server.c";
+					- isConfigurationFileHyperLink = 0;
+				}
+				{ IMHyperLink 
+					- _id = GUID e940bf51-44b4-4b2f-81bc-f37cde6f5311;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Server.h";
+					- _linkType = "FREE";
+					- _linkTarget = "Q:\\LML\\notebook\\RR\\Project_Socket_RiC\\ProjectServer\\DefaultComponent\\DefaultConfig\\Server.h";
+					- isConfigurationFileHyperLink = 0;
 				}
 			}
 			- _scopeType = Explicit;
@@ -121,7 +141,7 @@ I-Logix-RPY-Archive version 8.5.2 C 2030848
 					- size = 0;
 				}
 			}
-			- weakCGTime = 5.22.2011::18:28:30;
+			- weakCGTime = 5.23.2011::15:48:12;
 			- strongCGTime = 5.22.2011::18:28:30;
 			- AnimScopeElements = { IRPYRawContainer 
 				- size = 0;
@@ -179,7 +199,7 @@ I-Logix-RPY-Archive version 8.5.2 C 2030848
 	- SelectedVariants = { IRPYRawContainer 
 		- size = 0;
 	}
-	- weakCGTime = 5.22.2011::18:33:8;
+	- weakCGTime = 5.23.2011::15:44:32;
 	- strongCGTime = 1.2.1990::0:0:0;
 }
 

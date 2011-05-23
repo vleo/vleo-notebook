@@ -4,13 +4,13 @@ I-Logix-RPY-Archive version 8.5.2 * 2030848
 		- size = 0;
 	}
 	- myViewsWithID = { IRPYRawContainer 
-		- size = 1;
+		- size = 2;
 		- value = 
 		{ CGEMdiDiagramParams 
 			- _placement = { CCommon_WINDOWPLACEMENT 
 				- m_nLength = 44;
-				- m_nFlags = 2;
-				- m_showCmd = 3;
+				- m_nFlags = 0;
+				- m_showCmd = 1;
 				- m_ptMinPositionX = -1;
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
@@ -29,8 +29,36 @@ I-Logix-RPY-Archive version 8.5.2 * 2030848
 				- _name = "StatechartDiagram";
 				- _id = GUID c8ed10e7-cea6-48f3-9432-b422996a0623;
 			}
+			- _UpLeft = 0 40 ;
+			- _DownRight = 1437 487 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 1;
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 2;
+				- m_showCmd = 3;
+				- m_ptMinPositionX = -1;
+				- m_ptMinPositionY = -1;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 66;
+				- m_nTop = 66;
+				- m_nRight = 1010;
+				- m_nBottom = 553;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = "Model1.omd";
+				- _subsystem = "";
+				- _class = "";
+				- _name = "Model1";
+				- _id = GUID 4d0f1577-d591-4a69-93c7-2d7cc1f55159;
+			}
 			- _UpLeft = 0 0 ;
-			- _DownRight = 1389 573 ;
+			- _DownRight = 1144 500 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 0;
 		}
