@@ -1,0 +1,12 @@
+I-Logix-RPY-Archive version 8.5.2 * 2030848
+
+- filesTable = { IRPYRawContainer 
+	- size = 5;
+	- value = "MESSv1.rpy" ""
+	"MESSv1_rpy\\ANALISYS.sbs" "ANALISYS"
+	"MESSv1_rpy\\SUBSYSTEMS.sbs" "SUBSYSTEMS"
+	"MESSv1_rpy\\Simulate.cmp" "Simulate"
+	"MESSv1_rpy\\TOPLEVEL.sbs" "TOPLEVEL"
+	
+}
+

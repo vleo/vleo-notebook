@@ -1,0 +1,145 @@
+I-Logix-RPY-Archive version 8.5.2 C++ 2030848
+{ IComponent 
+	- _id = GUID 6dbc1990-718c-4533-8fb9-7f0f57476a87;
+	- _myState = 139264;
+	- _name = "Simulate";
+	- m_buildType = Executable;
+	- m_libraries = "";
+	- m_additionalSources = "";
+	- m_standardHeaders = "";
+	- m_includePath = "";
+	- m_initializationCode = "";
+	- m_folder = { IFolder 
+		- _id = GUID a0df085c-47a9-44cb-aef5-dab06150cb5c;
+		- _myState = 73728;
+		- _name = "Files";
+		- m_path = "";
+		- Elements = { IRPYRawContainer 
+			- size = 0;
+		}
+		- Files = { IRPYRawContainer 
+			- size = 0;
+		}
+	}
+	- m_configActive = { ICodeGenConfigInfoHandle 
+		- _m2Class = "ICodeGenConfigInfo";
+		- _id = GUID 8032f125-fcf0-417a-8b68-1316e0243f43;
+	}
+	- Configs = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ ICodeGenConfigInfo 
+			- _id = GUID 8032f125-fcf0-417a-8b68-1316e0243f43;
+			- _myState = 8192;
+			- _name = "Debug";
+			- _description = { IDescription 
+				- _text = "Animated simulation";
+			}
+			- HyperLinks = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IMHyperLink 
+					- _id = GUID 9a096a2d-47af-4425-9e70-4a75d0409ff9;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Makefile";
+					- _linkType = "FREE";
+					- _linkTarget = "Q:\\LML\\MESS\\MESSv1\\Simulate\\DefaultConfig\\Simulate.mak";
+					- isConfigurationFileHyperLink = 1;
+				}
+				{ IMHyperLink 
+					- _id = GUID 8a55a81a-107f-4df6-82cf-5ca57a5f8f58;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Main File";
+					- _linkType = "FREE";
+					- _linkTarget = "Q:\\LML\\MESS\\MESSv1\\Simulate\\DefaultConfig\\MainSimulate";
+					- isConfigurationFileHyperLink = 1;
+				}
+			}
+			- _scopeType = Explicit;
+			- _libraries = "";
+			- _additionalSources = "";
+			- _standardHeaders = "";
+			- _includePath = "";
+			- _targetMain = "";
+			- _instrumentation = Animation;
+			- _timeModel = RealTime;
+			- m_generateActors = 1;
+			- _statechartImplementation = Flat;
+			- _initializationCode = "";
+			- _checksList = 0 ;
+			- ScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- InitialInstances = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _root = { IFolder 
+				- _id = GUID bb22b930-27c4-4001-bcbe-4ed6b13ade0c;
+				- _myState = 8192;
+				- _name = "Debug";
+				- m_path = "";
+				- Elements = { IRPYRawContainer 
+					- size = 0;
+				}
+				- Files = { IRPYRawContainer 
+					- size = 0;
+				}
+			}
+			- weakCGTime = 5.20.2011::7:0:27;
+			- strongCGTime = 5.20.2011::6:59:50;
+			- AnimScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- m_allInAnimScope = 1;
+		}
+	}
+	- HandlesInMe = { IRPYRawContainer 
+		- size = 4;
+		- value = 
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "TOPLEVEL.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "TOPLEVEL";
+			- _id = GUID 992d8b09-1501-404b-89f3-fe6e193ae19a;
+		}
+		{ IHandle 
+			- _m2Class = "IProfile";
+			- _filename = "SysML.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "SysML";
+			- _id = GUID d9689b73-885e-44c4-896b-de43defa0a33;
+		}
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "SUBSYSTEMS.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "SUBSYSTEMS";
+			- _id = GUID 99a39984-a3c0-46f8-9e45-169c0744c0e2;
+		}
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "ANALISYS.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "ANALISYS";
+			- _id = GUID 9d99068f-ea59-43e1-ad52-9a69b1d210d6;
+		}
+	}
+	- VariationPoints = { IRPYRawContainer 
+		- size = 0;
+	}
+	- SelectedVariants = { IRPYRawContainer 
+		- size = 0;
+	}
+	- weakCGTime = 5.20.2011::6:59:31;
+	- strongCGTime = 5.20.2011::6:59:31;
+}
+
