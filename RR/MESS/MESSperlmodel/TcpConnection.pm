@@ -5,20 +5,61 @@ package TcpConnection;
 use strict;
 use IO::Socket;
 
-use Exporter;
+#use Exporter;
 
 our @ISA=qw(Exporter IO::Socket); 
-our @EXPORT=qw(
-&listenOnPort
-&connectToAddr
-);
+
+#our @EXPORT=qw(
+#&listenOnPort
+#&connectToAddr
+#);
 
 sub new
 {
   my $class = shift;
-  my $self = [];
+  my $self;
+  if($class =~ m/^TcpConnection=/)
+  {
+     $self=new IO::Socket::INET(@_);
+     print "call to base:",ref($self),"\n";
+     return $self;
+  }
+  my ($port,$server)=@_;
+  my $ps=
+  {
+    LocalHost => 'localhost',
+    LocalPort => $port,
+    Proto => 'tcp',
+    Listen => 5,
+    Reuse => 1 
+  };
+  my $pc=
+  { 
+    PeerAddr => $server,
+    PeerPort => $port,
+    Proto => 'tcp',
+  };
+  my $key;
+  foreach $key (keys %$ps)
+  {
+     printf "%s => %s\n",$key,$ps->{$key}
+  };
+#  my $self=$class->SUPER::new($server ? %$pc : %$ps);
+  if(@_ == 1)
+  {
+     $self=new IO::Socket::INET(%$ps);
+  }
+  elsif(@_ == 2)
+  {
+     $self=new IO::Socket::INET(%$pc);
+  }
+  else
+  {
+     $self=new IO::Socket::INET(@_);
+  }
+  die "Could not create socket: $!\n" unless $self;
   bless $self,$class;
-  $self->_init();
+  #$self->_init();
   return $self;
 }
 
@@ -31,18 +72,9 @@ sub _init
 
 sub listenOnPort
 {
-   my ($self,$port,$handler)=@_;
-   my $self->[0] = new IO::Socket::INET 
-   (
-     LocalHost => 'localhost',
-     LocalPort => $port,
-     Proto => 'tcp',
-     Listen => 5,
-     Reuse => 1 
-   );
-   die "Could not create socket: $!\n" unless $self->[0];
+   my ($self,$handler)=@_;
    my ($newSock,$childPid);
-   while( $newSock = $self->[0]->accept() )
+   while( $newSock = $self->accept() )
    {
      $childPid=fork();
      if($childPid == 0)
@@ -50,19 +82,7 @@ sub listenOnPort
        &$handler($newSock);
      }
    }
-	 return $self->[0];
-}
-
-sub connectToAddr
-{
-   my ($self,$server,$port)=@_;
-   $self->[0] = new IO::Socket::INET 
-   (
-     PeerAddr => $server,
-     PeerPort => $port,
-     Proto => 'tcp',
-   );
-   die "Could not create socket: $!\n" unless $self->[0];
+   return -1;
 }
 
 1;
