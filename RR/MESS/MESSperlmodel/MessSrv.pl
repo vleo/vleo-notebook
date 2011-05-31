@@ -5,11 +5,35 @@ use Socket;
 use POSIX;
 use POSIX::RT::MQ;
 use Data::Dumper;
+use Getopt::Std;
+getopts("c:");
+our $opt_c;
+use XML::Smart;
 
 use TcpConnection;
 use CallEventData;
 
-use MessConfig;
+$opt_c = 'MessConfig.xml' unless defined($opt_c);
+my $MessConfig = XML::Smart->new($opt_c);
+sub CONFIG { $MessConfig->{config}->{$_[0]} };
+
+=pod
+print $opt_c," ",CONFIG(TCSERVERMQ),"\n";
+exit;
+
+
+=pod
+my $initialConfig = 
+{
+  TCSERVERMQ => '/tcServerIn',
+  MESS_MYNAME => 'localhost:6666',
+  MESS_PEERS => ['localhost:8888','localhost:9999'],
+  MESS_PRIMARY => 'localhost:8888'
+};
+$MessConfig->{'config'}=$initialConfig;
+$MessConfig->save('MessConfig.xml');
+exit;
+=cut
 
 =pod
 sub serverletThread
@@ -44,12 +68,12 @@ sub serverletThread
 
 # MY tcServer
 # FIXME - convert to Class (also used by tcServer)
-my $mqname = TCSERVERMQ;
+my $mqname = CONFIG(TCSERVERMQ);
 my $attr = { mq_maxmsg  => 8192, mq_msgsize =>  1024 };
 my $mq = POSIX::RT::MQ->open($mqname, O_RDWR|O_CREAT, 0600, $attr)
             or die "cannot open $mqname: $!\n";
 
-my $initMsg = new MessEvent(MESS_MYNAME,"mqRegister",{ },{ OK => undef});
+my $initMsg = new CONFIG(MESS_MYNAME),"mqRegister",{ },{ OK => undef});
 my $callData = new CallEventData;
 $callData->setRaw($initMsg);
 $mq->send($callData->getFrozen());
@@ -75,7 +99,18 @@ my $clientSockets={};
 # { message destination => open socket }
 my $routingTable={};
 
-$routingTable->{'localhost:6666'} = LOCAL;
+$routingTable->{'VC1'} = ['M1',sock:1234;
+
+=pod
+VC1  ---\
+VC2  ---- M1+S1
+          |
+VC3  ---- M2(*)+S2
+          | 
+VC4  ---  M3+S3
+          |
+VC5  --   M4+S4
+=cut
 
 while(1)
 {
