@@ -72,7 +72,10 @@ $readSet->add($serverSock);
 # can read - read - write to destination
  
 my $clientSockets={};
+# { message destination => open socket }
 my $routingTable={};
+
+$routingTable->{'localhost:6666'} = LOCAL;
 
 while(1)
 {
