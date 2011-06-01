@@ -11,7 +11,8 @@ while(1)
   print $w,"\n";
   break unless read(STDIN,$_,$w);
   $r=1;
-  $_=substr($_."\0"x$w,$c=0,$w);s/.|\n/$c=&badd(&bmul($c,256),ord$&)/ge;
+  $_=substr($_."\0"x$w,$c=0,$w);
+  s/.|\n/$c=&badd(&bmul($c,256),ord$&)/ge;
   $_=$k;
   s/./$r=&bmod(&bmul($r,$r),$x),$&?$r=&bmod(&bmul($r,$c),$x):0,""/ge;
   ($r,$t)=&bdiv($r,256),$_=pack(C,$t).$_ while$w--+1-2*$d;
