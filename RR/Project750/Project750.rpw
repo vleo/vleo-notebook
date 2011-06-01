@@ -1,38 +1,38 @@
-I-Logix-RPY-Archive version 8.5.2 * 1164537
+I-Logix-RPY-Archive version 8.5.2 * 2030848
 { CGEMdiWorkspace 
 	- stubList = { IRPYRawContainer 
 		- size = 0;
 	}
 	- myViewsWithID = { IRPYRawContainer 
-		- size = 3;
+		- size = 4;
 		- value = 
 		{ CGEMdiDiagramParams 
 			- _placement = { CCommon_WINDOWPLACEMENT 
 				- m_nLength = 44;
-				- m_nFlags = 0;
-				- m_showCmd = 1;
-				- m_ptMinPositionX = -1;
-				- m_ptMinPositionY = -1;
+				- m_nFlags = 2;
+				- m_showCmd = 2;
+				- m_ptMinPositionX = 0;
+				- m_ptMinPositionY = 396;
 				- m_ptMaxPositionX = -4;
 				- m_ptMaxPositionY = -23;
-				- m_nLeft = 176;
-				- m_nTop = 176;
-				- m_nRight = 1164;
-				- m_nBottom = 552;
+				- m_nLeft = 88;
+				- m_nTop = 88;
+				- m_nRight = 1321;
+				- m_nBottom = 474;
 			}
 			- _wasOpenedOnCloseProject = 1;
 			- _theDiagram = { IHandle 
-				- _m2Class = "IMSC";
+				- _m2Class = "IStateChartDiagram";
 				- _filename = "Default.sbs";
 				- _subsystem = "Default";
-				- _class = "";
-				- _name = "Animated sequencediagram_4";
-				- _id = GUID 66c665f7-b7c0-423d-b75d-3e073b5b0ced;
+				- _class = "A";
+				- _name = "StatechartDiagram";
+				- _id = GUID a480fc1b-4180-4905-ab7d-d3244397bf00;
 			}
-			- _UpLeft = 0 170 ;
-			- _DownRight = 960 479 ;
-			- _instanceName = "";
-			- m_nDiagramIndex = 0;
+			- _UpLeft = 0 0 ;
+			- _DownRight = 1398 615 ;
+			- _instanceName = "A[0]";
+			- m_nDiagramIndex = 1;
 		}
 		{ CGEMdiDiagramParams 
 			- _placement = { CCommon_WINDOWPLACEMENT 
@@ -43,23 +43,51 @@ I-Logix-RPY-Archive version 8.5.2 * 1164537
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
 				- m_ptMaxPositionY = -23;
-				- m_nLeft = 132;
-				- m_nTop = 132;
-				- m_nRight = 1116;
-				- m_nBottom = 504;
+				- m_nLeft = 110;
+				- m_nTop = 110;
+				- m_nRight = 1343;
+				- m_nBottom = 496;
 			}
 			- _wasOpenedOnCloseProject = 1;
 			- _theDiagram = { IHandle 
 				- _m2Class = "IStateChartDiagram";
 				- _filename = "Default.sbs";
 				- _subsystem = "Default";
-				- _class = "block_1";
+				- _class = "B";
 				- _name = "StatechartDiagram";
-				- _id = GUID b0995ae2-7061-4963-b94e-e2d2bcb42939;
+				- _id = GUID 05533f4a-4098-45f2-801e-e897e617dfb8;
 			}
 			- _UpLeft = 0 0 ;
-			- _DownRight = 1144 563 ;
-			- _instanceName = "block_1[0]";
+			- _DownRight = 909 400 ;
+			- _instanceName = "B[0]";
+			- m_nDiagramIndex = 0;
+		}
+		{ CGEMdiDiagramParams 
+			- _placement = { CCommon_WINDOWPLACEMENT 
+				- m_nLength = 44;
+				- m_nFlags = 0;
+				- m_showCmd = 1;
+				- m_ptMinPositionX = 0;
+				- m_ptMinPositionY = 538;
+				- m_ptMaxPositionX = -4;
+				- m_ptMaxPositionY = -23;
+				- m_nLeft = 22;
+				- m_nTop = 22;
+				- m_nRight = 1255;
+				- m_nBottom = 439;
+			}
+			- _wasOpenedOnCloseProject = 1;
+			- _theDiagram = { IHandle 
+				- _m2Class = "IStructureDiagram";
+				- _filename = "Default.sbs";
+				- _subsystem = "Default";
+				- _class = "MASTER";
+				- _name = "MASTER";
+				- _id = GUID d379dfbc-9a8e-4c3a-8a73-1ac3449d0b75;
+			}
+			- _UpLeft = 0 0 ;
+			- _DownRight = 1853 569 ;
+			- _instanceName = "";
 			- m_nDiagramIndex = 2;
 		}
 		{ CGEMdiDiagramParams 
@@ -73,26 +101,35 @@ I-Logix-RPY-Archive version 8.5.2 * 1164537
 				- m_ptMaxPositionY = -23;
 				- m_nLeft = 154;
 				- m_nTop = 154;
-				- m_nRight = 1142;
-				- m_nBottom = 530;
+				- m_nRight = 1361;
+				- m_nBottom = 568;
 			}
 			- _wasOpenedOnCloseProject = 1;
 			- _theDiagram = { IHandle 
-				- _m2Class = "IStateChartDiagram";
+				- _m2Class = "IDiagram";
 				- _filename = "Default.sbs";
 				- _subsystem = "Default";
-				- _class = "block_3";
-				- _name = "StatechartDiagram";
-				- _id = GUID 0df70d14-f8a9-4f7d-80ba-cfae0faf5b65;
+				- _class = "";
+				- _name = "TOPLEVEL";
+				- _id = GUID 1d61fa6a-2661-4f81-a72a-219bd57ef743;
 			}
 			- _UpLeft = 0 0 ;
-			- _DownRight = 960 329 ;
-			- _instanceName = "block_3[1]";
-			- m_nDiagramIndex = 1;
+			- _DownRight = 928 289 ;
+			- _instanceName = "";
+			- m_nDiagramIndex = 3;
 		}
 	}
-	- _fullName = "Q:\\LML\\notebook\\RR\\Project750\\Project750";
+	- _fullName = "Q:\\00_SW\\RR\\Project750\\Project750";
 	- m_SearchScopeList = { IRPYRawContainer 
+		- size = 0;
+	}
+	- bUsingCustomBrowserView = 0;
+	- bUsingQueries = 0;
+	- bApplyOnDiagrams = 0;
+	- liRhId = { IRPYRawContainer 
+		- size = 0;
+	}
+	- liElementTypes = { IRPYRawContainer 
 		- size = 0;
 	}
 
