@@ -4,7 +4,7 @@ I-Logix-RPY-Archive version 8.5.2 * 2030848
 		- size = 0;
 	}
 	- myViewsWithID = { IRPYRawContainer 
-		- size = 4;
+		- size = 2;
 		- value = 
 		{ CGEMdiDiagramParams 
 			- _placement = { CCommon_WINDOWPLACEMENT 
@@ -15,50 +15,22 @@ I-Logix-RPY-Archive version 8.5.2 * 2030848
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
 				- m_ptMaxPositionY = -23;
-				- m_nLeft = 198;
-				- m_nTop = 198;
-				- m_nRight = 1155;
-				- m_nBottom = 671;
+				- m_nLeft = 110;
+				- m_nTop = 110;
+				- m_nRight = 1104;
+				- m_nBottom = 477;
 			}
 			- _wasOpenedOnCloseProject = 1;
 			- _theDiagram = { IHandle 
-				- _m2Class = "IActivityDiagram";
-				- _filename = "DataLink.sbs";
-				- _subsystem = "Subsystems::DataLink";
-				- _class = "DataLinkBlock.RegistrationMonitor";
-				- _name = "ActivityDiagram";
-				- _id = GUID 5b51d54c-6f98-4d3b-b955-a5e12a415b9d;
-			}
-			- _UpLeft = 0 15 ;
-			- _DownRight = 803 339 ;
-			- _instanceName = "";
-			- m_nDiagramIndex = 0;
-		}
-		{ CGEMdiDiagramParams 
-			- _placement = { CCommon_WINDOWPLACEMENT 
-				- m_nLength = 44;
-				- m_nFlags = 0;
-				- m_showCmd = 1;
-				- m_ptMinPositionX = -1;
-				- m_ptMinPositionY = -1;
-				- m_ptMaxPositionX = -4;
-				- m_ptMaxPositionY = -23;
-				- m_nLeft = 176;
-				- m_nTop = 176;
-				- m_nRight = 1133;
-				- m_nBottom = 649;
-			}
-			- _wasOpenedOnCloseProject = 1;
-			- _theDiagram = { IHandle 
-				- _m2Class = "IActivityDiagram";
-				- _filename = "MobilityManagement.sbs";
-				- _subsystem = "Subsystems::MobilityManagement";
-				- _class = "MobilityManagementBlock.MMCallControl";
-				- _name = "ActivityDiagram.ROOT.InCall";
-				- _id = GUID f86b3642-525f-48e5-9b21-09cb42193401;
+				- _m2Class = "IMSC";
+				- _filename = "Subsystems.sbs";
+				- _subsystem = "Subsystems";
+				- _class = "";
+				- _name = "ConnectionManagement Place Call";
+				- _id = GUID e6903163-464e-49aa-b7a2-6b5d46effae0;
 			}
 			- _UpLeft = 0 0 ;
-			- _DownRight = 929 426 ;
+			- _DownRight = 1150 503 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 1;
 		}
@@ -71,50 +43,22 @@ I-Logix-RPY-Archive version 8.5.2 * 2030848
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
 				- m_ptMaxPositionY = -23;
-				- m_nLeft = 198;
-				- m_nTop = 198;
-				- m_nRight = 900;
-				- m_nBottom = 615;
+				- m_nLeft = 0;
+				- m_nTop = 0;
+				- m_nRight = 1038;
+				- m_nBottom = 309;
 			}
 			- _wasOpenedOnCloseProject = 1;
 			- _theDiagram = { IHandle 
-				- _m2Class = "IActivityDiagram";
-				- _filename = "MobilityManagement.sbs";
-				- _subsystem = "Subsystems::MobilityManagement";
-				- _class = "MobilityManagementBlock.MMCallControl";
-				- _name = "ActivityDiagram";
-				- _id = GUID d9488325-b1af-4882-af47-f6ce8cb39ba4;
+				- _m2Class = "IMSC";
+				- _filename = "Subsystems.sbs";
+				- _subsystem = "Subsystems";
+				- _class = "";
+				- _name = "Simulated ConnectionManagement Place Call";
+				- _id = GUID f5aebcdb-6955-449c-9c84-cac06474da98;
 			}
-			- _UpLeft = 0 0 ;
-			- _DownRight = 1086 564 ;
-			- _instanceName = "";
-			- m_nDiagramIndex = 2;
-		}
-		{ CGEMdiDiagramParams 
-			- _placement = { CCommon_WINDOWPLACEMENT 
-				- m_nLength = 44;
-				- m_nFlags = 0;
-				- m_showCmd = 1;
-				- m_ptMinPositionX = -1;
-				- m_ptMinPositionY = -1;
-				- m_ptMaxPositionX = -4;
-				- m_ptMaxPositionY = -23;
-				- m_nLeft = 154;
-				- m_nTop = 154;
-				- m_nRight = 856;
-				- m_nBottom = 571;
-			}
-			- _wasOpenedOnCloseProject = 0;
-			- _theDiagram = { IHandle 
-				- _m2Class = "IStructureDiagram";
-				- _filename = "MobilityManagement.sbs";
-				- _subsystem = "Subsystems::MobilityManagement";
-				- _class = "MobilityManagementBlock";
-				- _name = "MobilityManagement";
-				- _id = GUID e790f167-122c-4bc5-9327-42524aafb0ed;
-			}
-			- _UpLeft = 0 20 ;
-			- _DownRight = 674 390 ;
+			- _UpLeft = 16 244 ;
+			- _DownRight = 1026 486 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 0;
 		}

@@ -1,4 +1,4 @@
-I-Logix-RPY-Archive version 8.5.2 C++ 1164537
+I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 { ISubsystem 
 	- _id = GUID a70d7c34-b032-4300-b799-77962af69560;
 	- _myState = 8192;
@@ -425,7 +425,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 						- m_nOrientationCtrlPt = 8;
 					}
 					- m_drawBehavior = 4096;
-					- m_transform = 2.63889 0 0 3.63636 20 20 ;
+					- m_transform = 3.33796 0 0 3.63636 20 20 ;
 					- m_bIsPreferencesInitialized = 1;
 					- m_AdditionalLabel = { CGIText 
 						- m_str = "";
@@ -1911,7 +1911,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 						- m_nOrientationCtrlPt = 8;
 					}
 					- m_drawBehavior = 4096;
-					- m_transform = 2.63889 0 0 3.63636 20 20 ;
+					- m_transform = 2.89352 0 0 3.65152 20 18 ;
 					- m_bIsPreferencesInitialized = 1;
 					- m_AdditionalLabel = { CGIText 
 						- m_str = "";
@@ -2754,7 +2754,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			}
 		}
 	}
-	- weakCGTime = 5.15.2011::19:47:59;
+	- weakCGTime = 5.18.2011::12:9:5;
 	- strongCGTime = 5.15.2011::17:16:10;
 	- _defaultComposite = GUID 8720cb95-9d87-42f7-ba06-5a5ba9ee248c;
 	- _eventsBaseID = -1;
@@ -2765,7 +2765,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			- _id = GUID 8720cb95-9d87-42f7-ba06-5a5ba9ee248c;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 5.15.2011::19:47:59;
+			- weakCGTime = 5.18.2011::12:9:5;
 			- strongCGTime = 5.15.2011::17:16:10;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
@@ -3035,7 +3035,7 @@ the conference call supplementary service.";
 				- _id = GUID 22f77d89-9d5b-49f0-b773-e966bc5985ea;
 			}
 			- _lastID = 1;
-			- weakCGTime = 5.15.2011::19:55:20;
+			- weakCGTime = 5.18.2011::12:9:5;
 			- strongCGTime = 5.15.2011::19:23:53;
 			- Ports = { IRPYRawContainer 
 				- size = 1;
@@ -3088,6 +3088,7 @@ the conference call supplementary service.";
 						}
 						- _classModifier = Unspecified;
 					}
+					- _behavioral = 1;
 				}
 			}
 			- _multiplicity = "";

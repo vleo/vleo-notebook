@@ -1,4 +1,4 @@
-I-Logix-RPY-Archive version 8.5.2 C++ 1164537
+I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 { IProject 
 	- _id = GUID 90a4bb6b-f529-4fef-8183-0a176ff1db32;
 	- _myState = 8192;
@@ -210,7 +210,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 		- value = 
 		{ IMultiplicityItem 
 			- _name = "1";
-			- _count = 5;
+			- _count = 18;
 		}
 		{ IMultiplicityItem 
 			- _name = "*";
@@ -226,7 +226,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 		}
 	}
 	- Subsystems = { IRPYRawContainer 
-		- size = 5;
+		- size = 7;
 		- value = 
 		{ ISubsystem 
 			- fileName = "HandsetRequirements";
@@ -250,8 +250,19 @@ I-Logix-RPY-Archive version 8.5.2 C++ 1164537
 			- fileName = "Subsystems";
 			- _id = GUID eb2914fd-8eef-48f2-9eae-39fecbafa2c6;
 		}
+		{ IProfile 
+			- fileName = "CGCompatibilityPre751Cpp";
+			- _id = GUID cb7b1c1a-b1ef-481f-9bc8-cb6d89a3848f;
+		}
+		{ IProfile 
+			- fileName = "CGCompatibilityPre753Cpp";
+			- _id = GUID 6d9087a8-4853-4759-a797-277df26481c2;
+		}
 	}
 	- Diagrams = { IRPYRawContainer 
+		- size = 0;
+	}
+	- MSCS = { IRPYRawContainer 
 		- size = 0;
 	}
 	- Components = { IRPYRawContainer 

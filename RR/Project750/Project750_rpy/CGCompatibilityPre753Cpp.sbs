@@ -422,8 +422,8 @@ clean:
 			- _id = GUID 7aa30fca-1092-4d1c-851d-773cb76bd365;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- weakCGTime = 10.31.2010::11:6:41;
-			- strongCGTime = 10.31.2010::11:6:41;
+			- weakCGTime = 10.31.2010::11:0:7;
+			- strongCGTime = 10.31.2010::11:0:7;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";

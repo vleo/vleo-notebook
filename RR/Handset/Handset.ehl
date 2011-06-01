@@ -1,4 +1,6 @@
 [Op Calls]
 [Events]
+itsConnectionManagementBlock->CallControl->GEN(PlaceCallReq())`ConnectionManagementBlock::CallControl
+itsConnectionManagementBlock->CallControl->GEN(PlaceCallReq())`Subsystems::ConnectionManagement::ConnectionManagementBlock::CallControl
 [Active Breakpoints]
 [Inactive Breakpoints]
