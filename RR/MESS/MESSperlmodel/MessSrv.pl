@@ -5,20 +5,19 @@ use Socket;
 use POSIX;
 use POSIX::RT::MQ;
 use Data::Dumper;
-use Getopt::Std;
-getopts("c:");
-our $opt_c;
-use XML::Smart;
+
 
 use TcpConnection;
 use CallEventData;
 
-$opt_c = 'MessConfig.xml' unless defined($opt_c);
-my $MessConfig = XML::Smart->new($opt_c);
-sub CONFIG { $MessConfig->{config}->{$_[0]} };
+use MessConfig;
+DEFAULT_CONFIG_FILE('MessConfig.xml');
+
+use Authen::SASL qw(Perl);
 
 =pod
-print $opt_c," ",CONFIG(TCSERVERMQ),"\n";
+print CONFIG(TCSERVERMQ),"\n";
+print CONFIG(MY_ID),"\n";
 exit;
 
 
@@ -69,11 +68,11 @@ sub serverletThread
 # MY tcServer
 # FIXME - convert to Class (also used by tcServer)
 my $mqname = CONFIG(TCSERVERMQ);
-my $attr = { mq_maxmsg  => 8192, mq_msgsize =>  1024 };
+my $attr = { mq_maxmsg  => 10, mq_msgsize =>  8192 };
 my $mq = POSIX::RT::MQ->open($mqname, O_RDWR|O_CREAT, 0600, $attr)
             or die "cannot open $mqname: $!\n";
 
-my $initMsg = new CONFIG(MESS_MYNAME),"mqRegister",{ },{ OK => undef});
+my $initMsg = new MessEvent(&CONFIG(MESS_MYNAME),"mqRegister",{ messID => &CONFIG(MESS_MY_ID) },{ OK => undef});
 my $callData = new CallEventData;
 $callData->setRaw($initMsg);
 $mq->send($callData->getFrozen());
@@ -99,7 +98,10 @@ my $clientSockets={};
 # { message destination => open socket }
 my $routingTable={};
 
-$routingTable->{'VC1'} = ['M1',sock:1234;
+$routingTable->{'VC1'} = ['M1','sock:1234'];
+$routingTable->{'VC2'} = ['M1','sock:5678'];
+$routingTable->{'M2'} = ['M1','sock:4321'];
+$routingTable->{'VC3'} = ['M2','sock:4321'];
 
 =pod
 VC1  ---\
@@ -112,6 +114,8 @@ VC4  ---  M3+S3
 VC5  --   M4+S4
 =cut
 
+
+ 
 while(1)
 {
   sleep(1);
@@ -123,14 +127,33 @@ while(1)
     if ($readyHandle == $serverSock) 
     {
       my ($newSock,$addr) = $readyHandle->accept();
-      my ($port,$ipraw)=unpack_sockaddr_in($addr);
-      my $ipasc=inet_ntoa($ipraw);
-      $clientSockets->{$newSock}->{PORT} = $port;
-      $clientSockets->{$newSock}->{IP} = $ipasc;
-
-      printf "opened socket for client at addr %s:%d\n",$ipasc,$port;
-
       $readSet->add($newSock); 
+
+      my ($port,$ipraw)=unpack_sockaddr_in($addr);
+      $clientSockets->{$newSock}->{PORT} = $port;
+      $clientSockets->{$newSock}->{IP} = $ipraw;
+      printf "opened socket for client at addr %s:%d\n",join(".",unpack("C*",$ipraw)),$port;
+
+      my $sasl = Authen::SASL->new (
+        mechanism => "PLAIN",
+        callback => 
+        {
+          checkpass => \&checkpass,
+          canonuser => \&canonuser,
+        }
+      );
+
+      # Creating the Authen::SASL::Cyrus instance
+      my $conn = $sasl->server_new("mess");
+      # Clients first string (maybe "", depends on mechanism)
+      # Client has to start always
+      my $request = <$newSock>;
+      printf "request=%s\n",$request;
+      my $reply = $conn->server_start( $request );
+      printf "reply=%s\n",$reply;
+      print $sock $conn->server_start( $request );
+
+#          $routingTable->{eventFrame->getRaw->{CLIENT_ID}}=[$newSock,$ipasc,$port,$localMessID];
     } 
     else
     {
@@ -146,7 +169,7 @@ while(1)
           }
         else
           {
-          my $destList=$routingTable->{$callData->{RAW}->{DEST}};
+          my $destList=$routingTable->{$callData->getRaw->{DEST}};
           foreach $dest (@$destList)
             {
               $callData->sendData($dest);
@@ -156,7 +179,7 @@ while(1)
       else
       {
         #print Dumper($clientSockets);
-        printf "closing socket %s for client at %s:%d\n", $readyHandle, $clientSockets->{$readyHandle}->{IP}, $clientSockets->{$readyHandle}->{PORT};
+        printf "closing socket %s for client at %s:%d\n", $readyHandle, join(":",unpack("C*",$clientSockets->{$readyHandle}->{IP})), $clientSockets->{$readyHandle}->{PORT};
         undef $clientSockets->{$readyHandle};
         $readSet->remove($readyHandle);
         $readyHandle->close();

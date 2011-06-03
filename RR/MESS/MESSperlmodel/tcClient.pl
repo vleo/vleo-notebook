@@ -5,7 +5,12 @@ use TcpConnection;
 use CallEventData;
 use Data::Dumper;
 
-use Gtk2 '-init';
+#use Gtk2 '-init';
+
+use MessConfig;
+DEFAULT_CONFIG_FILE('tcClient.xml');
+
+use Authen::SASL;
 
 =pod
 
@@ -35,7 +40,46 @@ exit;
 
 my $sock = new TcpConnection(6666,'localhost');
 
-print $sock "Quick brown fox jumped over the lazy dog 1234567890 times!?\n";
+#print $sock "Quick brown fox jumped over the lazy dog 1234567890 times!?\n";
+
+
+print CONFIG('MY_PWD')," ",CONFIG('MY_ID'),"\n";
+
+my $sasl = Authen::SASL->new
+(
+  mechanism => 'PLAIN',
+  callback => 
+	{
+    pass => CONFIG('MY_PWD'),
+    user => CONFIG('MY_ID'),
+		authname => 'myauth' 
+  }
+);
+
+# Creating the Authen::SASL::Cyrus instance
+my $conn = $sasl->client_new("mess", "mess-server.vks.mt.ru");
+# Client begins always
+print Dumper($conn);
+
+my $myRequest = $conn->client_start();
+printf "myRequest=%s\n", $myRequest;
+print $sock $myRequest;
+
+#while ($conn->need_step) {
+	my $reply = <$sock>;
+  printf "reply=%s\n",$reply;
+  my $nextRequest= $conn->client_step( $reply );
+  printf "nextRequest=%s\n",$nextRequest;
+  print $sock $nextRequest;
+#}
+
+if ($conn->code == 0) {
+print STDERR "Negotiation succeeded.\n";
+} else {
+print STDERR "Negotiation failed.\n";
+}
+
+exit;
 
 my $callData = new CallEventData;
 my $messEvent = new MessEvent("localhost:6666","func123",{ a=>1, b=>2},{ s=>undef });

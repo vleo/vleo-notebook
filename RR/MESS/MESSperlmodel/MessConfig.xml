@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <?meta name="GENERATOR" content="XML::Smart/1.6.9 Perl/5.012003 [linux]" ?>
-<config MESS_MYNAME="localhost:6666" MESS_PRIMARY="localhost:8888" TCSERVERMQ="/tcServerIn">
+<config MESS_MY_ID="M1" MESS_MYNAME="localhost:6666" MESS_PRIMARY="localhost:8888" TCSERVERMQ="/tcServerIn">
   <MESS_PEERS>localhost:8888</MESS_PEERS>
   <MESS_PEERS>localhost:9999</MESS_PEERS>
 </config>
