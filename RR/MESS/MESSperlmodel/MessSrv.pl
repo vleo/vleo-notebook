@@ -114,12 +114,75 @@ VC4  ---  M3+S3
 VC5  --   M4+S4
 =cut
 
+sub getsecret
+{
+	my ($self,$parts,$callBack)=@_;
 
- 
+	if(
+      $parts->{authzid} eq 'myauth' and
+			$parts->{user} eq 'L1'
+		)
+	{ $callBack->( 'qwerty'  ) }
+	else
+	{ $callBack->( ''  ) }
+
+}
+
+my	$authOK={};
+
+sub authenticateServer
+{
+	my ($mySock) = @_;
+	# v v v Authenticate new connection v v v
+	my $mySasl = Authen::SASL->new (
+		mechanism => "DIGEST-MD5",
+		callback => 
+		{
+			getsecret => \&getsecret,
+		}
+	);
+
+	my $myConn = $mySasl->server_new("mess","mess-server.vks.mt.ru",{ no_integrity => 1 });
+	die "We expect to need server_start() for DIGEST-MD5" unless $myConn->need_step;
+
+  my $serverChallange;
+	$myConn->server_start("",sub { $serverChallange = shift } ) eq "" or die "Expecting empty return from server_start()\n";
+	printf "serverChallange= %s\n",$serverChallange;
+	die "We expect to need one server_step() for DIGEST-MD5" unless $myConn->need_step;
+
+	$mySock->send($serverChallange);
+
+  $mySock->blocking(1);
+	my $clientResponse;
+	my $n = $mySock->sysread($clientResponse,1000);
+	printf "buffer read %d bytes: %s\n",$n,$clientResponse;
+	my $serverResponse;
+	$myConn->server_step($clientResponse, sub { $serverResponse = shift });
+	printf "serverResponse= %sr\n",$serverResponse;
+
+	die "We do not expect to need 2nd step for DIGEST-MD5" if $myConn->need_step;
+
+	if ($myConn->code)
+	{
+		printf "Error code: %d Message: %s\n",$myConn->code,$myConn->error;
+	}
+	else
+	{
+		printf "Adding Auth OK status to socket %s\n",$readyHandle;
+		$authOK->{$mySock}=$myConn;
+	}
+	# ^ ^ ^ Authenticate new connection ^ ^ ^
+
+  $mySock->blocking(0);
+	print Dumper($myConn);
+
+	return 1;
+
+}
+
 while(1)
 {
-  sleep(1);
-  my ($readyHandlesSet) = IO::Select->select($readSet, undef, undef, 0); 
+  my ($readyHandlesSet) = IO::Select->select($readSet, undef, undef, 10); 
   printf "Got %d sockets ready to be read\n",int(@$readyHandlesSet);
   my $readyHandle;
   foreach $readyHandle (@$readyHandlesSet) 
@@ -128,32 +191,14 @@ while(1)
     {
       my ($newSock,$addr) = $readyHandle->accept();
       $readSet->add($newSock); 
-
       my ($port,$ipraw)=unpack_sockaddr_in($addr);
       $clientSockets->{$newSock}->{PORT} = $port;
       $clientSockets->{$newSock}->{IP} = $ipraw;
       printf "opened socket for client at addr %s:%d\n",join(".",unpack("C*",$ipraw)),$port;
-
-      my $sasl = Authen::SASL->new (
-        mechanism => "PLAIN",
-        callback => 
-        {
-          checkpass => \&checkpass,
-          canonuser => \&canonuser,
-        }
-      );
-
-      # Creating the Authen::SASL::Cyrus instance
-      my $conn = $sasl->server_new("mess");
-      # Clients first string (maybe "", depends on mechanism)
-      # Client has to start always
-      my $request = <$newSock>;
-      printf "request=%s\n",$request;
-      my $reply = $conn->server_start( $request );
-      printf "reply=%s\n",$reply;
-      print $sock $conn->server_start( $request );
-
-#          $routingTable->{eventFrame->getRaw->{CLIENT_ID}}=[$newSock,$ipasc,$port,$localMessID];
+			if authenticateServer($newSock)
+      {
+				$routingTable->{eventFrame->getRaw->{CLIENT_ID}}=[$newSock,$ipasc,$port,CONFIG(MESS_MY_ID)];
+			}
     } 
     else
     {
