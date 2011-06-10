@@ -2,4 +2,4 @@
 
 use MessConfig;
 
-printf "%s\n", TCSERVERMQ;
+printf "%s\n", TC_SERV_MQ;

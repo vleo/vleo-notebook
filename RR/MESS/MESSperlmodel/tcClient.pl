@@ -75,14 +75,23 @@ sub authenticateClient
 
 	printf "serverChallange= %s\n",$serverChallange;
 	my $clientResponse = $myConn->client_step($serverChallange);
+	die "Expecting client response string from 1st client_step()\n" unless $clientResponse ; 
 
-	printf "initial= %s\n",$clientResponse;
+	printf "clientResponse= %s\n",$clientResponse;
 
 	$mySock->send($clientResponse);
 
-	die "We don't expect 2nd step for DIGEST-MD5" if $myConn->need_step;
+	my $serverResponse;
+	$mySock->sysread($serverResponse,1000);
+	printf "serverResponse= %s\n",$serverResponse;
 
-	die "Negotiation failed:%s\n",$myConn->error unless ($myConn->code == 0);
+	die "We expect 2nd step for DIGEST-MD5" unless $myConn->need_step;
+
+	$clientResponse = $myConn->client_step($serverResponse);
+	die "Expecting empty return from 2nd client_step()" unless $clientResponse eq ""; 
+
+	die "We don't expect 3rd step for DIGEST-MD5" if $myConn->need_step;
+	die "Negotiation failed:".$myConn->error."\n" unless ($myConn->code == 0);
 
 	$myAuthConn=$myConn;
 
@@ -90,15 +99,25 @@ sub authenticateClient
 }
 
 authenticateClient($sock);
-
-exit;
+sleep(3);
 
 my $callData = new CallEventData;
-my $messEvent = new MessEvent(CONFIG('MY_ID'),CONFIG('MY_MESS_ID'),"ping",{ a=>1, b=>2},{ s=>undef });
+my $messEvent = new MessEvent(CONFIG('MY_ID'),CONFIG('MY_MESS_ID'),"ping",{ a=>1, b=>2},undef);
 
-  $callData->setRaw($messEvent);
-  $callData->sendData($sock);
+$callData->setRaw($messEvent);
+$callData->sendData($sock);
+
+my $returnData = new CallEventData;
+$returnData->receiveData($sock);
+print Dumper($returnData->getRaw);
 
 sleep(3);
+my $messEvent1 = new MessEvent(CONFIG('MY_ID'),CONFIG('MY_MESS_ID'),"pingtcs",{ a=>1, b=>2},undef);
+$callData->setRaw($messEvent1);
+$callData->sendData($sock);
+
+$returnData->receiveData($sock);
+print Dumper($returnData->getRaw);
+
 printf "Closing socket\n";
 $sock->close();
