@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <?meta name="GENERATOR" content="XML::Smart/1.6.9 Perl/5.012003 [linux]" ?>
     <config 
-        MESS_MY_ID="M1" 
+        MESS_MY_ID="M2" 
         MESS_MY_HOST="localhost"
-        MESS_MY_PORT="6666"
+        MESS_MY_PORT="8888"
         MESS_PRIMARY_HOST="localhost"
         MESS_PRIMARY_PORT="8888"
-        TC_SERV_MQ="/tcServerIn"
-        TC_SERV_ID="S1" 
+        TC_SERV_MQ="/tcServer2In"
+        TC_SERV_ID="S2" 
     >
-    <MESS_PEERS>M2</MESS_PEERS>
+    <MESS_PEERS>M1</MESS_PEERS>
     <MESS_PEERS>M3</MESS_PEERS>
 </config>
 

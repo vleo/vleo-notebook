@@ -2,23 +2,22 @@
 
 use IO::Select;
 use Socket;
-use POSIX;
-use POSIX::RT::MQ;
+
 use Data::Dumper;
-use Getopt::Std;
-getopts("c:");
-our $opt_c;
-use XML::Smart;
+use strict;
 
 use TcpConnection;
 use CallEventData;
 
-$opt_c = 'MessConfig.xml' unless defined($opt_c);
-my $MessConfig = XML::Smart->new($opt_c);
-sub CONFIG { $MessConfig->{config}->{$_[0]} };
+use TwoWayMQLink;
+use MessConfig;
+DEFAULT_CONFIG_FILE('MessConfig.xml');
+
+use Authen::SASL qw(Perl);
 
 =pod
-print $opt_c," ",CONFIG(TCSERVERMQ),"\n";
+print CONFIG(TCSERVERMQ),"\n";
+print CONFIG(MY_ID),"\n";
 exit;
 
 
@@ -68,15 +67,13 @@ sub serverletThread
 
 # MY tcServer
 # FIXME - convert to Class (also used by tcServer)
-my $mqname = CONFIG(TCSERVERMQ);
-my $attr = { mq_maxmsg  => 8192, mq_msgsize =>  1024 };
-my $mq = POSIX::RT::MQ->open($mqname, O_RDWR|O_CREAT, 0600, $attr)
-            or die "cannot open $mqname: $!\n";
+my $mq = new TwoWayMQLink(CONFIG('TC_SERV_MQ'),'reverse');
+$mq->{IN}->blocking(0);
 
-my $initMsg = new CONFIG(MESS_MYNAME),"mqRegister",{ },{ OK => undef});
+my $initMsg = new MessEvent(CONFIG('MESS_MY_ID'),CONFIG('TC_SERV_ID'),"mqRegister",{ messID => &CONFIG('MESS_MY_ID') },{ OK => undef});
 my $callData = new CallEventData;
 $callData->setRaw($initMsg);
-$mq->send($callData->getFrozen());
+$mq->sendMsg($callData->getFrozen());
 
 # we need to pass structure of { methodName => "func1", argumentsStruct => { A=>1, B=>"qwerty"}, valueStruct => { X=>2,Y="QWERTY"} }
 # called relayed to appropriate TcServer
@@ -99,7 +96,11 @@ my $clientSockets={};
 # { message destination => open socket }
 my $routingTable={};
 
-$routingTable->{'VC1'} = ['M1',sock:1234;
+=pod
+$routingTable->{'VC1'} = ['M1','sock:1234'];
+$routingTable->{'VC2'} = ['M1','sock:5678'];
+$routingTable->{'M2'} = ['M1','sock:4321'];
+$routingTable->{'VC3'} = ['M2','sock:4321'];
 
 =pod
 VC1  ---\
@@ -112,55 +113,176 @@ VC4  ---  M3+S3
 VC5  --   M4+S4
 =cut
 
+sub getsecret
+{
+	my ($self,$parts,$callBack)=@_;
+
+	if(
+      $parts->{authzid} eq 'messauth' and
+			$parts->{user} eq 'L1'
+		)
+	{ $callBack->( 'qwerty'  ) }
+	else
+	{ $callBack->( ''  ) }
+
+}
+
+my	$authOK={};
+
+sub authenticateServer
+{
+	my ($mySock) = @_;
+	# v v v Authenticate new connection v v v
+	my $mySasl = Authen::SASL->new (
+		mechanism => "DIGEST-MD5",
+		callback => 
+		{
+			getsecret => \&getsecret,
+		}
+	);
+
+	my $myConn = $mySasl->server_new("mess","mess-server.vks.mt.ru",{ no_integrity => 1 });
+	die "We expect to need server_start() for DIGEST-MD5" unless $myConn->need_step;
+
+  my $serverChallange;
+	$myConn->server_start("",sub { $serverChallange = shift } ) eq "" or die "Expecting empty return from server_start()\n";
+	printf "serverChallange= %s\n",$serverChallange;
+	die "We expect to need one server_step() for DIGEST-MD5" unless $myConn->need_step;
+
+	$mySock->send($serverChallange);
+
+  $mySock->blocking(1);
+	my $clientResponse;
+	my $n = $mySock->sysread($clientResponse,1000);
+	printf "buffer read %d bytes: %s\n",$n,$clientResponse;
+	my $serverResponse;
+	$myConn->server_step($clientResponse, sub { $serverResponse = shift });
+	printf "serverResponse= %sr\n",$serverResponse;
+	$mySock->send($serverResponse);
+
+	die "We do not expect to need 2nd step for DIGEST-MD5" if $myConn->need_step;
+
+	if ($myConn->code)
+	{
+		printf "Error code: %d Message: %s\n",$myConn->code,$myConn->error;
+		return 0;
+	}
+	
+	printf "Adding Auth OK status to socket %s\n",$mySock;
+	$authOK->{$mySock}=$myConn;
+	# ^ ^ ^ Authenticate new connection ^ ^ ^
+
+  $mySock->blocking(0);
+	#print Dumper($myConn);
+
+	return $myConn->{'answer'}{'username'};
+
+}
+
 while(1)
 {
-  sleep(1);
-  my ($readyHandlesSet) = IO::Select->select($readSet, undef, undef, 0); 
-  printf "Got %d sockets ready to be read\n",int(@$readyHandlesSet);
+	sleep(1);
+  my ($readyHandlesSet) = IO::Select->select($readSet, undef, undef, 1); 
+	if ($readyHandlesSet)
+	{
+		printf "Got %d sockets ready to be read\n",int(@$readyHandlesSet);
+		printf "ready sockets: %s\n",join(":",@$readyHandlesSet);
+		printf "authOK: %s\n",join(":",map sprintf("%s => %s",$_,$authOK->{$_}),(keys %$authOK));
+	};
+
+	# process MQ
+	my $msg;
+	while ($msg=$mq->recvMsg())
+	{
+		my $callData = new CallEventData;
+		$callData->setFrozen($msg);
+		print "FROM MQ: ",Dumper($callData->getRaw);
+		if($callData->getRaw->{DEST} eq CONFIG('MESS_MY_ID'))
+		{
+			if ($callData->getRaw->{METHOD} eq 'pingtcs')
+			{
+				print Dumper($callData->getRaw);
+			}
+		}
+		else
+		{
+			$callData->sendData($routingTable->{$callData->getRaw->{DEST}}->[0]);
+		}
+	}
+
+	# process SOCK
   my $readyHandle;
   foreach $readyHandle (@$readyHandlesSet) 
   { 
     if ($readyHandle == $serverSock) 
     {
       my ($newSock,$addr) = $readyHandle->accept();
-      my ($port,$ipraw)=unpack_sockaddr_in($addr);
-      my $ipasc=inet_ntoa($ipraw);
-      $clientSockets->{$newSock}->{PORT} = $port;
-      $clientSockets->{$newSock}->{IP} = $ipasc;
-
-      printf "opened socket for client at addr %s:%d\n",$ipasc,$port;
-
       $readSet->add($newSock); 
+      my ($port,$ipraw)=unpack_sockaddr_in($addr);
+      $clientSockets->{$newSock}->{PORT} = $port;
+      $clientSockets->{$newSock}->{IP} = $ipraw;
+			my $ipasc=join(".",unpack("C*",$ipraw));
+      printf "opened socket for client at addr %s:%d\n",$ipasc,$port;
+			my $clientID;
+			if($clientID=authenticateServer($newSock))
+      {
+				$routingTable->{$clientID}=[$newSock,$ipasc,$port,CONFIG('MESS_MY_ID')];
+			}
+			else
+			{
+				printf "Failure to authenticate socket %s\n",$newSock;
+			}
     } 
-    else
+    elsif ($authOK->{$readyHandle})
     {
       my $callData = new CallEventData;
       if ($callData -> receiveData($readyHandle) != -1)
       {
         
-        print Dumper($callData->getRaw);
-        my $dest =$callData->getRaw->{DEST};
-        if($dest eq MESS_MYNAME)
-          {
-             $mq->send($callData->getFrozen);
-          }
+        print "FROM SOCK: ", Dumper($callData->getRaw);
+        my $dst = $callData->getRaw->{DEST};
+				my $src  = $callData->getRaw->{SRC};
+				my $method = $callData->getRaw->{METHOD};
+				my $argval = $callData->getRaw->{ARGVAL}; 
+        if($dst eq CONFIG('MESS_MY_ID'))
+        {
+				# process events addressed to MESS server
+					if ($method eq 'ping')
+					{
+						my $callData = new CallEventData;
+						my $messEvent = new MessEvent($dst,$src,"ping",undef,$argval);
+						$callData->setRaw($messEvent);
+						$callData->sendData($readyHandle);
+					}
+					else # forward to corresponding TC server
+					{
+					  $mq->sendMsg($callData->getFrozen);
+					}
+        }
         else
           {
-          my $destList=$routingTable->{$callData->{RAW}->{DEST}};
-          foreach $dest (@$destList)
+          my $destList=$routingTable->{$dst};
+					my $fwdDst;
+          foreach $fwdDst (@$destList)
             {
-              $callData->sendData($dest);
+              $callData->sendData($fwdDst);
             }
           }
       }
-      else
-      {
-        #print Dumper($clientSockets);
-        printf "closing socket %s for client at %s:%d\n", $readyHandle, $clientSockets->{$readyHandle}->{IP}, $clientSockets->{$readyHandle}->{PORT};
-        undef $clientSockets->{$readyHandle};
-        $readSet->remove($readyHandle);
-        $readyHandle->close();
-      }
+			else
+			{
+				goto CLOSE;
+			}
+		}
+    else
+    {
+			CLOSE:
+      #print Dumper($clientSockets);
+      printf "closing socket %s for client at %s:%d\n", $readyHandle, join(":",unpack("C*",$clientSockets->{$readyHandle}->{IP})), $clientSockets->{$readyHandle}->{PORT};
+      delete $clientSockets->{$readyHandle};
+      $readSet->remove($readyHandle);
+			delete $authOK->{$readyHandle} if defined($authOK->{$readyHandle});
+      $readyHandle->close();
     }
   }
 }
