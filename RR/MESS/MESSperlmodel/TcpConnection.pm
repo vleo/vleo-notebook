@@ -2,10 +2,11 @@
 
 package TcpConnection;
 
+use feature say;
 use strict;
 use IO::Socket;
 
-#use Exporter;
+use Exporter;
 
 our @ISA=qw(Exporter IO::Socket); 
 
@@ -16,48 +17,51 @@ our @ISA=qw(Exporter IO::Socket);
 
 sub new
 {
+	say "TcpConnection::new ",join(":",@_);
   my $class = shift;
   my $self;
+
   if($class =~ m/^TcpConnection=/)
   {
-     $self=new IO::Socket::INET(@_);
-     print "call to base:",ref($self),"\n";
-     return $self;
+#   $self= $class->SUPER::new(@_);
+    $self=new IO::Socket::INET(@_);
+    print "call to base via TcpConnection::new returns:",ref($self),"\n";
+    return $self;
   }
-  my ($port,$server)=@_;
-  my $ps=
-  {
-    LocalHost => 'localhost',
-    LocalPort => $port,
-    Proto => 'tcp',
-    Listen => 5,
-    Reuse => 1 
-  };
-  my $pc=
-  { 
-    PeerAddr => $server,
-    PeerPort => $port,
-    Proto => 'tcp',
-  };
-  my $key;
-  foreach $key (keys %$ps)
-  {
-     printf "%s => %s\n",$key,$ps->{$key}
-  };
-#  my $self=$class->SUPER::new($server ? %$pc : %$ps);
-  if(@_ == 1)
-  {
-     $self=new IO::Socket::INET(%$ps);
-  }
+  elsif(@_ == 1)
+	{
+		my ($port)=@_;
+		my $ps=
+		{
+			LocalHost => 'localhost',
+			LocalPort => $port,
+			Proto => 'tcp',
+			Listen => 5,
+			Reuse => 1 
+		};
+		print map { sprintf("%s => %s\n",$_,$ps->{$_}) } (keys %$ps);
+#		$self= $class->SUPER::new(%$ps);
+		$self=new IO::Socket::INET(%$ps);
+	}
   elsif(@_ == 2)
-  {
-     $self=new IO::Socket::INET(%$pc);
+	{
+		my ($port,$server)=@_;
+		my $pc=
+		{ 
+			PeerAddr => $server,
+			PeerPort => $port,
+			Proto => 'tcp',
+		};
+		print map { sprintf("%s => %s\n",$_,$pc->{$_}) } (keys %$pc);
+#    $self= $class->SUPER::new(%$pc);
+		$self=new IO::Socket::INET(%$pc);
   }
   else
   {
-     $self=new IO::Socket::INET(@_);
+		die "Unexpected call to TcpConnectin::new";
   }
-  die "Could not create socket: $!\n" unless $self;
+
+  defined($self) or die "Could not create socket: $!\n";
   bless $self,$class;
   #$self->_init();
   return $self;

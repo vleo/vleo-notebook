@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <?meta name="GENERATOR" content="XML::Smart/1.6.9 Perl/5.012003 [linux]" ?>
 <config
-    MY_ID="L2"
+    MY_ID="L3"
     MY_PWD="qwerty"
-    MY_MESS_ADDR="localhost"
-    MY_MESS_PORT="8888"
     MY_MESS_ID="M2"
     >
 </config>

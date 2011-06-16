@@ -12,6 +12,10 @@ getopts("c:");
 our $opt_c;
 use XML::Smart;
 
+use constant MESS_MY_ID => "MESS_MY_ID";
+use constant TC_SERV_MQ => "TC_SERV_MQ";
+use constant TC_SERV_ID => "TC_SERV_ID";
+
 my $MessConfig;
 
 sub DEFAULT_CONFIG_FILE 
@@ -28,9 +32,13 @@ sub DEFAULT_CONFIG_FILE
 	}
 }
 
-sub CONFIG { $MessConfig->tree->{config}->{$_[0]} };
+sub CONFIG 
+{ 
+	$MessConfig	= XML::Smart->new('MessConfig.xml') unless defined($MessConfig);
+  $MessConfig->tree->{config}->{$_[0]};
+}
 
-our @EXPORT=qw(DEFAULT_CONFIG_FILE CONFIG);
+our @EXPORT=qw(DEFAULT_CONFIG_FILE CONFIG MESS_MY_ID TC_SERV_MQ TC_SERV_ID);
 
 =pod
 our @EXPORT=qw(

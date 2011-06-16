@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 use strict;
-use TcpConnection;
+use AuthenticatedLink;
 use CallEventData;
 use Data::Dumper;
 
@@ -37,7 +37,9 @@ Gtk2->main;
 
 exit;
 =cut
+##########################################################################
 
+=pod
 my $sock = new TcpConnection(CONFIG('MY_MESS_PORT'),CONFIG('MY_MESS_ADDR'));
 
 #print $sock "Quick brown fox jumped over the lazy dog 1234567890 times!?\n";
@@ -100,6 +102,14 @@ sub authenticateClient
 
 authenticateClient($sock);
 sleep(3);
+=cut
+
+my $sock = newClient AuthenticatedLink(
+	CONFIG('MY_PWD'),
+	CONFIG('MY_ID'),
+	CONFIG('MY_MESS_ADDR'),
+	CONFIG('MY_MESS_PORT')
+);
 
 my $callData = new CallEventData;
 my $messEvent = new MessEvent(CONFIG('MY_ID'),CONFIG('MY_MESS_ID'),"ping",{ a=>1, b=>2},undef);

@@ -1,10 +1,12 @@
 #!/usr/bin/perl
 
+use feature say;
+use strict;
+
 use IO::Select;
 use Socket;
 
 use Data::Dumper;
-use strict;
 
 use TcpConnection;
 use CallEventData;
@@ -12,6 +14,7 @@ use CallEventData;
 use TwoWayMQLink;
 use MessConfig;
 DEFAULT_CONFIG_FILE('MessConfig.xml');
+use NameService;
 
 use Authen::SASL qw(Perl);
 
@@ -66,7 +69,6 @@ sub serverletThread
 #  }
 
 # MY tcServer
-# FIXME - convert to Class (also used by tcServer)
 my $mq = new TwoWayMQLink(CONFIG('TC_SERV_MQ'),'reverse');
 $mq->{IN}->blocking(0);
 
@@ -81,8 +83,17 @@ $mq->sendMsg($callData->getFrozen());
 # 1) method call (0,0,1)
 # 2) event (0,0,2)
 
+# establish connection with upstream MESS server
+if (CONFIG(MESS_MY_ID) eq NAME_PRIMARY)
+{
+	say "We are the primary, no futher up connection required";
+}
+else
+{
+	say "We have to connect to Primary(or Secondary, then Tertiary)";
+}
 
-my $serverSock = new TcpConnection(6666);
+my $serverSock = new AuthenticatedLink(6666);
 my $readSet = new IO::Select();
 $readSet->add($serverSock);
 
@@ -113,18 +124,29 @@ VC4  ---  M3+S3
 VC5  --   M4+S4
 =cut
 
+=pod
+my $passWords=
+{
+	# auth domain
+	'messauth' => 
+	  {
+			# loginID => cleartext password
+			'L1' => 'qwerty',
+			'L2' => 'abcdef',
+			'L3' => '12345',
+			'L4' => '76543210'
+	  }
+};
+
 sub getsecret
 {
 	my ($self,$parts,$callBack)=@_;
-
-	if(
-      $parts->{authzid} eq 'messauth' and
-			$parts->{user} eq 'L1'
-		)
-	{ $callBack->( 'qwerty'  ) }
-	else
-	{ $callBack->( ''  ) }
-
+	$callBack->($passWords->{
+	                          $parts->{authzid}
+													}->
+														{
+															$parts->{user}
+														});
 }
 
 my	$authOK={};
@@ -165,7 +187,7 @@ sub authenticateServer
 	if ($myConn->code)
 	{
 		printf "Error code: %d Message: %s\n",$myConn->code,$myConn->error;
-		return 0;
+		return;
 	}
 	
 	printf "Adding Auth OK status to socket %s\n",$mySock;
@@ -178,6 +200,16 @@ sub authenticateServer
 	return $myConn->{'answer'}{'username'};
 
 }
+=cut
+
+my %myClientsIDs =
+	  {
+			# loginID => cleartext password
+			'L1' => 'qwerty',
+			'L2' => 'abcdef',
+			'L3' => '12345',
+			'L4' => '76543210'
+	  };
 
 while(1)
 {
@@ -226,6 +258,7 @@ while(1)
 			my $clientID;
 			if($clientID=authenticateServer($newSock))
       {
+				$authOK->{$newSock}=$myConn;
 				$routingTable->{$clientID}=[$newSock,$ipasc,$port,CONFIG('MESS_MY_ID')];
 			}
 			else
