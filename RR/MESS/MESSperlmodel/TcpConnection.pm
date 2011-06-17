@@ -21,12 +21,12 @@ sub new
   my $class = shift;
   my $self;
 
-  if($class =~ m/^TcpConnection=/)
+  if($class =~ m/^(.*)=GLOB/)
   {
+		$class=$1;
 #   $self= $class->SUPER::new(@_);
     $self=new IO::Socket::INET(@_);
     print "call to base via TcpConnection::new returns:",ref($self),"\n";
-    return $self;
   }
   elsif(@_ == 1)
 	{

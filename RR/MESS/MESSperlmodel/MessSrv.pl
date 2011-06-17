@@ -8,7 +8,7 @@ use Socket;
 
 use Data::Dumper;
 
-use TcpConnection;
+use AuthenticatedLink;
 use CallEventData;
 
 use TwoWayMQLink;
@@ -93,7 +93,7 @@ else
 	say "We have to connect to Primary(or Secondary, then Tertiary)";
 }
 
-my $serverSock = new AuthenticatedLink(6666);
+my $serverSock = newServer AuthenticatedLink(6666);
 my $readSet = new IO::Select();
 $readSet->add($serverSock);
 
@@ -202,7 +202,7 @@ sub authenticateServer
 }
 =cut
 
-my %myClientsIDs =
+my $myClientsIDs =
 	  {
 			# loginID => cleartext password
 			'L1' => 'qwerty',
@@ -210,6 +210,8 @@ my %myClientsIDs =
 			'L3' => '12345',
 			'L4' => '76543210'
 	  };
+
+my	$authOK={};
 
 while(1)
 {
@@ -255,10 +257,12 @@ while(1)
       $clientSockets->{$newSock}->{IP} = $ipraw;
 			my $ipasc=join(".",unpack("C*",$ipraw));
       printf "opened socket for client at addr %s:%d\n",$ipasc,$port;
-			my $clientID;
-			if($clientID=authenticateServer($newSock))
-      {
-				$authOK->{$newSock}=$myConn;
+
+			$newSock->authenticateOnServer($myClientsIDs);
+			my $clientID=$newSock->getAuth;
+			if($clientID)
+			{	
+				$authOK->{$newSock}=$clientID;
 				$routingTable->{$clientID}=[$newSock,$ipasc,$port,CONFIG('MESS_MY_ID')];
 			}
 			else
