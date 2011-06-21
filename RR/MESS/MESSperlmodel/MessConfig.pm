@@ -13,6 +13,7 @@ our $opt_c;
 use XML::Smart;
 
 use constant MESS_MY_ID => "MESS_MY_ID";
+use constant MESS_MY_PWD => "MESS_MY_PWD";
 use constant TC_SERV_MQ => "TC_SERV_MQ";
 use constant TC_SERV_ID => "TC_SERV_ID";
 
@@ -38,7 +39,7 @@ sub CONFIG
   $MessConfig->tree->{config}->{$_[0]};
 }
 
-our @EXPORT=qw(DEFAULT_CONFIG_FILE CONFIG MESS_MY_ID TC_SERV_MQ TC_SERV_ID);
+our @EXPORT=qw(DEFAULT_CONFIG_FILE CONFIG MESS_MY_ID MESS_MY_PWD TC_SERV_MQ TC_SERV_ID);
 
 =pod
 our @EXPORT=qw(

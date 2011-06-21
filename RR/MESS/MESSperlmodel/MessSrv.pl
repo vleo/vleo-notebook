@@ -16,57 +16,10 @@ use MessConfig;
 DEFAULT_CONFIG_FILE('MessConfig.xml');
 use NameService;
 
+use RoutingTables;
+
 use Authen::SASL qw(Perl);
 
-=pod
-print CONFIG(TCSERVERMQ),"\n";
-print CONFIG(MY_ID),"\n";
-exit;
-
-
-=pod
-my $initialConfig = 
-{
-  TCSERVERMQ => '/tcServerIn',
-  MESS_MYNAME => 'localhost:6666',
-  MESS_PEERS => ['localhost:8888','localhost:9999'],
-  MESS_PRIMARY => 'localhost:8888'
-};
-$MessConfig->{'config'}=$initialConfig;
-$MessConfig->save('MessConfig.xml');
-exit;
-=cut
-
-=pod
-sub serverletThread
-{
-  my ($newSock) = @_;
-  my $callData = new CallEventData;
-  print ref($newSock)," Server receives:\n";
-#  my $buf;
-#  my $len = read($newSock,$buf,1024);
-#  print $len," ",length($buf)," ",map(sprintf("0x%02x %c ",$_,$_),unpack("C*",$buf)),"\n";
-  while($callData -> receiveData($newSock) != -1)
-  {
-    $callData->printDumper();
-# for events:
-#    $recepientSockList = $routingTable->getRecepientSock($callData->getData->{'callRecepient'});
-#    foreach $recepientSock (@$recepientSockList)
-#    { $callData->sendData($recepientSock); }
-# for methods:
-    # send()
-    # receive()
-  }
-  close($newSock);
-}
-=cut
-
-# We need to establish initial connections
-
-# MESS PEERS
-# foreach $peer (TCSERVERMQ)
-#  {
-#  }
 
 # MY tcServer
 my $mq = new TwoWayMQLink(CONFIG('TC_SERV_MQ'),'reverse');
@@ -84,6 +37,16 @@ $mq->sendMsg($callData->getFrozen());
 # 2) event (0,0,2)
 
 # establish connection with upstream MESS server
+# establish other initial connections
+
+# MESS PEERS
+# foreach $peer (TCSERVERMQ)
+#  {
+#  }
+
+my $sockUpPrim;
+my $routingTable = new RoutingTables;
+
 if (CONFIG(MESS_MY_ID) eq NAME_PRIMARY)
 {
 	say "We are the primary, no futher up connection required";
@@ -91,9 +54,16 @@ if (CONFIG(MESS_MY_ID) eq NAME_PRIMARY)
 else
 {
 	say "We have to connect to Primary(or Secondary, then Tertiary)";
+  $sockUpPrim = newClient AuthenticatedLink(
+	  CONFIG('MESS_MY_PWD'),
+	  CONFIG('MESS_MY_ID'),
+	  NAME_PRIMARY_HOST,
+	  NAME_PRIMARY_PORT 
+);
+	$sockUpPrim or die;
 }
 
-my $serverSock = newServer AuthenticatedLink(6666);
+my $serverSock = newServer AuthenticatedLink(NAME_SERVICE_PORT(CONFIG(MESS_MY_ID)));
 my $readSet = new IO::Select();
 $readSet->add($serverSock);
 
@@ -107,108 +77,14 @@ my $clientSockets={};
 # { message destination => open socket }
 my $routingTable={};
 
-=pod
-$routingTable->{'VC1'} = ['M1','sock:1234'];
-$routingTable->{'VC2'} = ['M1','sock:5678'];
-$routingTable->{'M2'} = ['M1','sock:4321'];
-$routingTable->{'VC3'} = ['M2','sock:4321'];
-
-=pod
-VC1  ---\
-VC2  ---- M1+S1
-          |
-VC3  ---- M2(*)+S2
-          | 
-VC4  ---  M3+S3
-          |
-VC5  --   M4+S4
-=cut
-
-=pod
-my $passWords=
-{
-	# auth domain
-	'messauth' => 
-	  {
-			# loginID => cleartext password
-			'L1' => 'qwerty',
-			'L2' => 'abcdef',
-			'L3' => '12345',
-			'L4' => '76543210'
-	  }
-};
-
-sub getsecret
-{
-	my ($self,$parts,$callBack)=@_;
-	$callBack->($passWords->{
-	                          $parts->{authzid}
-													}->
-														{
-															$parts->{user}
-														});
-}
-
-my	$authOK={};
-
-sub authenticateServer
-{
-	my ($mySock) = @_;
-	# v v v Authenticate new connection v v v
-	my $mySasl = Authen::SASL->new (
-		mechanism => "DIGEST-MD5",
-		callback => 
-		{
-			getsecret => \&getsecret,
-		}
-	);
-
-	my $myConn = $mySasl->server_new("mess","mess-server.vks.mt.ru",{ no_integrity => 1 });
-	die "We expect to need server_start() for DIGEST-MD5" unless $myConn->need_step;
-
-  my $serverChallange;
-	$myConn->server_start("",sub { $serverChallange = shift } ) eq "" or die "Expecting empty return from server_start()\n";
-	printf "serverChallange= %s\n",$serverChallange;
-	die "We expect to need one server_step() for DIGEST-MD5" unless $myConn->need_step;
-
-	$mySock->send($serverChallange);
-
-  $mySock->blocking(1);
-	my $clientResponse;
-	my $n = $mySock->sysread($clientResponse,1000);
-	printf "buffer read %d bytes: %s\n",$n,$clientResponse;
-	my $serverResponse;
-	$myConn->server_step($clientResponse, sub { $serverResponse = shift });
-	printf "serverResponse= %sr\n",$serverResponse;
-	$mySock->send($serverResponse);
-
-	die "We do not expect to need 2nd step for DIGEST-MD5" if $myConn->need_step;
-
-	if ($myConn->code)
-	{
-		printf "Error code: %d Message: %s\n",$myConn->code,$myConn->error;
-		return;
-	}
-	
-	printf "Adding Auth OK status to socket %s\n",$mySock;
-	$authOK->{$mySock}=$myConn;
-	# ^ ^ ^ Authenticate new connection ^ ^ ^
-
-  $mySock->blocking(0);
-	#print Dumper($myConn);
-
-	return $myConn->{'answer'}{'username'};
-
-}
-=cut
-
 my $myClientsIDs =
 	  {
 			# loginID => cleartext password
 			'L1' => 'qwerty',
 			'L2' => 'abcdef',
 			'L3' => '12345',
-			'L4' => '76543210'
+			'L4' => '76543210',
+			'M1' => 'M1qwerty'
 	  };
 
 my	$authOK={};

@@ -2,6 +2,7 @@
 <?meta name="GENERATOR" content="XML::Smart/1.6.9 Perl/5.012003 [linux]" ?>
     <config 
         MESS_MY_ID="M1" 
+			  MESS_MY_PWD="M1qwerty"
         TC_SERV_MQ="/tcServerIn"
         TC_SERV_ID="S1" 
     >
