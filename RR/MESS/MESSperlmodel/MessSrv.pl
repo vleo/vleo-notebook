@@ -13,10 +13,11 @@ use CallEventData;
 
 use TwoWayMQLink;
 use MessConfig;
-DEFAULT_CONFIG_FILE('MessConfig.xml');
+DEFAULT_CONFIG_FILE("MessConfig.xml");
 use NameService;
 
 use RoutingTables;
+use AuthenticationData;
 
 use Authen::SASL qw(Perl);
 
@@ -46,8 +47,10 @@ $mq->sendMsg($callData->getFrozen());
 
 my $sockUpPrim;
 my $routingTable = new RoutingTables;
+my $readSet = new IO::Select();
+my $authOK={};
 
-if (CONFIG(MESS_MY_ID) eq NAME_PRIMARY)
+if (not CONFIG(MESS_PRIMARY))
 {
 	say "We are the primary, no futher up connection required";
 }
@@ -55,28 +58,26 @@ else
 {
 	say "We have to connect to Primary(or Secondary, then Tertiary)";
   $sockUpPrim = newClient AuthenticatedLink(
-	  CONFIG('MESS_MY_PWD'),
-	  CONFIG('MESS_MY_ID'),
-	  NAME_PRIMARY_HOST,
-	  NAME_PRIMARY_PORT 
+	  CONFIG(MESS_MY_PWD),
+	  CONFIG(MESS_MY_ID),
+	  NAME_SERVICE_HOST(CONFIG(MESS_PRIMARY)),
+	  NAME_SERVICE_PORT(CONFIG(MESS_PRIMARY))
 );
 	$sockUpPrim or die;
+	$routingTable->mRoute(CONFIG(MESS_MY_ID),CONFIG(MESS_PRIMARY),$sockUpPrim,'MESS');
+  $readSet->add($sockUpPrim);
+	$authOK->{$sockUpPrim}=CONFIG(MESS_PRIMARY);
 }
 
+# open my server socket
+say CONFIG(MESS_MY_ID);
+say NAME_SERVICE_PORT(CONFIG(MESS_MY_ID));
 my $serverSock = newServer AuthenticatedLink(NAME_SERVICE_PORT(CONFIG(MESS_MY_ID)));
-my $readSet = new IO::Select();
 $readSet->add($serverSock);
 
-#$serverSock->listenOnPort(\&serverletThread);
-
-# main loop on all sockets for all clients
-# select()
-# can read - read - write to destination
- 
 my $clientSockets={};
-# { message destination => open socket }
-my $routingTable={};
 
+=pod
 my $myClientsIDs =
 	  {
 			# loginID => cleartext password
@@ -86,12 +87,13 @@ my $myClientsIDs =
 			'L4' => '76543210',
 			'M1' => 'M1qwerty'
 	  };
+=cut
 
-my	$authOK={};
 
 while(1)
 {
 	sleep(1);
+	$routingTable -> bcastLocalIpPort(CONFIG(MESS_MY_ID),CONFIG(MESS_MY_HOST),CONFIG(MESS_MY_PORT));
   my ($readyHandlesSet) = IO::Select->select($readSet, undef, undef, 1); 
 	if ($readyHandlesSet)
 	{
@@ -116,7 +118,7 @@ while(1)
 		}
 		else
 		{
-			$callData->sendData($routingTable->{$callData->getRaw->{DEST}}->[0]);
+			$routingTable->floodRoute(CONFIG(MESS_MY_ID),$callData,sub {});
 		}
 	}
 
@@ -132,14 +134,16 @@ while(1)
       $clientSockets->{$newSock}->{PORT} = $port;
       $clientSockets->{$newSock}->{IP} = $ipraw;
 			my $ipasc=join(".",unpack("C*",$ipraw));
+      $clientSockets->{$newSock}->{IPASC} = $ipasc;
       printf "opened socket for client at addr %s:%d\n",$ipasc,$port;
 
-			$newSock->authenticateOnServer($myClientsIDs);
-			my $clientID=$newSock->getAuth;
+			$newSock->authenticateOnServer(GET_AUTH_TABLE);
+			my $clientID=$newSock->getClientID;
 			if($clientID)
 			{	
 				$authOK->{$newSock}=$clientID;
-				$routingTable->{$clientID}=[$newSock,$ipasc,$port,CONFIG('MESS_MY_ID')];
+				say "Adding route to $clientID";
+				$routingTable->mRoute(CONFIG(MESS_MY_ID),$clientID,$newSock);
 			}
 			else
 			{
@@ -149,42 +153,30 @@ while(1)
     elsif ($authOK->{$readyHandle})
     {
       my $callData = new CallEventData;
-      if ($callData -> receiveData($readyHandle) != -1)
+      if ($callData->receiveData($readyHandle) != -1 )
       {
         
         print "FROM SOCK: ", Dumper($callData->getRaw);
-        my $dst = $callData->getRaw->{DEST};
-				my $src  = $callData->getRaw->{SRC};
-				my $method = $callData->getRaw->{METHOD};
-				my $argval = $callData->getRaw->{ARGVAL}; 
-        if($dst eq CONFIG('MESS_MY_ID'))
-        {
-				# process events addressed to MESS server
-					if ($method eq 'ping')
+				$routingTable->floodRoute(CONFIG(MESS_MY_ID),$callData,sub 
 					{
-						my $callData = new CallEventData;
-						my $messEvent = new MessEvent($dst,$src,"ping",undef,$argval);
-						$callData->setRaw($messEvent);
-						$callData->sendData($readyHandle);
-					}
-					else # forward to corresponding TC server
-					{
-					  $mq->sendMsg($callData->getFrozen);
-					}
-        }
-        else
-          {
-          my $destList=$routingTable->{$dst};
-					my $fwdDst;
-          foreach $fwdDst (@$destList)
-            {
-              $callData->sendData($fwdDst);
-            }
-          }
-      }
+					# process events addressed to this MESS server
+						if ($_[0]->getRaw->{METHOD} eq 'ping')
+						{
+							my $callData = new CallEventData;
+							my $messEvent = new MessEvent($_[0]->getRaw->{DEST},$_[0]->getRaw->{SRC},"ping",undef,$_[0]->getRaw->{ARGVAL});
+							$callData->setRaw($messEvent);
+							# route reply packet
+							$routingTable->floodRoute(CONFIG(MESS_MY_ID),$callData,sub {});
+						}
+						else # forward to attached TC server
+						{
+							$mq->sendMsg($callData->getFrozen);
+						}
+					});
+			}
 			else
 			{
-				goto CLOSE;
+				goto CLOSE
 			}
 		}
     else

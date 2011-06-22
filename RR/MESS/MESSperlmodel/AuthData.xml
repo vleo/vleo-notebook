@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<?meta name="GENERATOR" content="XML::Smart/1.6.9 Perl/5.012003 [linux]" ?>
+<auth>
+<!-- loginID pwd="cleartext password" -->
+			<L1 pwd="qwerty"/>
+			<L2 pwd="abcdef"/>
+			<L3 pwd="12345"/>
+			<L4 pwd="76543210"/>
+			<M1 pwd="M1qwerty"/>
+			<M2 pwd="M2qwerty"/>
+			<M3 pwd="M3qwerty"/>
+</auth>
+

@@ -102,7 +102,7 @@ sub authenticateOnServer
 		{
 		# MAYBE FIXME!!! we ignore $parts->{authzid} info
 			getsecret => 
-				sub { $_[2]->($clientIDs->{$_[1]->{user}}) }
+				sub { $_[2]->($clientIDs->{$_[1]->{user}}->{pwd}) }
 		}
 	);
 
@@ -145,10 +145,9 @@ sub authenticateOnServer
 	return;
 }
 
-sub getAuth
+sub getClientID
 {
-	my ($mySock) = @_;
-	my $me = refaddr $mySock;
+	my $me = refaddr shift;
 	return $auth{$me}->{'answer'}{'username'};
 }
 

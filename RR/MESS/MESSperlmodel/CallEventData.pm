@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 package MessEvent;
+use feature 'say';
 
 use strict;
 use Data::UUID;
@@ -8,7 +9,11 @@ sub new {
    my ($class,$src,$dest,$method,$argval,$retval) = @_;
    my $self={};
    $self->{'SRC'}=$src;
+   $self->{'SRCSUB'}=$src;
+   $self->{'SRCTYPE'}='C';
    $self->{'DEST'}=$dest;
+   $self->{'DESTSUB'}=$dest;
+   $self->{'DESTTYPE'}='S';
    $self->{'UUID'}=undef;
    $self->{'METHOD'}=$method;
    $self->{'ARGVAL'}=$argval;
@@ -82,7 +87,9 @@ sub receiveData {
 
    noZero:
    $len=read($sock,$oneByte,1);
-   return -1 if $len == 0;
+	 say "len=$len";
+   return -1 if $len == 0; 
+   return -1 unless $len; 
    $oneByte=unpack("C",$oneByte);
    printf "0x%02x ",$oneByte;
    if($oneByte != 0x00)
@@ -118,9 +125,11 @@ sub receiveData {
    my $packLen;
    read($sock,$packLenBuf,4);
    $packLen = unpack("N",$packLenBuf);
-   printf "reading pack of %d bytes:\n",$packLen;
+   print "reading pack of %d bytes:\n",$packLen;
    my $body;
-   read($sock,$body,$packLen);
+   $len=read($sock,$body,$packLen);
+	 say " ... read $len bytes";
+
    # remove 0x03 combinations from $body
    $body =~ s/\000\000\003/\000\000/gs;
    $body =~ s/\003$//s;

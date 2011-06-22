@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <?meta name="GENERATOR" content="XML::Smart/1.6.9 Perl/5.012003 [linux]" ?>
-<config PRIMARY="M2" SECONDARY="M3" TERTIARY="M1">
-  <M1 host="localhost" port="6666"/>
-  <M2 host="localhost" port="8888"/>
-  <M3 host="localhost" port="9999"/>
+<config> <!--PRIMARY="M1" SECONDARY="M2" TERTIARY="M3" --> 
+  <M1 host="localhost" port="6666" domain="GLBL"/>
+  <M2 host="localhost" port="8888" domain="D1"/>
+  <M3 host="localhost" port="9999" domain="D1"/>
 </config>
 

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <?meta name="GENERATOR" content="XML::Smart/1.6.9 Perl/5.012003 [linux]" ?>
 <config
-    MESS_MY_ID="M3"
-    MESS_MY_PWD="M3qwerty"
-    TC_SERV_MQ="/tcServerIn3"
-    TC_SERV_ID="S3"
->
+	MESS_MY_ID="M3"
+	MESS_MY_PWD="M3qwerty"
+	MESS_PRIMARY="M2"
+	MESS_MY_HOST="localhost"
+	MESS_MY_PORT="9999"
+	MESS_MY_DOMAIN="D1"
+	TC_SERV_MQ="/tcServerIn3"
+	TC_SERV_ID="S3"
+	>
 </config>
 

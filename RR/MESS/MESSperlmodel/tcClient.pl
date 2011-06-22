@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 use strict;
+use feature 'say';
 use AuthenticatedLink;
 use CallEventData;
 use Data::Dumper;
@@ -122,12 +123,28 @@ $returnData->receiveData($sock);
 print Dumper($returnData->getRaw);
 
 sleep(3);
-my $messEvent1 = new MessEvent(CONFIG('MY_ID'),CONFIG('MY_MESS_ID'),"pingtcs",{ a=>1, b=>2},undef);
+my $messEvent1 = new MessEvent(CONFIG('MY_ID'),'M2',"pingtcs",{ a=>1, b=>2},undef);
 $callData->setRaw($messEvent1);
 $callData->sendData($sock);
-
 $returnData->receiveData($sock);
 print Dumper($returnData->getRaw);
+
+sleep(3);
+$messEvent1 = new MessEvent(CONFIG('MY_ID'),'M2',"ping",{ a=>1, b=>2},undef);
+$callData->setRaw($messEvent1);
+$callData->sendData($sock);
+$returnData->receiveData($sock);
+print Dumper($returnData->getRaw);
+
+while($returnData->receiveData($sock)>0)
+{
+	say "events arrived";
+	# this return corresponds to previous call
+#	if ( UUID in list of calls made)
+#	{
+#	}
+  print Dumper($returnData->getRaw);
+}
 
 printf "Closing socket\n";
 $sock->close();
