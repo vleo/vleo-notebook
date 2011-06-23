@@ -12,7 +12,7 @@ use Scalar::Util 'refaddr';
 use Data::Dumper;
 use Time::HiRes 'gettimeofday';
 
-use CallEventData;
+use MessageTransport;
 
 
 my (%seenUUID,%localRoutes,%globalRT,%cid2mid,%sid2mid);
@@ -128,7 +128,7 @@ sub bcastLocalIpPort
 	my ($myID,$ip,$port) = @_;
 	#for all mess peers
 	my $rtbe = new MessEvent($myID,'_BCAST_','bcastIP_PORT',{ 'id' => $myID, 'ip' => $ip, 'port' => $port},undef);
-	my $callData = new CallEventData;
+	my $callData = new MessageTransport;
 	$callData->setRaw($rtbe);
 	$self->floodRoute($myID,$callData)
 }

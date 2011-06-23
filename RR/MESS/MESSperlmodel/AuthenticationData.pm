@@ -30,7 +30,7 @@ sub import
 		if(defined($opt_p))
 		{
 			die unless -e $opt_p;
-			$authData	= XML::Smart->new($opt_c);
+			$authData	= XML::Smart->new($opt_p);
 		}
 		else
 		{

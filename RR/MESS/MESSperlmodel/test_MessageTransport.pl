@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
-use CallEventData;
+use MessageTransport;
 use Data::Dumper;
 
-my $x = new CallEventData;
-my $y = new CallEventData;
+my $x = new MessageTransport;
+my $y = new MessageTransport;
 
 $hp={ a => 1, b => 2, t => {c => 11, d => 12}};
 $ap=[1,2,3,4,[5,6]];

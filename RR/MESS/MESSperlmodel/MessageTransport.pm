@@ -1,58 +1,30 @@
 #!/usr/bin/perl
-package MessEvent;
+package MessageTransport;
+
+use strict;
 use feature 'say';
+use Exporter;
+our @ISA=qw(Exporter); 
+our @EXPORT=qw(new setRaw getRaw setFrozen getFrozen receiveData sendData printDumper);
 
-use strict;
-use Data::UUID;
-
-sub new {
-   my ($class,$src,$dest,$method,$argval,$retval) = @_;
-   my $self={};
-   $self->{'SRC'}=$src;
-   $self->{'SRCSUB'}=$src;
-   $self->{'SRCTYPE'}='C';
-   $self->{'DEST'}=$dest;
-   $self->{'DESTSUB'}=$dest;
-   $self->{'DESTTYPE'}='S';
-   $self->{'UUID'}=undef;
-   $self->{'METHOD'}=$method;
-   $self->{'ARGVAL'}=$argval;
-   $self->{'RETVAL'}=$retval;
-
-   my $uuid = new OSSP::uuid;
-   $uuid->make("v1");
-   $self->{'UUID'}=$uuid->export("str");
-
-   bless $self,$class;
-   return $self;
-}
-
-1;
-
-package CallEventData;
-
-use strict;
 use FreezeThaw qw(freeze thaw);
 use Data::Dumper;
 
-=pod
-use Exporter;
+use MessMessage;
 
-our @ISA=qw(Exporter); 
-
-our @EXPORT=qw(
-&listenOnPort
-&connectToAddr
-);
-=cut
-
-sub new {
-   my $class = shift;
-   my $self={};
-   $self->{'RAW'}=undef;
-   $self->{'FROZEN'}=undef;
-   bless $self,$class;
-   return $self;
+sub new
+{
+	my $class = shift;
+	my $self={};
+	$self->{'RAW'}=undef;
+	$self->{'FROZEN'}=undef;
+	bless $self,$class;
+	if (@_)
+	{
+		my $message = new MessMessage(@_);
+		$self->setRaw($message);
+	};
+	return $self;
 }
 
 sub setRaw {
