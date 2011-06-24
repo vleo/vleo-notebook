@@ -7,10 +7,10 @@ use POSIX;
 use POSIX::RT::MQ;
 use XML::Smart;
 
+use MessMessage;
 use MessageTransport;
 
-use MessConfig;
-DEFAULT_CONFIG_FILE('MessConfig.xml');
+use MessConfig qw(MessConfig.xml c TC_SERV_MQ TC_SERV_ID MESS_MY_ID);
 
 use TwoWayMQLink;
 
@@ -18,19 +18,22 @@ my $mq = new TwoWayMQLink(TC_SERV_MQ);
 
 $mq->{IN}->blocking(1);
 
-my $messEvent = new MessEvent;
-my $callData = new MessageTransport;
-my $msg;
-while($msg=$mq->{IN}->receive())
+my $msg = new MessageTransport;
+my $mqMsg;
+while($mqMsg=$mq->{IN}->receive())
 {
-   $callData->setFrozen($msg);
-   print Dumper($callData->getRaw());
+   $msg->setFrozen($mqMsg);
+   $msg->print;
 	 # here methos are implemented in tcServer
-	 if ($callData->getRaw->{METHOD} eq 'pingtcs')
+	 if ($msg->get_METHOD eq 'pingtcs')
 	 {
-		 my $replyEvent = new MessEvent(TC_SERV_ID,$callData->getRaw->{SRC},'pingtcs',undef,$callData->getRaw->{ARGVAL});
-		 $callData->setRaw($replyEvent);
-		 $mq->{OUT}->send($callData->getFrozen);
+		 my $replyMsg = new MessageTransport(MT_RET,TC_SERV_ID,MESS_MY_ID,$msg->get_DSTSUB,$msg->get_DST,'pingtcs',$msg->get_ARGVAL,MS_OK,$msg->get_UUID);
+		 $mq->{OUT}->send($replyMsg->getFrozen);
+	 }
+	 else  # add other TC SERVER methods/event handlers here ^^^^^^^^^^^^^^^
+	 {
+		 my $replyMsg = new MessageTransport(MT_RET,TC_SERV_ID,MESS_MY_ID,$msg->get_DSTSUB,$msg->get_DST,$msg->get_METHOD,$msg->get_ARGVAL,MS_NOMETHOD,$msg->get_UUID);
+		 $mq->{OUT}->send($replyMsg->getFrozen);
 	 }
 }
 

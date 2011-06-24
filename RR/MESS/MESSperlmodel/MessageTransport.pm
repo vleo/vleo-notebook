@@ -5,12 +5,10 @@ use strict;
 use feature 'say';
 use Exporter;
 our @ISA=qw(Exporter); 
-our @EXPORT=qw(new setRaw getRaw setFrozen getFrozen receiveData sendData printDumper);
+our @EXPORT=qw(new);
 
 use FreezeThaw qw(freeze thaw);
 use Data::Dumper;
-
-use MessMessage;
 
 sub new
 {
@@ -41,7 +39,7 @@ sub setFrozen {
    return 0;
 }
 
-sub getRaw {
+sub getMsg {
    my $self = shift;
    return $self->{'RAW'};
 }
@@ -124,9 +122,19 @@ sub sendData {
 
 }
 
-sub printDumper {
+sub print {
    my $self = shift;
    print Dumper($self);
+}
+sub printMsg {
+   my $self = shift;
+	 printf "FROM MQ: %s@%s -> %s@%s : %s( %s )\n",
+		 $self->get_SRCSUB,
+	   $self->get_SRC,
+		 $self->get_DSTSUB,
+		 $self->get_DST,
+		 $self->get_METHOD,
+		 $self->get_ARGVAL;
 }
 
 1;

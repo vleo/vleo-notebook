@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-use feature say;
+use feature 'say';
 use strict;
 
 use IO::Select;
@@ -9,10 +9,11 @@ use Socket;
 use Data::Dumper;
 
 use AuthenticatedLink;
+use MessMessage;
 use MessageTransport;
 
 use TwoWayMQLink;
-use MessConfig;
+use MessConfig qw(MessConfig.xml c MESS_MY_ID MESS_MY_PWD TC_SERV_MQ MESS_PRIMARY TC_SERV_ID MESS_MY_HOST MESS_MY_PORT);
 use NameService;
 
 use RoutingTables;
@@ -26,7 +27,9 @@ my $mq = new TwoWayMQLink(TC_SERV_MQ,'reverse');
 $mq->{IN}->blocking(0);
 
 my $callData = new MessageTransport
-  (MT_CALL,MESS_MY_ID,SUBADDR_SELF,MESS_MY_ID,TC_SERV_ID,"mqRegister",{ messID => MESS_MY_ID });
+  (MT_CALL,SUBADDR_SELF,MESS_MY_ID,TC_SERV_ID,MESS_MY_ID,,"mqRegister",{ messID => MESS_MY_ID });
+
+say $callData->get_UUID;
 
 $mq->sendMsg($callData->getFrozen());
 
@@ -107,18 +110,8 @@ while(1)
 	{
 		my $callData = new MessageTransport;
 		$callData->setFrozen($msg);
-		print "FROM MQ: ",Dumper($callData->getRaw);
-		if($callData->getRaw->{DEST} eq MESS_MY_ID)
-		{
-			if ($callData->getRaw->{METHOD} eq 'pingtcs')
-			{
-				print Dumper($callData->getRaw);
-			}
-		}
-		else
-		{
-			$routingTable->floodRoute(MESS_MY_ID,$callData,sub {});
-		}
+		print "FROM MQ: "; $callData->printMsg;
+		$routingTable->floodRoute(MESS_MY_ID,$callData,sub {});
 	}
 
 	# process SOCK
@@ -155,21 +148,37 @@ while(1)
       if ($callData->receiveData($readyHandle) != -1 )
       {
         
-        print "FROM SOCK: ", Dumper($callData->getRaw);
+        print "FROM SOCK: ", $callData->printMsg;
 				$routingTable->floodRoute(MESS_MY_ID,$callData,sub 
 					{
-					# process events addressed to this MESS server
-						if ($_[0]->getRaw->{METHOD} eq 'ping')
+						my $msg=shift;
+					  # process events addressed to this MESS server itself or it's TC server
+						if ($msg->get_METHOD eq 'ping')
 						{
-							my $callData = new MessageTransport;
-							my $messEvent = new MessEvent($_[0]->getRaw->{DEST},$_[0]->getRaw->{SRC},"ping",undef,$_[0]->getRaw->{ARGVAL});
-							$callData->setRaw($messEvent);
+							if ($msg->get_DSTSUB eq SUBADDR_SELF)
+							{
+								my $callData = new MessageTransport
+									(MT_RET,SUBADDR_SELF,MESS_MY_ID,$msg->get_SRCSUB,$msg->get_SRC,"ping",$msg->get_ARGVAL,MS_OK,$msg->get_UUID);
+								# route reply packet
+								$routingTable->floodRoute(MESS_MY_ID,$callData,sub {});
+							}
+							elsif ($msg->get_DSTSUB eq TC_SERV_ID)
+							 # forward to attached TC server
+							{
+								$mq->sendMsg($callData->getFrozen);
+							}
+							else
+							{
+								die "should route to other subaddr even for this MESS_ID in routingTables::";
+							}
+						}
+						else	# unkown method, ADD METHODS / EVENT handlers here ^^^^^^^^^^^
+						{
+							say "got unhandled method ",$msg->get_METHOD," request";
+							my $callData = new MessageTransport
+								(MT_RET,SUBADDR_SELF,MESS_MY_ID,$msg->get_SRCSUB,$msg->get_SRC,msg->get_METHOD,undef,MS_NOMETHOD,$msg->get_UUID);
 							# route reply packet
 							$routingTable->floodRoute(MESS_MY_ID,$callData,sub {});
-						}
-						else # forward to attached TC server
-						{
-							$mq->sendMsg($callData->getFrozen);
 						}
 					});
 			}

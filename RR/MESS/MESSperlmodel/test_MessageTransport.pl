@@ -12,7 +12,7 @@ $v=123;
 $sp=\$v;
 
 $x->setRaw($hp);
-print Dumper($x->getRaw);
+print Dumper($x->getMsg);
 
 $y->setFrozen($x->getFrozen);
-print Dumper($y->getRaw);
+print Dumper($y->getMsg);

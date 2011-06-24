@@ -12,6 +12,7 @@ use Scalar::Util 'refaddr';
 use Data::Dumper;
 use Time::HiRes 'gettimeofday';
 
+use MessMessage;
 use MessageTransport;
 
 
@@ -23,13 +24,20 @@ sub new
 	bless \do{my $v},$class;
 }
 
+sub cRoute
+{
+	my $self=shift;
+	my $me=refaddr $self;
+	my ($dstsub,$dst,$sock);
+}
+
 sub mRoute
 {
 	my $self=shift;
 	my $me=refaddr $self;
+	my ($dst,$src,$sock,$type);
 	say "adding to routes ",join(":",@_);
 	$localRoutes{$me}->{$_[0]}->{$_[1]}->{sock}=$_[2] if @_ >=2;
-	$localRoutes{$me}->{$_[0]}->{$_[1]}->{type}=$_[3] if @_ >=3;
 	return $localRoutes{$me}->{$_[0]};
 }
 
@@ -55,33 +63,33 @@ sub floodRoute
 	my ($myID,$msg,$localProcessing) = @_;
 
 	# if UUID forwarded already - drop it
-	return if $seenUUID{$me}->{$msg->getRaw->{UUID}};
+	return if $seenUUID{$me}->{$msg->get_UUID};
 	# remember UUIDs for routed messages
-	$seenUUID{$me}->{$msg->getRaw->{UUID}}=gettimeofday;
+	$seenUUID{$me}->{$msg->get_UUID}=gettimeofday;
 
-	my $dst= $msg->getRaw->{DEST};
+	my $dst= $msg->get_DST;
 	my $sock;
 	say "message to $dst";
 	# process events addressed locally
-	if ($dst eq '_BCAST_' or $dst eq $myID)
+	if ($dst eq DST_BCAST or $dst eq $myID)
 	{
-		if ($msg->getRaw->{METHOD} eq 'bcastRT')
+		if ($msg->get_METHOD eq 'bcastRT')
 		{
-			my $dst = $msg->getRaw->{ARGVAL}->{SRC};
+			my $dst = $msg->get_SRC;
 		  my $gdst;
-			foreach $gdst (keys %{$msg->getRaw->{ARGVAL}->{rt}})
+			foreach $gdst (keys %{$msg->get_ARGVAL->{rt}})
 			{
-				$globalRT{$me}->{$gdst} = $msg->getRaw->{ARGVAL}->{rt}->{$gdst};
+				say "adding destinatin $gdst to globalRT";
+				$globalRT{$me}->{$gdst} = $msg->get_ARGVAL->{rt}->{$gdst};
 			}
 		}
-		elsif ($msg->getRaw->{METHOD} eq 'bcastIP_PORT')
+		elsif ($msg->get_METHOD eq 'bcastIP_PORT')
 		{
-			my $dst = $msg->getRaw->{SRC};
-			my $bc_id = $msg->getRaw->{ARGVAL}->{id};
-			if($bc_id ne $myID and $dst ne $myID)
+			my $bc_id = $msg->get_ARGVAL->{id};
+			if($bc_id ne $myID and $msg->get_SRC ne $myID)
 			{
-				my $bc_ip = $msg->getRaw->{ARGVAL}->{ip};
-				my $bc_port = $msg->getRaw->{ARGVAL}->{port};
+				my $bc_ip = $msg->getMsg->{ARGVAL}->{ip};
+				my $bc_port = $msg->getMsg->{ARGVAL}->{port};
 				if ( not grep { $bc_id eq $_ } (keys %{$localRoutes{$me}->{$myID}}) )
 				{
 					my $sock = new AuthenticatedLink($bc_ip,$bc_port);
@@ -127,9 +135,8 @@ sub bcastLocalIpPort
 	die if @_ < 3;
 	my ($myID,$ip,$port) = @_;
 	#for all mess peers
-	my $rtbe = new MessEvent($myID,'_BCAST_','bcastIP_PORT',{ 'id' => $myID, 'ip' => $ip, 'port' => $port},undef);
-	my $callData = new MessageTransport;
-	$callData->setRaw($rtbe);
+	my $callData = new MessageTransport
+		(MT_EVENT,SUBADDR_SELF,$myID,SUBADDR_SELF,DST_BCAST,'bcastIP_PORT',{ 'id' => $myID, 'ip' => $ip, 'port' => $port});
 	$self->floodRoute($myID,$callData)
 }
 
