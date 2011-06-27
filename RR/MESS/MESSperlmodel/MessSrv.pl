@@ -20,6 +20,7 @@ use RoutingTables;
 use AuthenticationData;
 
 use Authen::SASL qw(Perl);
+use Time::HiRes 'gettimeofday';
 
 
 # MY tcServer
@@ -95,7 +96,7 @@ my $myClientsIDs =
 while(1)
 {
 	sleep(1);
-	$routingTable -> bcastLocalIpPort(MESS_MY_ID,MESS_MY_HOST,MESS_MY_PORT);
+#	$routingTable -> bcastLocalIpPort(MESS_MY_ID,MESS_MY_HOST,MESS_MY_PORT);
   my ($readyHandlesSet) = IO::Select->select($readSet, undef, undef, 1); 
 	if ($readyHandlesSet)
 	{
@@ -119,6 +120,7 @@ while(1)
   foreach $readyHandle (@$readyHandlesSet) 
   { 
     if ($readyHandle == $serverSock) 
+		# NEW CLIENT CONNECTION
     {
       my ($newSock,$addr) = $readyHandle->accept();
       $readSet->add($newSock); 
@@ -142,25 +144,27 @@ while(1)
 				printf "Failure to authenticate socket %s\n",$newSock;
 			}
     } 
+		# EXISTING CONNECTION
     elsif ($authOK->{$readyHandle})
     {
-      my $callData = new MessageTransport;
-      if ($callData->receiveData($readyHandle) != -1 )
+      my $msg = new MessageTransport;
+      if ($msg->receiveData($readyHandle) != -1 )
       {
         
         print "FROM SOCK: ", $callData->printMsg;
 				$routingTable->floodRoute(MESS_MY_ID,$callData,sub 
+				# ROUTE CALLBACK vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 					{
-						my $msg=shift;
 					  # process events addressed to this MESS server itself or it's TC server
+						my ($localID,$msg)=@_;
 						if ($msg->get_METHOD eq 'ping')
 						{
 							if ($msg->get_DSTSUB eq SUBADDR_SELF)
 							{
 								my $callData = new MessageTransport
-									(MT_RET,SUBADDR_SELF,MESS_MY_ID,$msg->get_SRCSUB,$msg->get_SRC,"ping",$msg->get_ARGVAL,MS_OK,$msg->get_UUID);
+									(MT_RET,SUBADDR_SELF,$localID,$msg->get_SRCSUB,$msg->get_SRC,$msg->get_METHOD,{tm0=$msg->get_ARGVAL->{tm}, tm => gettimeofday},MS_OK,$msg->get_UUID);
 								# route reply packet
-								$routingTable->floodRoute(MESS_MY_ID,$callData,sub {});
+								$routingTable->floodRoute($localID,$callData,sub {});
 							}
 							elsif ($msg->get_DSTSUB eq TC_SERV_ID)
 							 # forward to attached TC server
@@ -176,10 +180,11 @@ while(1)
 						{
 							say "got unhandled method ",$msg->get_METHOD," request";
 							my $callData = new MessageTransport
-								(MT_RET,SUBADDR_SELF,MESS_MY_ID,$msg->get_SRCSUB,$msg->get_SRC,msg->get_METHOD,undef,MS_NOMETHOD,$msg->get_UUID);
+								(MT_RET,SUBADDR_SELF,$localID,$msg->get_SRCSUB,$msg->get_SRC,msg->get_METHOD,undef,MS_NOMETHOD,$msg->get_UUID);
 							# route reply packet
-							$routingTable->floodRoute(MESS_MY_ID,$callData,sub {});
+							$routingTable->floodRoute($localID,$callData,sub {});
 						}
+						# ROUTE CALLBACK ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 					});
 			}
 			else

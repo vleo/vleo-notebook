@@ -27,7 +27,7 @@ while($mqMsg=$mq->{IN}->receive())
 	 # here methos are implemented in tcServer
 	 if ($msg->get_METHOD eq 'pingtcs')
 	 {
-		 my $replyMsg = new MessageTransport(MT_RET,TC_SERV_ID,MESS_MY_ID,$msg->get_DSTSUB,$msg->get_DST,'pingtcs',$msg->get_ARGVAL,MS_OK,$msg->get_UUID);
+		 my $replyMsg = new MessageTransport(MT_RET,TC_SERV_ID,MESS_MY_ID,$msg->get_SRCSUB,$msg->get_SRC,$msg->get_METHOD,$msg->get_ARGVAL,MS_OK,$msg->get_UUID);
 		 $mq->{OUT}->send($replyMsg->getFrozen);
 	 }
 	 else  # add other TC SERVER methods/event handlers here ^^^^^^^^^^^^^^^
