@@ -7,7 +7,7 @@ use feature 'say';
 
 use Exporter;
 our @ISA=qw(Exporter); 
-our @EXPORT=qw(new);
+our @EXPORT=qw(new RT_MESS RT_TCC RT_TCS);
 
 use Scalar::Util 'refaddr';
 use Data::Dumper;
@@ -57,8 +57,8 @@ sub lRoute
 	die "should specify at least dst to lookup" unless $dst;
 	if(@_>1)
 	{
-		die "Must specify socket when adding local route" unless $sock;
-		die "Must specify connection type as MESS, TCC or TCS, got $type" unless grep { $type eq $_ } (RT_MESS, RT_TCC, RT_TCS);
+		die "Must specify socket when adding local route, caller:",caller unless $sock;
+		die "Must specify connection type as MESS, TCC or TCS, got $type, caller:",caller unless grep { $type eq $_ } (RT_MESS, RT_TCC, RT_TCS);
 		say "adding entry to local routing table: ",join(":",@_);
 		$localRoutes{$me}->{$dst}->{sock}=$sock;
 		$localRoutes{$me}->{$dst}->{type}=$type;
@@ -98,10 +98,12 @@ sub floodRoute
 	$seenUUID{$me}->{$msg->get_UUID}=gettimeofday;
 
 	my $dst= $msg->get_DST;
-	my $sock;
-	say "message $dst->get_METHOD to $dst";
+	my $dstsub= $msg->get_DSTSUB;
+	say "flood route ", $msg->get_TYPE, " message ",$msg->get_METHOD, " to ", $dstsub,"@","$dst, status:",$msg->get_STATUS;
+	say "ARGVAL:",Dumper($msg->get_ARGVAL);
 	# process events addressed locall MESS server
 	if ($dstsub eq SUBADDR_SELF and ($dst eq DST_BCAST or $dst eq $localID))
+#	if ($dst eq DST_BCAST or $dst eq $localID)
 	{
 		if ($msg->get_METHOD eq 'bcastRTE')
 		{
@@ -120,24 +122,54 @@ sub floodRoute
 			{
 				my $bc_ip = $msg->getMsg->{ARGVAL}->{ip};
 				my $bc_port = $msg->getMsg->{ARGVAL}->{port};
+				my $sock;
 				if ( not grep { $bc_id eq $_ } (keys %{$localRoutes{$me}->{$localID}}) )
 				{
 					my $sock = new AuthenticatedLink($bc_ip,$bc_port);
-					$self->mRoute($localID,$bc_id,$sock) if $sock;
+					$self->lRoute($localID,$bc_id,$sock) if $sock;
 				}
 			}
+		}
+		elsif ($msg->get_METHOD eq 'mqRegister') # this does not belong here - this is RET processing, not initial method call
+		{
+			my $mqSrc = $msg->get_SRC;
+			my $mqSub = $msg->get_SRCSUB;
+			say "This MESS server registered on $mqSub, status: ",$msg->get_STATUS;
 		}
 		else	# local tc-clients and tc-servers
 		{	&$localHandler($localID,$msg) }
 	}
+	# directly connected client destination (TCC or TCS)
+	elsif($dst eq $localID and defined $localRoutes{$me}->{$dstsub})
+	{
+		my $type =  $localRoutes{$me}->{$dstsub}->{type};
+		if($type eq RT_TCC)
+		{
+			my $sock;
+			print "sending to client peer $dstsub ";
+			$sock=$localRoutes{$me}->{$dstsub}->{sock};
+			$msg->sendData($sock)
+		}
+		elsif($type eq RT_TCS)
+		{
+			my $mq;
+			print "sending to tc-server peer $dstsub ";
+			$mq=$localRoutes{$me}->{$dstsub}->{sock};
+			$mq->sendMsg($msg->getFrozen);
+		}
+		else
+		{ die "message to local destination should be to SELF, BCASE, TCC or TCS, got $type"; }
+	}
 	# directly connected destination (another MESS server)
 	elsif(defined $localRoutes{$me}->{$dst})
 	{
+		my $sock;
 		print "sending to one peer $dst: ",Dumper($localRoutes{$me}->{$dst});
 		$sock=$localRoutes{$me}->{$dst}->{sock};
 		$msg->sendData($sock)
 	}
 	# send to all connected MESS peers, includes DST_BCAST
+	# this is FLOOD ROUTE, maybe FIXME - replace with "real" routing decistion, i.e. find optimal path using Bellman-Ford algorithm
 	else
 	{
 		print "sending to all connected peers: ";
@@ -145,7 +177,7 @@ sub floodRoute
 		{
 			if ($localRoutes{$me}->{$localID}->{$peer}->{type} eq RT_MESS)
 			{
-				print "$peer "
+				print "$peer ";
 				$msg->sendData($localRoutes{$me}->{$peer}->{sock})
 			}
 			print "\n";

@@ -6,6 +6,7 @@ use Data::Dumper;
 use POSIX;
 use POSIX::RT::MQ;
 use XML::Smart;
+use Time::HiRes 'gettimeofday';
 
 use MessMessage;
 use MessageTransport;
@@ -30,9 +31,14 @@ while($mqMsg=$mq->{IN}->receive())
 		 my $replyMsg = new MessageTransport(MT_RET,TC_SERV_ID,MESS_MY_ID,$msg->get_SRCSUB,$msg->get_SRC,$msg->get_METHOD,$msg->get_ARGVAL,MS_OK,$msg->get_UUID);
 		 $mq->{OUT}->send($replyMsg->getFrozen);
 	 }
+	 if ($msg->get_METHOD eq 'mqRegister')
+	 {
+		 my $replyMsg = new MessageTransport(MT_RET,TC_SERV_ID,MESS_MY_ID,$msg->get_SRCSUB,$msg->get_SRC,$msg->get_METHOD,{ tm => scalar(gettimeofday) },MS_OK,$msg->get_UUID);
+		 $mq->{OUT}->send($replyMsg->getFrozen);
+	 }
 	 else  # add other TC SERVER methods/event handlers here ^^^^^^^^^^^^^^^
 	 {
-		 my $replyMsg = new MessageTransport(MT_RET,TC_SERV_ID,MESS_MY_ID,$msg->get_DSTSUB,$msg->get_DST,$msg->get_METHOD,$msg->get_ARGVAL,MS_NOMETHOD,$msg->get_UUID);
+		 my $replyMsg = new MessageTransport(MT_RET,TC_SERV_ID,MESS_MY_ID,$msg->get_SRCSUB,$msg->get_SRC,$msg->get_METHOD,$msg->get_ARGVAL,MS_NOMETHOD,$msg->get_UUID);
 		 $mq->{OUT}->send($replyMsg->getFrozen);
 	 }
 }

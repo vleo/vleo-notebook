@@ -23,16 +23,18 @@ use Authen::SASL qw(Perl);
 use Time::HiRes 'gettimeofday';
 
 
+my $routingTable = new RoutingTables;
+
 # MY tcServer
 my $mq = new TwoWayMQLink(TC_SERV_MQ,'reverse');
 $mq->{IN}->blocking(0);
+$routingTable->lRoute(TC_SERV_ID,$mq,RT_TCS);
 
-my $callData = new MessageTransport
+my $regMsg = new MessageTransport
   (MT_CALL,SUBADDR_SELF,MESS_MY_ID,TC_SERV_ID,MESS_MY_ID,,"mqRegister",{ messID => MESS_MY_ID });
 
-say $callData->get_UUID;
-
-$mq->sendMsg($callData->getFrozen());
+#$mq->sendMsg($regMsg->getFrozen());
+$routingTable->floodRoute(MESS_MY_ID,$regMsg,sub{});
 
 # we need to pass structure of { methodName => "func1", argumentsStruct => { A=>1, B=>"qwerty"}, valueStruct => { X=>2,Y="QWERTY"} }
 # called relayed to appropriate TcServer
@@ -49,7 +51,6 @@ $mq->sendMsg($callData->getFrozen());
 #  }
 
 my $sockUpPrim;
-my $routingTable = new RoutingTables;
 my $readSet = new IO::Select();
 my $authOK={};
 
@@ -67,7 +68,7 @@ else
 	  NAME_SERVICE_PORT(MESS_PRIMARY)
 );
 	$sockUpPrim or die;
-	$routingTable->mRoute(MESS_MY_ID,MESS_PRIMARY,$sockUpPrim,'MESS');
+	$routingTable->lRoute(MESS_PRIMARY,$sockUpPrim,'MESS');
   $readSet->add($sockUpPrim);
 	$authOK->{$sockUpPrim}=MESS_PRIMARY;
 }
@@ -109,10 +110,10 @@ while(1)
 	my $msg;
 	while ($msg=$mq->recvMsg())
 	{
-		my $callData = new MessageTransport;
-		$callData->setFrozen($msg);
-		print "FROM MQ: "; $callData->printMsg;
-		$routingTable->floodRoute(MESS_MY_ID,$callData,sub {});
+		my $mqMsg = new MessageTransport;
+		$mqMsg->setFrozen($msg);
+		print "FROM MQ: "; $mqMsg->printMsg;
+		$routingTable->floodRoute(MESS_MY_ID,$mqMsg,sub {});
 	}
 
 	# process SOCK
@@ -137,7 +138,7 @@ while(1)
 			{	
 				$authOK->{$newSock}=$clientID;
 				say "Adding route to $clientID";
-				$routingTable->mRoute(MESS_MY_ID,$clientID,$newSock);
+				$routingTable->lRoute($clientID,$newSock,RT_TCC);
 			}
 			else
 			{
@@ -150,9 +151,8 @@ while(1)
       my $msg = new MessageTransport;
       if ($msg->receiveData($readyHandle) != -1 )
       {
-        
-        print "FROM SOCK: ", $callData->printMsg;
-				$routingTable->floodRoute(MESS_MY_ID,$callData,sub 
+        say "FROM SOCK: ", $msg->printMsg;
+				$routingTable->floodRoute(MESS_MY_ID,$msg,sub 
 				# ROUTE CALLBACK vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 					{
 					  # process events addressed to this MESS server itself or it's TC server
@@ -161,15 +161,15 @@ while(1)
 						{
 							if ($msg->get_DSTSUB eq SUBADDR_SELF)
 							{
-								my $callData = new MessageTransport
-									(MT_RET,SUBADDR_SELF,$localID,$msg->get_SRCSUB,$msg->get_SRC,$msg->get_METHOD,{tm0=$msg->get_ARGVAL->{tm}, tm => gettimeofday},MS_OK,$msg->get_UUID);
+								my $replyMsg = new MessageTransport
+									(MT_RET,SUBADDR_SELF,$localID,$msg->get_SRCSUB,$msg->get_SRC,$msg->get_METHOD,{tm0 => $msg->get_ARGVAL->{tm}, tm => scalar(gettimeofday)},MS_OK,$msg->get_UUID);
 								# route reply packet
-								$routingTable->floodRoute($localID,$callData,sub {});
+								$routingTable->floodRoute($localID,$replyMsg,sub {});
 							}
 							elsif ($msg->get_DSTSUB eq TC_SERV_ID)
 							 # forward to attached TC server
 							{
-								$mq->sendMsg($callData->getFrozen);
+								$mq->sendMsg($msg->getFrozen);
 							}
 							else
 							{
@@ -179,10 +179,10 @@ while(1)
 						else	# unkown method, ADD METHODS / EVENT handlers here ^^^^^^^^^^^
 						{
 							say "got unhandled method ",$msg->get_METHOD," request";
-							my $callData = new MessageTransport
+							my $replyMsg = new MessageTransport
 								(MT_RET,SUBADDR_SELF,$localID,$msg->get_SRCSUB,$msg->get_SRC,msg->get_METHOD,undef,MS_NOMETHOD,$msg->get_UUID);
 							# route reply packet
-							$routingTable->floodRoute($localID,$callData,sub {});
+							$routingTable->floodRoute($localID,$replyMsg,sub {});
 						}
 						# ROUTE CALLBACK ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 					});
