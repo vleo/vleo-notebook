@@ -121,7 +121,7 @@ while(1)
   foreach $readyHandle (@$readyHandlesSet) 
   { 
     if ($readyHandle == $serverSock) 
-		# NEW CLIENT CONNECTION
+		# NEW CLIENT or MESS CONNECTION
     {
       my ($newSock,$addr) = $readyHandle->accept();
       $readSet->add($newSock); 
@@ -138,7 +138,7 @@ while(1)
 			{	
 				$authOK->{$newSock}=$clientID;
 				say "Adding route to $clientID";
-				$routingTable->lRoute($clientID,$newSock,RT_TCC);
+				$routingTable->lRoute($clientID,$newSock,GET_TYPE($clientID));
 			}
 			else
 			{

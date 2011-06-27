@@ -146,14 +146,14 @@ sub floodRoute
 		if($type eq RT_TCC)
 		{
 			my $sock;
-			print "sending to client peer $dstsub ";
+			say "sending to client peer $dstsub";
 			$sock=$localRoutes{$me}->{$dstsub}->{sock};
 			$msg->sendData($sock)
 		}
 		elsif($type eq RT_TCS)
 		{
 			my $mq;
-			print "sending to tc-server peer $dstsub ";
+			say "sending to tc-server peer $dstsub";
 			$mq=$localRoutes{$me}->{$dstsub}->{sock};
 			$mq->sendMsg($msg->getFrozen);
 		}
@@ -173,14 +173,13 @@ sub floodRoute
 	else
 	{
 		print "sending to all connected peers: ";
-		foreach my $peer (keys %{$localRoutes{$me}->{$localID}})
+		foreach my $peer (keys %{$localRoutes{$me}})
 		{
-			if ($localRoutes{$me}->{$localID}->{$peer}->{type} eq RT_MESS)
+			print "$peer ";
+			if ($localRoutes{$me}->{$peer}->{type} eq RT_MESS)
 			{
-				print "$peer ";
 				$msg->sendData($localRoutes{$me}->{$peer}->{sock})
 			}
-			print "\n";
 		}
 	}
 }
