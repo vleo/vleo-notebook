@@ -13,7 +13,7 @@ use MessMessage;
 use MessageTransport;
 
 use TwoWayMQLink;
-use MessConfig qw(MessConfig.xml c MESS_MY_ID MESS_MY_PWD TC_SERV_MQ MESS_PRIMARY TC_SERV_ID MESS_MY_HOST MESS_MY_PORT);
+use MessConfig qw(MessConfig.xml c MESS_MY_ID MESS_MY_PWD TC_SERV_MQ MESS_PRIMARY TC_SERV_ID MESS_MY_HOST MESS_MY_PORT MESS_AUTO_LINKS);
 use NameService;
 
 use RoutingTables;
@@ -21,7 +21,6 @@ use AuthenticationData;
 
 use Authen::SASL qw(Perl);
 use Time::HiRes 'gettimeofday';
-
 
 my $routingTable = new RoutingTables;
 
@@ -97,7 +96,7 @@ my $myClientsIDs =
 while(1)
 {
 	sleep(1);
-#	$routingTable -> bcastLocalIpPort(MESS_MY_ID,MESS_MY_HOST,MESS_MY_PORT);
+	$routingTable -> bcastLocalIpPort(MESS_MY_ID,MESS_MY_HOST,MESS_MY_PORT);
   my ($readyHandlesSet) = IO::Select->select($readSet, undef, undef, 1); 
 	if ($readyHandlesSet)
 	{

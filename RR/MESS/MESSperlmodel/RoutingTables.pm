@@ -103,10 +103,10 @@ sub floodRoute
 	say "ARGVAL:",Dumper($msg->get_ARGVAL);
 	# process events addressed locall MESS server
 	if ($dstsub eq SUBADDR_SELF and ($dst eq DST_BCAST or $dst eq $localID))
-#	if ($dst eq DST_BCAST or $dst eq $localID)
 	{
 		if ($msg->get_METHOD eq 'bcastRTE')
 		{
+			goto ROUTE_NONLOCAL;
 			my $bcsrc = $msg->get_SRC;
 		  my $dst;
 			foreach $dst (keys %{$msg->get_ARGVAL->{rt}})
@@ -117,16 +117,17 @@ sub floodRoute
 		}
 		elsif ($msg->get_METHOD eq 'bcastIP_PORT')
 		{
+			goto ROUTE_NONLOCAL unless main::MESS_AUTO_LINKS;
 			my $bc_id = $msg->get_ARGVAL->{id};
 			if($bc_id ne $localID and $msg->get_SRC ne $localID)
 			{
 				my $bc_ip = $msg->getMsg->{ARGVAL}->{ip};
 				my $bc_port = $msg->getMsg->{ARGVAL}->{port};
 				my $sock;
-				if ( not grep { $bc_id eq $_ } (keys %{$localRoutes{$me}->{$localID}}) )
+				if ( not grep { $bc_id eq $_ } (keys %{$localRoutes{$me}}) )
 				{
-					my $sock = new AuthenticatedLink($bc_ip,$bc_port);
-					$self->lRoute($localID,$bc_id,$sock) if $sock;
+					my $sock = newClient AuthenticatedLink(main::MESS_MY_PWD,main::MESS_MY_ID,$bc_ip,$bc_port);
+					$self->lRoute($bc_id,$sock,RT_MESS) if $sock;
 				}
 			}
 		}
@@ -138,9 +139,10 @@ sub floodRoute
 		}
 		else	# local tc-clients and tc-servers
 		{	&$localHandler($localID,$msg) }
-	}
+	};
+	ROUTE_NONLOCAL:
 	# directly connected client destination (TCC or TCS)
-	elsif($dst eq $localID and defined $localRoutes{$me}->{$dstsub})
+	if($dst eq $localID and $dstsub ne SUBADDR_SELF and defined $localRoutes{$me}->{$dstsub})
 	{
 		my $type =  $localRoutes{$me}->{$dstsub}->{type};
 		if($type eq RT_TCC)
@@ -161,7 +163,7 @@ sub floodRoute
 		{ die "message to local destination should be to SELF, BCASE, TCC or TCS, got $type"; }
 	}
 	# directly connected destination (another MESS server)
-	elsif(defined $localRoutes{$me}->{$dst})
+	elsif($dst ne DST_BCAST and defined $localRoutes{$me}->{$dst})
 	{
 		my $sock;
 		print "sending to one peer $dst: ",Dumper($localRoutes{$me}->{$dst});
@@ -172,7 +174,7 @@ sub floodRoute
 	# this is FLOOD ROUTE, maybe FIXME - replace with "real" routing decistion, i.e. find optimal path using Bellman-Ford algorithm
 	else
 	{
-		print "sending to all connected peers: ";
+		print "sending --> $dst --> to all connected peers => ";
 		foreach my $peer (keys %{$localRoutes{$me}})
 		{
 			print "$peer ";
@@ -181,7 +183,10 @@ sub floodRoute
 				$msg->sendData($localRoutes{$me}->{$peer}->{sock})
 			}
 		}
+		say "<="
 	}
+	SKIP_ROUTING:
+	say "Message routed tm=", scalar(gettimeofday);
 }
 
 sub bcastLocalRT
