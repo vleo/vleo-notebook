@@ -22,6 +22,7 @@ sub import
 
 	# export GET_AUTH to invokation context
 	*{"$callPkg\::GET_AUTH"}=\&GET_AUTH;
+	*{"$callPkg\::GET_TYPE"}=\&GET_TYPE;
 	*{"$callPkg\::GET_AUTH_TABLE"}=\&GET_AUTH_TABLE;
 
 	if($_[1])
@@ -47,6 +48,11 @@ sub import
 sub GET_AUTH
 { 
   $authData->tree->{auth}->{$_[0]}->{pwd};
+}
+
+sub GET_TYPE
+{ 
+  $authData->tree->{auth}->{$_[0]}->{type};
 }
 
 sub GET_AUTH_TABLE

@@ -12,14 +12,12 @@ my $myRT = new RoutingTables;
 
 #say Dumper($myRT), report_size($myRT);
 
-$myRT->mRoute("M1","M2");
-$myRT->mRoute("M1","M3");
-$myRT->mRoute("M1","M4");
-$myRT->mRouteDel("M1","M4");
-$myRT->mRouteDel("M1","XX");
-$myRT->mRouteDel("M1","M2");
-$myRT->mRouteDel("M1","M3");
-$myRT->mRoute("M1","M2",[1,2,3]);
+$myRT->lRoute("M2",123,RT_MESS);
+$myRT->lRoute("M3",222,RT_MESS);
+$myRT->lRoute("M4",333,RT_MESS);
+$myRT->lRouteDel("M4");
+$myRT->lRouteDel("XX");
+$myRT->lRouteDel("M3");
 
-#say Dumper($myRT), report_size($myRT),Dumper($myRT->mRoute);
-print Dumper($myRT->mRoute("M1"));
+say join(":",map({sprintf "%s => %s ",$_,$myRT->lRoute("M2")->{$_} } keys(%{$myRT->lRoute("M2")})));
+say Dumper($myRT), report_size($myRT), 

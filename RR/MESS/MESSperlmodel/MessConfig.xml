@@ -7,6 +7,7 @@
 	MESS_MY_HOST="localhost"
 	MESS_MY_PORT="6666"
 	MESS_MY_DOMAIN="GLBL"
+	MESS_AUTO_LINKS="TRUE"
 	TC_SERV_MQ="/tcServerIn"
 	TC_SERV_ID="S1"
 	>

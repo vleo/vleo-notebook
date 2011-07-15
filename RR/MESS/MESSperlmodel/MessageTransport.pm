@@ -95,10 +95,10 @@ sub receiveData {
    my $packLen;
    read($sock,$packLenBuf,4);
    $packLen = unpack("N",$packLenBuf);
-   print "reading pack of %d bytes:\n",$packLen;
+   printf "reading pack of %d bytes ...",$packLen;
    my $body;
    $len=read($sock,$body,$packLen);
-	 say " ... read $len bytes";
+	 say " read $len bytes";
 
    # remove 0x03 combinations from $body
    $body =~ s/\000\000\003/\000\000/gs;
@@ -128,13 +128,14 @@ sub print {
 }
 sub printMsg {
    my $self = shift;
-	 printf "FROM MQ: %s@%s -> %s@%s : %s( %s )\n",
+	 printf "MSG: %s@%s -> %s@%s : %s( %s ):%s\n",
 		 $self->get_SRCSUB,
 	   $self->get_SRC,
 		 $self->get_DSTSUB,
 		 $self->get_DST,
 		 $self->get_METHOD,
-		 $self->get_ARGVAL;
+		 join(", ",map {sprintf "%s=>%s",$_,$self->get_ARGVAL->{$_}} keys(%{$self->get_ARGVAL})),
+		 $self->get_STATUS;
 }
 
 1;
