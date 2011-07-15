@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/2/trunk/protobuf/m4
+END
+acx_pthread.m4
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/trunk/protobuf/m4/acx_pthread.m4
+END
+stl_hash.m4
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/2/trunk/protobuf/m4/stl_hash.m4
+END

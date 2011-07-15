@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/166/trunk/perl/t
+END
+wire-numbers.t
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/166/trunk/perl/t/wire-numbers.t
+END
+encoder.t
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/164/trunk/perl/t/encoder.t
+END
+parse-from-string.t
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/161/trunk/perl/t/parse-from-string.t
+END
+memcache-service.t
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/159/trunk/perl/t/memcache-service.t
+END
+descriptors.t
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/165/trunk/perl/t/descriptors.t
+END
+decoder.t
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/164/trunk/perl/t/decoder.t
+END
+optional-fields.t
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/157/trunk/perl/t/optional-fields.t
+END
+wire-format.t
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/164/trunk/perl/t/wire-format.t
+END

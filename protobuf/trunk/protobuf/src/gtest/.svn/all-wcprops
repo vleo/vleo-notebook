@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/2/trunk/protobuf/src/gtest
+END
+gtest_prod.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest_prod.h
+END
+gtest-filepath.cc
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest-filepath.cc
+END
+gtest-spi.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest-spi.h
+END
+gtest-internal-inl.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest-internal-inl.h
+END
+gtest_pred_impl.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest_pred_impl.h
+END
+gtest-death-test.cc
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest-death-test.cc
+END
+gtest.cc
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest.cc
+END
+gtest.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest.h
+END
+gtest-death-test.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest-death-test.h
+END
+gtest-port.cc
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest-port.cc
+END
+gtest_main.cc
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest_main.cc
+END
+gtest-message.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/2/trunk/protobuf/src/gtest/gtest-message.h
+END

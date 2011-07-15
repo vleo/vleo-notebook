@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 67
+protoc
+protobuf-test
+unittest_proto_middleman
+.deps
+Makefile
+.libs
+
+END

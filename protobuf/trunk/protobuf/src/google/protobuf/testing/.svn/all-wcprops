@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/2/trunk/protobuf/src/google/protobuf/testing
+END
+googletest.cc
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/2/trunk/protobuf/src/google/protobuf/testing/googletest.cc
+END
+googletest.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/2/trunk/protobuf/src/google/protobuf/testing/googletest.h
+END
+file.cc
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2/trunk/protobuf/src/google/protobuf/testing/file.cc
+END
+file.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/trunk/protobuf/src/google/protobuf/testing/file.h
+END

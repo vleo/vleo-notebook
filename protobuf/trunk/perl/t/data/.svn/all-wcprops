@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/164/trunk/perl/t/data
+END
+unittest.proto
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/116/trunk/perl/t/data/unittest.proto
+END
+unittest_basic.proto
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/116/trunk/perl/t/data/unittest_basic.proto
+END
+memcache_service.proto
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/164/trunk/perl/t/data/memcache_service.proto
+END
+unittest_import.proto
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/67/trunk/perl/t/data/unittest_import.proto
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/118/trunk/perl/devtools
+END
+python-proto-shell.sh
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/79/trunk/perl/devtools/python-proto-shell.sh
+END
+proto2pm
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/17/trunk/perl/devtools/proto2pm
+END

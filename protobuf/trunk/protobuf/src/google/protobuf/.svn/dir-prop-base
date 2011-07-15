@@ -1,0 +1,15 @@
+K 10
+svn:ignore
+V 233
+unittest_mset.pb.cc
+unittest_import.pb.cc
+unittest_mset.pb.h
+unittest_import.pb.h
+unittest_embed_optimize_for.pb.cc
+unittest_embed_optimize_for.pb.h
+unittest_optimize_for.pb.cc
+unittest_optimize_for.pb.h
+unittest.pb.cc
+unittest.pb.h
+
+END

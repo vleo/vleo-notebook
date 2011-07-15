@@ -1,0 +1,14 @@
+Directory layout:
+
+ * protobuf:
+
+     Clone of:
+     http://protobuf.googlecode.com/files/protobuf-2.0.0beta.tar.gz
+
+     ... but with Perl support added.  That is, it auto-generates
+     really ugly Perl.
+
+ * perl
+
+     hand-written Perl.  for CPAN.  necessary dependency for the
+     aforementioned ugly auto-generated Perl.

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/168/trunk/perl/lib/Protobuf
+END
+Types.pm
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/164/trunk/perl/lib/Protobuf/Types.pm
+END
+Decoder.pm
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/166/trunk/perl/lib/Protobuf/Decoder.pm
+END
+AccessorNamingPolicy.pm
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/12/trunk/perl/lib/Protobuf/AccessorNamingPolicy.pm
+END
+Encoder.pm
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/166/trunk/perl/lib/Protobuf/Encoder.pm
+END
+WireFormat.pm
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/96/trunk/perl/lib/Protobuf/WireFormat.pm
+END

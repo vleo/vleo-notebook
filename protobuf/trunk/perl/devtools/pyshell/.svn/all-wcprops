@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/118/trunk/perl/devtools/pyshell
+END
+descriptor_pb2.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/118/trunk/perl/devtools/pyshell/descriptor_pb2.py
+END
+unittest_basic_pb2.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/118/trunk/perl/devtools/pyshell/unittest_basic_pb2.py
+END
+memcache_pb2.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/79/trunk/perl/devtools/pyshell/memcache_pb2.py
+END
+__import__.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/79/trunk/perl/devtools/pyshell/__import__.py
+END
+python-proto-shell-startup.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/118/trunk/perl/devtools/pyshell/python-proto-shell-startup.py
+END

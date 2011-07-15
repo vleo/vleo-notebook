@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/165/trunk/protobuf
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/6/trunk/protobuf/configure
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/6/trunk/protobuf/Makefile.in
+END
+generate_descriptor_proto.sh
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/2/trunk/protobuf/generate_descriptor_proto.sh
+END
+INSTALL.txt
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/protobuf/INSTALL.txt
+END
+COPYING.txt
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/protobuf/COPYING.txt
+END
+CHANGES.txt
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/protobuf/CHANGES.txt
+END
+depcomp
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/2/trunk/protobuf/depcomp
+END
+config.guess
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/6/trunk/protobuf/config.guess
+END
+config.sub
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/6/trunk/protobuf/config.sub
+END
+ltmain.sh
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/6/trunk/protobuf/ltmain.sh
+END
+config.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/protobuf/config.h.in
+END
+configure.ac
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/2/trunk/protobuf/configure.ac
+END
+missing
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/2/trunk/protobuf/missing
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/protobuf/Makefile.am
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/2/trunk/protobuf/README.txt
+END
+autogen.sh
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/2/trunk/protobuf/autogen.sh
+END
+CONTRIBUTORS.txt
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/protobuf/CONTRIBUTORS.txt
+END
+aclocal.m4
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/6/trunk/protobuf/aclocal.m4
+END
+install-sh
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/2/trunk/protobuf/install-sh
+END

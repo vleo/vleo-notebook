@@ -1,0 +1,16 @@
+rename perl_package options to be consistent with java.  same purposes exactly.
+
+make unittest.proto work
+  -- extensions
+  -- imports ("use" the perl_outer_package of the imported package)
+  -- negative enums are broken.  see t/wire-numbers.t
+
+Use ../protobuf/src/google/protobuf/test_util.cc to verify parsing of
+unittest.proto?
+
+Are nested_types and enum_types needed?
+
+Implement services and methods.
+
+Enhance makefiles to run protoc on .proto files and remove generated Perl
+files from svn.

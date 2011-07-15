@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/158/trunk/perl/lib/Protobuf/Attribute/Field
+END
+Scalar.pm
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/158/trunk/perl/lib/Protobuf/Attribute/Field/Scalar.pm
+END
+Repeated.pm
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/111/trunk/perl/lib/Protobuf/Attribute/Field/Repeated.pm
+END

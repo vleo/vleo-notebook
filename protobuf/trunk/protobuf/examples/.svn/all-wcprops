@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/2/trunk/protobuf/examples
+END
+AddPerson.java
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/protobuf/examples/AddPerson.java
+END
+ListPeople.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/trunk/protobuf/examples/ListPeople.java
+END
+addressbook.proto
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/trunk/protobuf/examples/addressbook.proto
+END
+add_person.cc
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/trunk/protobuf/examples/add_person.cc
+END
+list_people.cc
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/protobuf/examples/list_people.cc
+END
+add_person.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/2/trunk/protobuf/examples/add_person.py
+END
+list_people.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/protobuf/examples/list_people.py
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2/trunk/protobuf/examples/README.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/trunk/protobuf/examples/Makefile
+END
