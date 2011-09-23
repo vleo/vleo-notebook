@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-$lp=10;
+$lp=12;
 
 #srand(33);
 
