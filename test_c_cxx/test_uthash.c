@@ -25,27 +25,42 @@ void delete_user(struct my_struct *user) {
     HASH_DEL( users, user);  
 }
 
+void print_users(void) {
+  struct my_struct *current;
+  current=users;
+  while(current != NULL) 
+  {
+    printf("user id %s: name %s\n", current->id, current->name);
+    current=current->hh.next;
+  }
+}
+
 main(int argc,const char* argv[])
 {
   struct my_struct a = { .id = "cat", .name="mary" };
   struct my_struct b = { .id = "lion", .name="john" };
-  struct my_struct *c;
+  struct my_struct c = { .id = "donkey", .name="james" };
+  struct my_struct *x;
   
   add_user(&a);
   add_user(&b);
+  add_user(&c);
 
-  c = find_user("lion");
-  printf("%s\n",c ? c->name : "_NOT_FOUND_");
-  delete_user(c);
+  x = find_user("lion");
+  printf("%s\n",x ? x->name : "_NOT_FOUND_");
+  delete_user(x);
 
-  c = find_user("mary");
-  printf("%s\n",c ? c->name : "_NOT_FOUND_");
+  x = find_user("mary");
+  printf("%s\n",x ? x->name : "_NOT_FOUND_");
 
-  c = find_user("cat");
-  printf("%s\n",c ? c->name : "_NOT_FOUND_");
+  x = find_user("cat");
+  printf("%s\n",x ? x->name : "_NOT_FOUND_");
 
-  c = find_user("lion");
-  printf("%s\n",c ? c->name : "_NOT_FOUND_");
+  x = find_user("donkey");
+  printf("%s\n",x ? x->name : "_NOT_FOUND_");
 
-  
+  x = find_user("lion");
+  printf("%s\n",x ? x->name : "_NOT_FOUND_");
+
+  print_users();
 }
