@@ -402,7 +402,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 					- _id = GUID 6c142614-3349-49e9-8c6b-0236be5f6b61;
 				}
 			}
-			- _lastModifiedTime = "5.25.2011::14:5:48";
+			- _lastModifiedTime = "5.27.2011::21:13:35";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 48029d91-5098-4cc7-a8cf-e8c943fbc332;
 				- m_type = 0;
@@ -575,12 +575,12 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "TC_Client";
-						- _name = "TCP-sock";
+						- _name = "TCPsock";
 						- _id = GUID 39947dd1-f71c-48e1-95b3-e477ea4fe86d;
 					}
 					- m_pParent = GUID 85d8ef31-948b-42e6-89e0-2d511e775d1b;
 					- m_name = { CGIText 
-						- m_str = "TCP-sock";
+						- m_str = "TCPsock";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -695,12 +695,12 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "MESS";
-						- _name = "posix MQ";
+						- _name = "posixMQ";
 						- _id = GUID bcf4aca0-4b03-482e-b392-e97d16e26090;
 					}
 					- m_pParent = GUID 88213ccd-a374-417d-8998-ff68d32df3d2;
 					- m_name = { CGIText 
-						- m_str = "posix MQ";
+						- m_str = "posixMQ";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -761,12 +761,12 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "MESS";
-						- _name = "TCP-sock";
+						- _name = "TCPsock";
 						- _id = GUID d8e8fc3e-2401-4380-8199-67ade2d6a3e3;
 					}
 					- m_pParent = GUID 88213ccd-a374-417d-8998-ff68d32df3d2;
 					- m_name = { CGIText 
-						- m_str = "TCP-sock";
+						- m_str = "TCPsock";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -881,12 +881,12 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "TC_Server";
-						- _name = "posix MQ";
+						- _name = "posixMQ";
 						- _id = GUID c78f479b-2a48-4c9a-99d8-a0aee389ca0f;
 					}
 					- m_pParent = GUID 62f2a23e-7c3c-4135-b14f-c5c5cc8da512;
 					- m_name = { CGIText 
-						- m_str = "posix MQ";
+						- m_str = "posixMQ";
 						- m_style = "Arial" 10 0 0 0 1 ;
 						- m_color = { IColor 
 							- m_fgColor = 0;
@@ -1334,8 +1334,8 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 			}
 		}
 	}
-	- weakCGTime = 5.25.2011::13:59:13;
-	- strongCGTime = 5.20.2011::13:6:33;
+	- weakCGTime = 5.27.2011::21:13:3;
+	- strongCGTime = 5.27.2011::21:13:3;
 	- _defaultComposite = GUID a0512e2d-0ad0-4bf4-ad2f-868318791a3f;
 	- _eventsBaseID = -1;
 	- Classes = { IRPYRawContainer 
@@ -1346,7 +1346,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 			- _myState = 40960;
 			- _name = "TopLevel";
 			- _lastID = 3;
-			- weakCGTime = 5.20.2011::13:6:53;
+			- weakCGTime = 5.27.2011::21:13:3;
 			- strongCGTime = 5.20.2011::13:6:33;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
@@ -1443,7 +1443,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "MESS";
-						- _name = "TCP-sock";
+						- _name = "TCPsock";
 						- _id = GUID d8e8fc3e-2401-4380-8199-67ade2d6a3e3;
 					}
 					- _fromPort = { IHandle 
@@ -1451,7 +1451,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "TC_Client";
-						- _name = "TCP-sock";
+						- _name = "TCPsock";
 						- _id = GUID 39947dd1-f71c-48e1-95b3-e477ea4fe86d;
 					}
 				}
@@ -1488,7 +1488,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "TC_Server";
-						- _name = "posix MQ";
+						- _name = "posixMQ";
 						- _id = GUID c78f479b-2a48-4c9a-99d8-a0aee389ca0f;
 					}
 					- _fromPort = { IHandle 
@@ -1496,14 +1496,14 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "MESS";
-						- _name = "posix MQ";
+						- _name = "posixMQ";
 						- _id = GUID bcf4aca0-4b03-482e-b392-e97d16e26090;
 					}
 				}
 				{ IObjectLink 
 					- _id = GUID b41be549-865f-4f00-a5a8-fc3f54ceb645;
 					- _myState = 2048;
-					- _name = "connector_2";
+					- _name = "itsMESS_itsMESS";
 					- Stereotypes = { IRPYRawContainer 
 						- size = 1;
 						- value = 
@@ -1534,7 +1534,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "MESS";
-						- _name = "TCP-sock";
+						- _name = "TCPsock";
 						- _id = GUID d8e8fc3e-2401-4380-8199-67ade2d6a3e3;
 					}
 					- _fromPort = { IHandle 
@@ -1542,7 +1542,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 						- _filename = "SUBSYSTEMS.sbs";
 						- _subsystem = "SUBSYSTEMS";
 						- _class = "MESS";
-						- _name = "TCP-sock";
+						- _name = "TCPsock";
 						- _id = GUID d8e8fc3e-2401-4380-8199-67ade2d6a3e3;
 					}
 				}
