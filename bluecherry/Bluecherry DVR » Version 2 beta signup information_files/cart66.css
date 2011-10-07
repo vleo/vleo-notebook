@@ -1,0 +1,571 @@
+/* @override 
+	http://pro.cart66/wp-content/plugins/cart66-gh/cart66.css?ver=1.2.0
+*/
+
+#viewCartTable {
+  margin: 12px 0px 12px 0px;
+  border: 1px solid #CCCCCC;
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+}
+#viewCartTable th {
+	  border-bottom: 1px solid #CCCCCC;
+	}
+#viewCartTable td,
+#viewCartTable th {
+  padding: 5px 5px 5px 5px;
+  margin: 0px;
+  vertical-align: middle;
+  line-height: 1.5em;
+  text-align: left;
+}
+
+#viewCartTable th {
+  background-color: #EEEEEE;
+  vertical-align: middle;
+}
+
+#viewCartTable td.noBorder, #viewCartTable tr.subtotal, #viewCartTable tr.subtotal td, #viewCartTable tr.shipping td, #viewCartTable tr.tax td, #viewCartTable tr.total td, .noBorder td {
+	border-top: none !important;
+  border:none !important;
+}
+.alignRight {
+	text-align: right !important;
+	}
+.alignLeft {text-align: left !important;}
+.strong {
+	font-weight: bold !important;
+	}
+#viewCartTableNav {
+  margin: 0px;
+  width: 100%;
+  border: none !important;
+  display: table;
+}
+
+
+#continueShopping, #checkoutShopping {
+	display: inline-block;
+	}
+#checkoutShopping {
+	float: right;
+	}
+#Cart66CheckoutReplacementText {
+	width: 50%;
+	margin: 10px auto;
+	font-weight: bold;
+	}
+.Cart66TermsOfServiceWrapper {
+	width: 50%;
+	margin: 0 auto;
+	border: 1px solid #cccccc;
+	background-color: #efefef;
+	}
+	.Cart66TermsOfServiceWrapper div {
+	margin: 10px;
+	}
+	.Cart66TermsOfServiceWrapper .Cart66AcceptTermsButton {
+	display: block;
+	width: 200px;
+	margin: 20px auto;
+	}
+	.Cart66TermsTitle {
+		font-style: italic;
+	}
+#viewCartTable a, 
+#viewCartTable tbody,
+#viewCartTable img,
+#viewCartTableNav a, 
+#viewCartTableNav tr,
+#viewCartTableNav th,
+#viewCartTableNav td,
+#viewCartTableNav tbody,
+#viewCartTableNav img {
+  border: none !important;
+}
+
+#continueShopping {
+  border: none;
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+#paypalCheckout {
+  width: 145px; 
+}
+
+.Cart66Error {
+  background-color: #FEE;
+  border: 1px solid red;
+  width: 500px;
+  padding:15px;
+  margin: 15px 0px;
+  clear: both;
+}
+
+#Cart66ForgotPassword { display: none; }
+
+#Cart66ReceiptExpectation { margin-top: 7px; font-style: italic;}
+
+.Cart66NewsletterList .Cart66CheckboxList, #Cart66ExpressReview ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+
+
+.Cart66CartButton {
+  /* text-align: center; */
+  border: none !important;
+}
+
+.Cart66Price {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 3px 7px 4px 0px;
+  display: inline-block;
+}
+
+.Cart66CustomFieldDesc {
+  color: #777;
+  font-style: italic;
+  display: block;
+  padding: 0px;
+  margin: 0px;
+}
+
+.Cart66CustomTextField {
+  width: 225px;
+}
+
+.Cart66CustomTextarea {
+  width: 225px;
+  height: 90px;
+}
+
+.Cart66TableMed {
+  width: auto;
+  border: 0px;
+  border-collapse: collapse;
+}
+
+.Cart66TableMed th,
+.Cart66TableMed td {
+  margin: 0px;
+  text-align: left;
+  border: none;
+  padding: 3px 7px;
+}
+
+.Cart66TableMed td {
+  border-top: 1px solid #CFCFCF;
+}
+
+.Cart66TableMed td.canceled {
+  color: #858585;
+}
+
+.Cart66Note {
+  color: #888;
+}
+
+.Cart66GravityFormDisplay {
+  display: block;
+}
+
+.Cart66RemoveFormLink {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+}
+
+.Cart66ProRequired {
+  font-weight:normal; 
+  color:#B33; 
+  font-size:11px; 
+  background-color: #FEE;
+  border: 2px solid #B33;
+  padding: 3px;
+  text-align: center;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.Cart66ProRequired a {
+  color: #933;
+  font-weight: bold;
+}
+
+.Cart66Unavailable {
+  position: fixed;
+  border: 1px solid #70091A;
+  
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  
+  -moz-box-shadow: 7px 7px 15px #CCCCCC;
+  -webkit-box-shadow: 7px 7px 15px #CCCCCC;
+  box-shadow: 7px 7px 15px #CCCCCC;
+  
+  background-color: #EEEEEE;
+  padding: 5px 20px;
+  margin: 0px;
+  top: 25%;
+  left: 32%;
+  width: 400px;
+  height: auto;
+  color: black;
+  z-index: 100;
+}
+
+.Cart66Unavailable h2 {
+  line-height: 1.5em !important;
+}
+
+.Cart66Unavailable p {
+  line-height: 1.2em !important;
+}
+
+.Cart66OutOfStock {
+  color: #70091A;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.Cart66AjaxWarning {
+  color: #C00;
+  border: 1px solid #C55;
+  background-color: #EEE;
+  width: 200px;
+  padding: 7px;
+}
+
+.inventoryCountTableModal {
+  margin: 5px 0px;
+  padding: 10px;
+  width: 100%;
+  border-collapse:collapse;
+  color: black;
+}
+
+.inventoryCountTableModal td {
+  padding: 3px 5px;
+  border-bottom: 1px solid #CCC;
+}
+
+/* Cart66 Widget CSS */
+
+#Cart66WidgetCartLink {
+  display: block;
+}
+
+/* Cart66 Button CSS */
+
+.Cart66ButtonPrimary, .Cart66ButtonSecondary, #content .Cart66ButtonPrimary, 
+#content .Cart66ButtonSecondary, .Cart66CartButton .purAddToCart {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 20px;
+  height: 20px;
+  padding: 0 1em;
+  border: 1px solid #454545;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #445e67;
+  color: #fff !important;
+}
+.Cart66ButtonSecondary {
+  background-color: #2C3538;
+}
+#Cart66CheckoutButtonDiv .Cart66ButtonPrimary {
+	margin: 20px 30px;
+	}
+#couponCode, #updateCart {
+	display: block;
+	float: right;
+	margin: 0;
+	clear: both;
+	}
+a.Cart66ButtonPrimary, 
+a.Cart66ButtonSecondary {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+/* Cart66 Form CSS */
+.Cart66Success,
+.Cart66Error {
+  background-color: #FEE;
+  border: 1px solid red;
+  margin: 10px 0px;
+  padding: 5px 20px;
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px;
+  color: #633;
+}
+
+.Cart66Success {
+  background-color: #EFE;
+  border: 1px solid green;
+  color: #252;
+}
+
+.Cart66Success h1 {
+  color: #BCB;
+}
+.Cart66Error h1 {
+  color: #CBB;
+  font-size: 1.5em;
+}
+
+.phorm2 {
+  min-width: 550px;
+  clear: both;
+}
+
+.phorm2 .errorField {
+  border: 1px solid red;
+  background-color: #FEE;
+}
+#ccInfo ul {
+    margin:0;
+}
+#ccInfo li {
+	clear: none;
+	}
+.phorm2 ul {
+  margin: 0px;
+  padding: 0px;
+}
+.phorm2 ul li {
+  list-style: none !important;
+  background-image: none;
+  margin: 0px;
+  padding: 3px 0px 4px 0px !important;
+}
+
+.phorm2 ul li label {
+  display: inline-block;
+  width: 135px;
+  text-align: right;
+  vertical-align: top;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+.phorm2 ul li input {
+	margin:0;
+	}
+.phorm2 ul li label.short {
+  width: 80px;
+}
+
+.phorm2 ul.shortLabels li label {
+  width: 80px;
+}
+
+.phorm2 ul li span.description,
+.phorm2 ul li p.description {
+  color: #858585;
+  font-style: italic;
+  margin: 0px 0px 0px 140px;
+  padding: 2px 0px 3px 0px;
+  line-height: 1.2em !important;
+}
+
+.phorm2 ul li span.description {
+  margin: 0px 0px 0px 7px;
+}
+
+.phorm2 ul.shortLabels li p.description {
+  margin-left: 90px;
+}
+
+.phorm2 .button {
+  width: 75px;
+}
+
+.phorm2 .Cart66ErrorField {
+  background-color: #FEE;
+  border: 1px solid #F75;
+  padding: 3px;
+}
+
+.phorm2 .stateField {
+  width: 25px !important;
+  margin-left: 2px;
+}
+
+.phorm2 input[type=text],
+.phorm2 input[type=password] {
+  width: 130px;
+}
+
+.phorm2 p {
+  margin-bottom: 2px !important;
+}
+
+.state_text_field {
+  display: none;
+}
+
+/* Gravity Forms Cart View Styles */
+table .entry-details {
+  width: 100%;
+}
+
+table .entry-details tbody {
+  padding: 0px;
+  margin: 0px;
+  background-color: #fff;
+}
+
+#viewCartTable td .entry-view-field-name {
+  font-weight: bold;
+  background-color: #eee;
+  margin: 0px;
+  border: none;
+}
+
+td .entry-view-field-value {
+  padding-left: 25px !important;
+  border: none !important;
+}
+
+#ccInfo input[type=text], #accountInfo input[type=text], #accountInfo input[type=password] {
+	width: 45%;
+	}
+#ccInfo #payment-securityId {
+    width: 30px;
+}
+
+#paypalexpresscheckout {
+    clear:both;
+    float: right;
+    margin: 10px 10px 0px 0px;
+}
+#PayPalExpressCheckoutButton {
+    margin-right:7px;
+    text-align: left;
+}
+/* checkout-form.php */
+#payment-cardExpirationYear {
+    margin:0;
+}
+li .description {
+    color: #757575;
+}
+.Cart66Hidden {
+	visibility: hidden;
+}
+
+.noBottomBorder {
+	border-bottom: none;
+	}
+span.subscriptionOrMembership {
+	padding: 0px 1px 0px 10px; display: inline-block; width: 35px; background-color: transparent;
+	}
+.itemQuantity {
+	width: 35px; margin-left: 5px;
+	}
+
+.promoMessage {
+	color: red;
+	}
+
+#emptyCartMsg {
+	text-align: center;
+	}
+
+#set_shipping_zip_row th, #shipping_to_row th {
+	text-align: right;
+	}
+.haveCoupon {
+	margin-bottom: 0 !important;
+	padding: 0;
+	}
+.haveCoupon input {
+	margin-bottom: 0;
+	}
+.phorm2 h2 {
+	clear: none;
+	}
+    #billingInfo, #shippingInfo  {
+        float: left;
+        width: 51%;
+    }
+    #Cart66ExpressReview {
+		overflow: hidden;
+	}
+    #Cart66ExpressReview #shippingInfo {
+		float: none;
+		margin-left: 51%;
+		width: auto;
+	}
+	#createAccountDiv {
+		margin-top: 20px;
+	}
+    #paymentInfo, #accountInfo, #Cart66CheckoutButtonDiv {
+        float: none;
+        width: auto;
+        margin-left: 51%;
+    }
+    /* because IE7 misbehaves */
+    *:first-child+html #billingInfo{margin:0 -1% 0 0 ;}
+    *:first-child+html #shippingInfo{clear:both;}
+    
+	#shippingAddress {
+	    display: none;
+	}
+
+/* TOS Styles */
+.Cart66ShortcodeTOS{}
+.Cart66CartTOS{}
+.Cart66TermsOfServiceWrapper{
+	clear:both;
+	padding:10px 0px
+}
+.Cart66TermsTitle{}
+.Cart66TermsText{}
+.Cart66TermsAcceptance{}
+.Cart66AcceptTermsButton{}
+
+/* Advanced widget styles */
+.Cart66AdvancedWidgetCartTable {
+	width: 100%;
+	}
+.Cart66AdvancedWidgetCartTable td, .Cart66AdvancedWidgetCartTable th, .Cart66AdvancedWidgetCartTable tbody {
+	border: none;
+	}
+.Cart66AdvancedWidgetCartTable tr {
+	border-bottom: 1px solid #efefef;
+	}
+	.Cart66AdvancedWidgetCartTable .Cart66ShippingToRow {
+		border-bottom: none;
+	}
+.Cart66AdvancedWidgetCartTable .Cart66SubtotalRow {
+	border: none;
+	line-height: 35px;
+	height: 35px;
+	text-align: right;
+	font-weight: bold;
+	}
+.Cart66ProductTitle, .Cart66ProductSubtotal {
+	font-weight: bold;
+	}
+.Cart66QuanPrice {
+	display: block;
+	font-style: italic;
+	}
+.Cart66ProductSubtotalColumn, .Cart66ShippingRow td {
+	text-align: right;
+	}
+.Cart66WidgetViewCartCheckout {
+	text-align: center;
+	}

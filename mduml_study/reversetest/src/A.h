@@ -3,6 +3,7 @@
 #ifndef A_H_H
 #define A_H_H
 
+#include "B.h"
 class A
 {
 	
@@ -17,19 +18,6 @@ private:
 	int i;
 	
 	char j;
-	
-	
-};
-class B
-{
-	
-public:
-	B( const int n );
-	virtual int g( );
-	inline void s( const int n );
-	
-private:
-	int a;
 	
 	
 };
