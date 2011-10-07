@@ -1,4 +1,4 @@
-#!/home/vleo/downloads/parrot_install/bin/perl6
+#!/usr/bin/perl6
 
 use v6;
 
