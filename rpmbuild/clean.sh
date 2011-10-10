@@ -27,3 +27,4 @@ popd >/dev/null
 
 createDir SRPMS
 createCleanDir SOURCES
+createDir SPECS

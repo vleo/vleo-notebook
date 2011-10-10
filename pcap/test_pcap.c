@@ -8,8 +8,26 @@ static char errbuf[PCAP_ERRBUF_SIZE];
 static char inputFile[]="input.pcap";
 static char outputFile[]="output.pcap";
 
-u_int16_t cksum(void* buf, int len)
+u_int16_t cksum(void* addr, int cnt)
 {
+	register long sum = 0;
+
+	while ( cnt > 1 )
+	{
+		/*  This is the inner loop */
+		sum +=  *(unsigned short*)addr++;
+		cnt -= 2;
+	}
+
+	/*  Add left-over byte, if any */
+	if ( cnt > 0 )
+		sum += * (unsigned char *) addr;
+
+	/*  Fold 32-bit sum to 16 bits */
+	while (sum>>16)
+		sum = (sum & 0xffff) + (sum >> 16);
+
+	return ~sum;
 }
 
 int main(int argc, const char* argv[])
