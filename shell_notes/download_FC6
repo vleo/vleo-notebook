@@ -1,0 +1,7 @@
+for n in 1 2 3 4 5
+do
+wget -c  http://ftp.chg.ru/pub/Linux/fedora/linux/core/6/i386/iso/FC-6-i386-disc$n.iso
+done
+wget -c http://ftp.chg.ru/pub/Linux/fedora/linux/core/6/i386/iso/FC-6-i386-rescuecd.iso
+wget -c http://ftp.chg.ru/pub/Linux/fedora/linux/core/6/i386/iso/SHA1SUM
+

@@ -9,7 +9,7 @@ sudo cat >> /etc/sysctl.conf <<EOT
 # approx 1280*1024*3*65
 kernel.shmmax = 256000000 
 # pages of 4096 == 8 GB
-kernal.shmall = 2097152 
+kernel.shmall = 2097152 
 EOT
 
 sudo sysctl -p

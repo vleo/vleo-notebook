@@ -1,7 +1,7 @@
 I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 { IComponent 
 	- _id = GUID 6dbc1990-718c-4533-8fb9-7f0f57476a87;
-	- _myState = 139264;
+	- _myState = 8192;
 	- _name = "Simulate";
 	- m_buildType = Executable;
 	- m_libraries = "";
@@ -15,7 +15,16 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 		- _name = "Files";
 		- m_path = "";
 		- Elements = { IRPYRawContainer 
-			- size = 0;
+			- size = 1;
+			- value = 
+			{ IHandle 
+				- _m2Class = "IClass";
+				- _filename = "SUBSYSTEMS.sbs";
+				- _subsystem = "SUBSYSTEMS";
+				- _class = "";
+				- _name = "Marshall";
+				- _id = GUID 6b265412-c2b7-4d25-95b0-13e49dd7a107;
+			}
 		}
 		- Files = { IRPYRawContainer 
 			- size = 0;
@@ -62,7 +71,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 			- _scopeType = Explicit;
 			- _libraries = "";
 			- _additionalSources = "";
-			- _standardHeaders = "";
+			- _standardHeaders = "stdio.h";
 			- _includePath = "";
 			- _targetMain = "";
 			- _instrumentation = Animation;
@@ -75,7 +84,16 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 				- size = 0;
 			}
 			- InitialInstances = { IRPYRawContainer 
-				- size = 0;
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IClass";
+					- _filename = "SUBSYSTEMS.sbs";
+					- _subsystem = "SUBSYSTEMS";
+					- _class = "";
+					- _name = "Marshall";
+					- _id = GUID 6b265412-c2b7-4d25-95b0-13e49dd7a107;
+				}
 			}
 			- _root = { IFolder 
 				- _id = GUID bb22b930-27c4-4001-bcbe-4ed6b13ade0c;
@@ -89,48 +107,12 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 					- size = 0;
 				}
 			}
-			- weakCGTime = 5.20.2011::7:0:27;
-			- strongCGTime = 5.20.2011::6:59:50;
+			- weakCGTime = 5.27.2011::21:8:55;
+			- strongCGTime = 5.27.2011::21:8:55;
 			- AnimScopeElements = { IRPYRawContainer 
 				- size = 0;
 			}
 			- m_allInAnimScope = 1;
-		}
-	}
-	- HandlesInMe = { IRPYRawContainer 
-		- size = 4;
-		- value = 
-		{ IHandle 
-			- _m2Class = "ISubsystem";
-			- _filename = "TOPLEVEL.sbs";
-			- _subsystem = "";
-			- _class = "";
-			- _name = "TOPLEVEL";
-			- _id = GUID 992d8b09-1501-404b-89f3-fe6e193ae19a;
-		}
-		{ IHandle 
-			- _m2Class = "IProfile";
-			- _filename = "SysML.sbs";
-			- _subsystem = "";
-			- _class = "";
-			- _name = "SysML";
-			- _id = GUID d9689b73-885e-44c4-896b-de43defa0a33;
-		}
-		{ IHandle 
-			- _m2Class = "ISubsystem";
-			- _filename = "SUBSYSTEMS.sbs";
-			- _subsystem = "";
-			- _class = "";
-			- _name = "SUBSYSTEMS";
-			- _id = GUID 99a39984-a3c0-46f8-9e45-169c0744c0e2;
-		}
-		{ IHandle 
-			- _m2Class = "ISubsystem";
-			- _filename = "ANALISYS.sbs";
-			- _subsystem = "";
-			- _class = "";
-			- _name = "ANALISYS";
-			- _id = GUID 9d99068f-ea59-43e1-ad52-9a69b1d210d6;
 		}
 	}
 	- VariationPoints = { IRPYRawContainer 
@@ -139,7 +121,7 @@ I-Logix-RPY-Archive version 8.5.2 C++ 2030848
 	- SelectedVariants = { IRPYRawContainer 
 		- size = 0;
 	}
-	- weakCGTime = 5.20.2011::6:59:31;
-	- strongCGTime = 5.20.2011::6:59:31;
+	- weakCGTime = 5.27.2011::21:48:1;
+	- strongCGTime = 5.27.2011::21:48:1;
 }
 
