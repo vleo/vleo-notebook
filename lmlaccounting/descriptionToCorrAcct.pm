@@ -156,6 +156,7 @@ qr/KALL8/,
 qr/^QWEST/,
 qr/^CIT INTERNET/,
 qr/PAYPAL INST XFER/,
+qr/WEB PAYPAL TRANSFER/,
 qr/SKYPE/
 
 ] ],
@@ -165,6 +166,7 @@ qr/SKYPE/
 [
 qr/^GEOTRUST/,
 qr/^NETWORK SOLUTIONS/,
+qr/^POS NETWORK SOL/,
 qr/NAMECHEAPINC/
 ] ],
 
@@ -197,6 +199,7 @@ qr/CONSOURCE/
 5700,
 [
 qr/^OFFICE DEPOT/,
+qr/^POS OFFICE DEPO/,
 qr/BEST BUY/
 ] ],
 
