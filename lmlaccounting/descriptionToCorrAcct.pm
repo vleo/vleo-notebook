@@ -133,6 +133,7 @@ qr/LMA INC/
 5770,
 [
 qr/^USPS/,
+qr/^POS USPS/,
 qr/THE UPS STORE/,
 qr/^300 W SOUTH AVE/,
 qr/^113 9TH ST/,
@@ -144,6 +145,7 @@ qr/^UPS/
 5650,
 [
 qr/^GOOGLE/,
+qr/^POS GOOGLE/,
 qr/^Essen Trade Show/
 ] ],
 
