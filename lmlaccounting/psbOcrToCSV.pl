@@ -260,7 +260,9 @@ sub readTransactions(\@$$\$\$)
      $runningBalance += $amount;
   }
   return 1;
-}
+} 
+
+### MAIN ###
 
 my %statementDate;
 my %lastStatementDate;
