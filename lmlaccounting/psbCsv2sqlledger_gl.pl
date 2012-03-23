@@ -63,7 +63,11 @@ my($withdrTot, $depTot, $amount, $amt, $debitacc, $creditacc, $acctsrc, $acctmem
 
 while ( my $lin = $csv->getline_hr($fh) ) {
 
-  $bankAcct = $lin->{'Account'};
+  #print join(':',%$lin)."\n";
+
+  $bankAcct = $lin->{'Account Number'};
+  #die "Account Number must be 64084, got:$bankAcct\n"  unless $bankAcct == 64084;
+  next unless $bankAcct == 64084;
 
 
   my($mnum,$day,$year) = split(/\//,$lin->{'Post Date'});
@@ -104,9 +108,7 @@ while ( my $lin = $csv->getline_hr($fh) ) {
     $acctmemo="memo_2";
   };
 
-   if ($memo)
-  {
-  printf $fOut "./gl.pl 'action=post&login=vleo&password=tmxsybs&path=bin/mozilla&transdate=%s&description=%s&accno_1=%s&debit_1=%s&accno_2=%s&credit_2=%s&rowcount=2&%s=%s&%s=%s'\n",
+  printf $fOut "gl.pl 'action=post&login=vleo&password=tmxsybs&path=bin/mozilla&transdate=%s&description=%s&accno_1=%s&debit_1=%.2f&accno_2=%s&credit_2=%.2f&rowcount=2&%s=%s".($memo ? "&%s=%s":"")."'\n",
          sqesc(uri_escape($date)),
          sqesc(uri_escape($descr)),
          $debitacc,
@@ -115,19 +117,6 @@ while ( my $lin = $csv->getline_hr($fh) ) {
          $amt,
          $acctsrc,sqesc(uri_escape('PSBREPORT')),
          $acctmemo,sqesc(uri_escape($memo));
-  }
-  else
-  {
-  printf $fOut "./gl.pl 'action=post&login=vleo&password=tmxsybs&path=bin/mozilla&transdate=%s&description=%s&accno_1=%s&debit_1=%s&accno_2=%s&credit_2=%s&rowcount=2&%s=%s'\n",
-         sqesc(uri_escape($date)),
-         sqesc(uri_escape($descr)),
-         $debitacc,
-         $amt,
-         $creditacc,
-         $amt,
-         $acctsrc,sqesc(uri_escape('PSBREPORT'));
-  }
-
 
   printf STDERR "%8s %9.2f %9.2f %8s %10s %s\n",$memo,$dep,$withdr,$corracct,$date,$descr if $opt_v;
 }
