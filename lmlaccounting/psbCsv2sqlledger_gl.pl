@@ -17,10 +17,11 @@ sub sqesc
 
 ### OPTIONS ###
 
-getopts("i:o:m:vhH");
+getopts("i:o:m:y:vhH");
 our $opt_i;
 our $opt_o;
 our $opt_m;
+our $opt_y;
 our $opt_v;
 our $opt_h;
 our $opt_H;
@@ -37,6 +38,7 @@ Mandatory:
     -o <output file>  
 Optional:
     -m <month>        do for just one month
+    -y <year>         do for year given
     -v                Print text report on STDERR
     -h                this help
     -H                Input CSV file format description
@@ -65,6 +67,7 @@ while ( my $lin = $csv->getline_hr($fh) ) {
 
 
   my($mnum,$day,$year) = split(/\//,$lin->{'Post Date'});
+  next if $opt_y and $opt_y != $year;
   next if $opt_m and $opt_m != $mnum;
    
   my $date=sprintf("%04d-%02d-%02d",$year,$mnum,$day);
