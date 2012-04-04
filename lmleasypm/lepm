@@ -8,7 +8,7 @@ while true ; do
            -e ) shift; opt_r=1 ;;
            -i ) shift; opt_i=1 ;;
            -h ) cat <<EOT
-Usage: $0 -r|-i [-h]
+Usage: $0 -e|-i [-h]
    Installs project with 'make install' and records files installed in
    /usr/local into install.files
 Options:

@@ -1,0 +1,17 @@
+
+#__FILE__ _"/home/vleo/LML/notebook/mduml_study/reversetest/t1/B.h" 0
+/**
+ * @(#) B.h
+ */
+
+             
+             
+
+class B
+{
+	int xyz;
+	
+	
+};
+
+      

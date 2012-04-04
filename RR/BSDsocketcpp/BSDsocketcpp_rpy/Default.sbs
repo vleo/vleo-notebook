@@ -1,0 +1,61 @@
+I-Logix-RPY-Archive version 8.5.2 C++ 2030848
+{ ISubsystem 
+	- _id = GUID e97a16cf-73cb-4b29-a8d2-43dce76ea263;
+	- _myState = 8192;
+	- _name = "Default";
+	- _lastID = 2;
+	- weakCGTime = 5.23.2011::14:2:6;
+	- strongCGTime = 1.1.1970::3:0:0;
+	- _defaultComposite = GUID 5e0dd49c-ac06-4162-b480-478b6555933c;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ IClass 
+			- _id = GUID 5e0dd49c-ac06-4162-b480-478b6555933c;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- weakCGTime = 1.1.1970::3:0:0;
+			- strongCGTime = 1.1.1970::3:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID ae406ce4-e833-48e0-a033-f2cb2088be40;
+			- _myState = 8192;
+			- _name = "TCPIPSocket";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "SysML.sbs";
+					- _subsystem = "SysML::Blocks";
+					- _class = "";
+					- _name = "block";
+					- _id = GUID f685432f-691e-4ff1-be70-4d09d19457e1;
+				}
+			}
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IDiagram";
+				- _filename = "";
+				- _subsystem = "";
+				- _class = "";
+				- _name = "Model1";
+				- _id = GUID 8fbd7281-110b-425b-8de3-c2a2b9924925;
+			}
+			- weakCGTime = 5.23.2011::14:2:50;
+			- strongCGTime = 5.23.2011::14:2:50;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 1.1.1970::3:0:0;
+}
+

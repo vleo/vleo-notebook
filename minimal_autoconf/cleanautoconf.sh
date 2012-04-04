@@ -1,5 +1,6 @@
 #!/bin/sh
 if [ ! -d ./m4 ] ; then mkdir m4; fi
+LTM4='libtool.m4  lt~obsolete.m4  ltoptions.m4  ltsugar.m4  ltversion.m4'
 
 echo 'Cleaning all autoreconf generated files'
 
@@ -27,7 +28,8 @@ configure \
 depcomp \
 install-sh \
 ltmain.sh \
-m4/*.m4 \
 missing \
 *~
+
+for f in $LTM4; do rm -f m4/$f; done
 

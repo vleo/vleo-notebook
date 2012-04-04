@@ -1,0 +1,36 @@
+
+#__FILE__ _"/home/vleo/LML/notebook/mduml_study/reversetest/t1/A.h" 0
+/**
+ * @(#) A.h
+ */
+
+             
+             
+
+             
+#__FILE__ _"/home/vleo/LML/notebook/mduml_study/reversetest/t1/B.h" 0
+/**
+ * @(#) B.h
+ */
+
+             
+             
+
+class B
+{
+	int xyz;
+	
+	
+};
+
+      
+
+#__FILE__ _"/home/vleo/LML/notebook/mduml_study/reversetest/t1/A.h" 8
+class A
+{
+	B b;
+	
+	
+};
+
+      
