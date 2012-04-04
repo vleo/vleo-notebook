@@ -1,0 +1,39 @@
+Revision history for Perl extension Net::Libdnet.
+
+0.95 Sun Mar 13 23:47:10 CET 2011
+   - new: added ubuntu and standard patchs. See README.
+
+0.94 Fri Jan 14 11:09:49 CET 2011
+   - bugfix: tohash method in pod
+   - applied http://rt.cpan.org/Public/Bug/Display.html?id=52359
+
+0.93 Thu Jan 13 11:07:07 CET 2011
+   - update: makes components more inline with local install 
+     of libdnet
+   - update: copyright notice
+
+0.92 Wed May 13 20:59:41 CEST 2009
+   - applied http://rt.cpan.org/Ticket/Display.html?id=43899
+   - applied http://rt.cpan.org/Ticket/Display.html?id=45697
+   - copyright notice update
+
+0.91 Sun Dec  7 19:15:43 CET 2008
+   - new: Net::Libdnet::Intf methods now return a Net::Libdnet::Entry::Intf object
+   - new: Net::Libdnet::Intf now also has getSrcIntfFromDst(), getSrcIpFromDst()
+   - update: constants renamed to be prefixed with DNET_
+
+0.90 Tue Nov 25 22:44:42 CET 2008
+   - complete rewrite of XS code
+   - near full implementation of libdnet API
+   - two APIs: a low-level and a high-level object oriented one
+   - backward compatibility should remain
+
+0.02 Tue Nov 25 20:59:27 CET 2008
+   - ownership transfered to me
+   - updated copyright notices
+   - still uses a BSD license
+
+0.01 Wed Jul  7 21:11:29 2004
+   Original version
+   Tested on FreeBSD 5.2.1
+
