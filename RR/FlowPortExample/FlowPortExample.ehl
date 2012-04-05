@@ -1,0 +1,8 @@
+[Op Calls]
+[Events]
+itsB->GEN(printB1())`Default::B
+block_3[1]->GEN(ev0())`block_3
+itsBlock_3->GEN(ev0())`block_3
+itsBlock_3->GEN(ev0())`Default::block_3
+[Active Breakpoints]
+[Inactive Breakpoints]

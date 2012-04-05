@@ -1,0 +1,126 @@
+I-Logix-RPY-Archive version 8.5.2 * 2030848
+
+- m_fileModifyTime = { IRPYRawContainer 
+	- size = 10;
+	- value = "Simulate/Cygwiin/A.cpp" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/A.h" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/B.cpp" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/B.h" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/Default.cpp" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/Default.h" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/FlowPortInterfaces.cpp" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/FlowPortInterfaces.h" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/intFlowInterface.cpp" 5.25.2011::21:56:55
+	"Simulate/Cygwiin/intFlowInterface.h" 5.25.2011::21:56:55
+	
+}
+- size = 12;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID 4fd7c676-c914-43e0-aa10-095d83d3bbc7;
+}
+- genTime = 5.25.2011::21:51:8;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID 7b0cc0db-1857-438c-b786-feccaccf5867;
+}
+- genTime = 5.25.2011::21:54:35;
+- hElement = { IHandle 
+	- _m2Class = "IClass";
+	- _filename = "Default.sbs";
+	- _subsystem = "Default";
+	- _class = "";
+	- _name = "A";
+	- _id = GUID c8d2d147-8c04-42c0-8005-c21822341335;
+}
+- genTime = 5.25.2011::21:56:55;
+- hElement = { IHandle 
+	- _m2Class = "ISubsystem";
+	- _filename = "FlowPortInterfaces.sbs";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "FlowPortInterfaces";
+	- _id = GUID 21427d49-73a6-420c-b90c-39353103d3d6;
+}
+- genTime = 5.25.2011::21:56:55;
+- hElement = { IHandle 
+	- _m2Class = "ISubsystem";
+	- _filename = "Default.sbs";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "Default";
+	- _id = GUID f98dfb49-bd36-4b14-9ea4-207018f7f7f3;
+}
+- genTime = 5.25.2011::21:56:55;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID 15f1a2fc-041c-4773-b577-2e5e03885392;
+}
+- genTime = 5.25.2011::21:54:35;
+- hElement = { IHandle 
+	- _m2Class = "IClass";
+	- _filename = "Default.sbs";
+	- _subsystem = "Default";
+	- _class = "";
+	- _name = "B";
+	- _id = GUID c7ff763b-a78e-433e-aa41-584b86581b74;
+}
+- genTime = 5.25.2011::21:56:55;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID 1fa8d0fa-44cc-4087-936e-ef278418da11;
+}
+- genTime = 5.25.2011::21:55:2;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID f1d67500-4f36-47c7-a4a4-0ac722dcd167;
+}
+- genTime = 5.25.2011::21:55:2;
+- hElement = { IHandle 
+	- _m2Class = "*";
+	- _filename = "";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "";
+	- _id = GUID fdf5af01-4412-49d3-9ac7-3b03537a54df;
+}
+- genTime = 5.25.2011::21:51:8;
+- hElement = { IHandle 
+	- _m2Class = "IClass";
+	- _filename = "FlowPortInterfaces.sbs";
+	- _subsystem = "FlowPortInterfaces";
+	- _class = "";
+	- _name = "intFlowInterface";
+	- _id = GUID 092daa62-7d27-4b5b-a534-ecce1544d7fc;
+}
+- genTime = 5.25.2011::21:56:55;
+- hElement = { IHandle 
+	- _m2Class = "ICodeGenConfigInfo";
+	- _filename = "Simulate.cmp";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "Simulate\\Cygwiin";
+	- _id = GUID f5173fe0-9d51-4179-b620-dac9d11ab740;
+}
+- genTime = 5.25.2011::21:56:55;
+
