@@ -1,0 +1,39 @@
+I-Logix-RPY-Archive version 8.5.2 * 2030848
+
+- m_fileModifyTime = { IRPYRawContainer 
+	- size = 4;
+	- value = "DefaultBuild/DefaultConfig/BSDServer.c" 5.22.2011::18:35:42
+	"DefaultBuild/DefaultConfig/BSDServer.h" 5.22.2011::18:37:44
+	"DefaultBuild/DefaultConfig/Default.c" 5.22.2011::15:3:39
+	"DefaultBuild/DefaultConfig/Default.h" 5.22.2011::18:37:44
+	
+}
+- size = 3;
+- hElement = { IHandle 
+	- _m2Class = "IClass";
+	- _filename = "Default.sbs";
+	- _subsystem = "Default";
+	- _class = "TopLevel";
+	- _name = "BSDServer";
+	- _id = GUID ea545421-5328-4df6-882b-0f64daceb9c3;
+}
+- genTime = 5.22.2011::18:37:43;
+- hElement = { IHandle 
+	- _m2Class = "ISubsystem";
+	- _filename = "Default.sbs";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "Default";
+	- _id = GUID c7aceec9-5d20-4c81-af0d-d8ea8700a24a;
+}
+- genTime = 5.22.2011::18:37:43;
+- hElement = { IHandle 
+	- _m2Class = "ICodeGenConfigInfo";
+	- _filename = "DefaultBuild.cmp";
+	- _subsystem = "";
+	- _class = "";
+	- _name = "DefaultBuild\\DefaultConfig";
+	- _id = GUID fecc48d0-fec3-49a5-9727-5a59e6df041b;
+}
+- genTime = 5.22.2011::18:37:43;
+

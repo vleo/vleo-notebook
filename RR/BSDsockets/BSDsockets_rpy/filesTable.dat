@@ -1,0 +1,10 @@
+I-Logix-RPY-Archive version 8.5.2 * 2030848
+
+- filesTable = { IRPYRawContainer 
+	- size = 3;
+	- value = "BSDsockets.rpy" ""
+	"BSDsockets_rpy\\Default.sbs" "Default"
+	"BSDsockets_rpy\\DefaultBuild.cmp" "DefaultBuild"
+	
+}
+

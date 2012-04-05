@@ -1,0 +1,164 @@
+I-Logix-RPY-Archive version 8.5.2 C 2030848
+{ IComponent 
+	- _id = GUID c9cdd668-530a-4027-9977-16ad056556a7;
+	- _myState = 139264;
+	- _name = "DefaultBuild";
+	- Stereotypes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IHandle 
+			- _m2Class = "IStereotype";
+			- _filename = "FunctionalC.sbs";
+			- _subsystem = "FunctionalC::BuildElements";
+			- _class = "";
+			- _name = "Build";
+			- _id = GUID 9f931676-e3c5-428e-8aed-a149675bee33;
+		}
+	}
+	- m_buildType = Executable;
+	- m_libraries = "";
+	- m_additionalSources = "";
+	- m_standardHeaders = "";
+	- m_includePath = "";
+	- m_initializationCode = "";
+	- m_folder = { IFolder 
+		- _id = GUID a9d82b60-c25b-4579-9fcd-4e2c7401ee67;
+		- _myState = 73728;
+		- _name = "Files";
+		- m_path = "";
+		- Elements = { IRPYRawContainer 
+			- size = 0;
+		}
+		- Files = { IRPYRawContainer 
+			- size = 0;
+		}
+	}
+	- m_configActive = { ICodeGenConfigInfoHandle 
+		- _m2Class = "ICodeGenConfigInfo";
+		- _id = GUID fecc48d0-fec3-49a5-9727-5a59e6df041b;
+	}
+	- Configs = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ ICodeGenConfigInfo 
+			- _id = GUID fecc48d0-fec3-49a5-9727-5a59e6df041b;
+			- _myState = 8192;
+			- _properties = { IPropertyContainer 
+				- Subjects = { IRPYRawContainer 
+					- size = 1;
+					- value = 
+					{ IPropertySubject 
+						- _Name = "C_CG";
+						- Metaclasses = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertyMetaclass 
+								- _Name = "Configuration";
+								- Properties = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IProperty 
+										- _Name = "Environment";
+										- _Value = "Cygwin";
+										- _Type = Enum;
+										- _ExtraTypeInfo = "Cygwin,INTEGRITY,INTEGRITY5,Multi4Win32, Microsoft,MSVC9,MicrosoftIDF,VxWorks,VxWorks6diab,VxWorks6diab_RTP,VxWorks6gnu,VxWorks6gnu_RTP,Solaris2,Solaris2GNU,Linux,MontaVista,NucleusPLUS-PPC,WorkbenchManaged,WorkbenchManaged_RTP,QNXNeutrinoMomentics";
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			- _name = "DefaultConfig";
+			- HyperLinks = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IMHyperLink 
+					- _id = GUID 38e30bcc-a3c2-40a2-84c6-376061112181;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Makefile";
+					- _linkType = "FREE";
+					- _linkTarget = "Q:\\LML\\notebook\\RR\\BSDsockets\\DefaultBuild\\DefaultConfig\\DefaultBuild.mak";
+					- isConfigurationFileHyperLink = 1;
+				}
+				{ IMHyperLink 
+					- _id = GUID 660cdf79-f47d-42b4-ac77-5ab7830915a9;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Main File";
+					- _linkType = "FREE";
+					- _linkTarget = "Q:\\LML\\notebook\\RR\\BSDsockets\\DefaultBuild\\DefaultConfig\\MainDefaultBuild";
+					- isConfigurationFileHyperLink = 1;
+				}
+			}
+			- _scopeType = Explicit;
+			- _libraries = "";
+			- _additionalSources = "";
+			- _standardHeaders = "\"stdio.h\",\"winsock.h\"";
+			- _includePath = "";
+			- _targetMain = "";
+			- _instrumentation = None;
+			- _timeModel = RealTime;
+			- m_generateActors = 1;
+			- _statechartImplementation = Flat;
+			- _initializationCode = "";
+			- _checksList = 0 ;
+			- ScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- InitialInstances = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _root = { IFolder 
+				- _id = GUID 8cbc3da8-d6f4-4cea-bcc4-5b93ec73daab;
+				- _myState = 8192;
+				- _name = "DefaultConfig";
+				- m_path = "";
+				- Elements = { IRPYRawContainer 
+					- size = 0;
+				}
+				- Files = { IRPYRawContainer 
+					- size = 0;
+				}
+			}
+			- weakCGTime = 5.22.2011::18:37:41;
+			- strongCGTime = 5.22.2011::18:37:41;
+			- AnimScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- m_allInAnimScope = 1;
+		}
+	}
+	- HandlesInMe = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "Default.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "Default";
+			- _id = GUID c7aceec9-5d20-4c81-af0d-d8ea8700a24a;
+		}
+		{ IHandle 
+			- _m2Class = "IProfile";
+			- _filename = "FunctionalC.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "FunctionalC";
+			- _id = GUID ffe33806-9836-4c1b-8d3d-4e2d72611262;
+		}
+	}
+	- VariationPoints = { IRPYRawContainer 
+		- size = 0;
+	}
+	- SelectedVariants = { IRPYRawContainer 
+		- size = 0;
+	}
+	- weakCGTime = 5.22.2011::18:37:41;
+	- strongCGTime = 5.22.2011::14:25:53;
+}
+
