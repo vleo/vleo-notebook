@@ -81,6 +81,8 @@ echo \
  Now type 'make @<:@<target>@:>@'
    where the optional <target> is:
      all                - build all binaries
-     install            - install everything
+     install            - install everything to --prefix
+		 dist               - create source .tar.gz archive
+		 distclean          - remove all ./configure generated
 
 --------------------------------------------------"
