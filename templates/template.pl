@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #use lib "$ENV{HOME}/bin";
 use strict; 
-use feature 'say'
+use feature 'say';
 use Getopt::Std;
 
 getopts("i:h");
