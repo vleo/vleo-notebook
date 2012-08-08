@@ -37,7 +37,7 @@ def sieve():
         s[s.index(m)]=0
 
     #print primelist
-    print 'Number of Primes upto %d: %d'%(n,len(primelist))
+    print 'Number of Primes upto:  %d  -->  %d'%(n,len(primelist))
     
 if __name__=='__main__':
     sieve()

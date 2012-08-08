@@ -14,6 +14,6 @@ def eratosthenes(n):
        return [ i for i in range(1, n+1) if sieve[i] ]
 
 
-n=10000
+n=1000000
 primelist=eratosthenes(n)
 print 'Number of Primes upto %d: %d'%(n,len(primelist))
