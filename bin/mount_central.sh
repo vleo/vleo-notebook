@@ -39,7 +39,8 @@ if [ -n "$opt_c" ] ; then
     vgscan 
     vgchange -a y newspace && mount /dev/mapper/newspace-newscratch /central/
   else
-    umount /central && vgremove newspace
+    umount /central && vgchange -a n newspace
+#&& vgremove newspace
   fi
 fi
 

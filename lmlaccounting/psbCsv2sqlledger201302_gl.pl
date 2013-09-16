@@ -63,8 +63,12 @@ exit
 
 ### MAIN ###
 open my $fOut, ">$opt_o" or die "$opt_o: $!";
+print $fOut <<'EOT';
+PERL5LIB='/usr/local/sql-ledger'
+export PERL5LIB
+EOT
 
-my $csv = Text::CSV->new or die "Cannot use CSV: ".Text::CSV->error_diag ();
+my $csv = Text::CSV->new({sep_char => ','}) or die "Cannot use CSV: ".Text::CSV->error_diag ();
 
 open my $fh, "<:encoding(utf8)", $opt_i or die "$opt_i: $!";
 
@@ -91,6 +95,7 @@ while ( my $lin = $csv->getline_hr($fh) ) {
   $descr = $lin->{$colNms[4]}; # Description
 
   my($mnum,$day,$year) = split(/\//,$date_in);
+  #my($year,$mnum,$day) = split(/\//,$date_in);
   next if $opt_y and $opt_y != $year;
   next if $opt_m and $opt_m != $mnum;
   my $date=sprintf("%04d-%02d-%02d",$year,$mnum,$day);

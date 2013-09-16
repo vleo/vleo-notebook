@@ -23,6 +23,7 @@ my @match1060DebitToCorrAcctCode =
   1210,
   [
     qr/^PPD PAYPAL TRANSFER/,
+    qr/PPD: PAYPAL TRANSFER/,
     qr/^TRANSFIRST LLC VMC SETTLE/,
     qr/^TRANSFIRST LLC BKCD STLMT/,
     qr/^ACH TRANSFIRST LLC BKCD STLMT/,
@@ -81,7 +82,8 @@ qr/TT INTL HK TECH/,
 qr/TT INTL HK TECH/,
 qr/POTOMAC COMM TECH/,
 qr/POTOMAC/,
-qr/AVTECH/
+qr/AVTECH/,
+qr/AV TECH/
 ] ],
 
 [
@@ -95,10 +97,10 @@ qr/^XYTRONIX RE XYTRONIX RESEARCH/,
 ] ],
 
 [
-  2120,
-  [
-    qr/BORROW FROM/
-  ] ],
+2120,
+[
+qr/BORROW FROM/
+] ],
 
 [
 5410,
@@ -126,7 +128,9 @@ qr/^ANNUAL CHECKCARD FEE/,
 qr/^Zions First National Bank/,
 qr/^ZION/,
 qr/^SERVICE CHARGES ASSESSED/,
-qr/NSF Paid Item Fee/
+qr/NSF Paid Item Fee/,
+qr/HARLAND CLARKE CHK ORDER/,
+qr/MISC BANK FEE/,
 ] ],
 
 [
@@ -159,7 +163,7 @@ qr/THE UPS STORE/,
 qr/^300 W SOUTH AVE/,
 qr/^113 9TH ST/,
 qr/^PDQ MAIL & MORE/,
-qr/^UPS/
+qr/^Check .* UPS$/
 ] ],
 
 [
@@ -177,8 +181,10 @@ qr/KALL8/,
 qr/^QWEST/,
 qr/CIT INTERNET/,
 qr/DATA 102/,
+qr/DATA102/,
 qr/PAYPAL INST XFER/,
 qr/WEB PAYPAL TRANSFER/,
+qr/PAYPAL TRANSFER/,
 qr/SKYPE/
 
 ] ],
@@ -197,7 +203,16 @@ qr/WIKI DONATE/,
 [
 5020,
 [
-qr/^AVERMEDIA TECHNOLOGIES/
+qr/^AVERMEDIA TECHNOLOGIES/,
+qr/MIKE COLLINS/
+] ],
+
+[
+5030,
+[
+qr/GLOCOM/,
+qr/EE COMPONENTS 5030/,
+qr/FUTUREELECTRONICS/
 ] ],
 
 [
@@ -260,6 +275,7 @@ qr/ESSENER/
 qr/H&R BLOCK/,
 qr/H.R BLOCK/,
 qr/SECRETARY OF STATE/,
+qr/SOS REGISTRATION FEE/,
 qr/COLORADO DEPT OF REVENUE SALES TAX/,
 qr/SALES TAX/,
 qr/DEPT OF REVENUE CO/

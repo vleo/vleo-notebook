@@ -1,5 +1,9 @@
 #!/usr/bin/perl
 #use lib "$ENV{HOME}/bin";
+=pod
+ Block comments
+ in =pod/=cut directives
+=cut
 use strict; 
 use feature 'say';
 use Getopt::Std;

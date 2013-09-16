@@ -24,3 +24,11 @@
 
 3. Scan and save into Excel (.xls)
 4. Open .xls in oocalc and save as CSV with "save cell content as shown" option
+
+*** 2012 ***
+
+Grab data from Bank report on screen, add it to *.csv file (the total history one - AccountHistory_AB_C2.csv)
+
+./psbCsv2sqlledger201302_gl.pl -i PSB_20120101_20121231.csv -o 2012psb_gl.sh -y 2012 
+
+Edit descriptionToCorrAcct.pm to eliminate 9999 account (unknown) transfers
