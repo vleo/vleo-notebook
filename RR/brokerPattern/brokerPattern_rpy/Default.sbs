@@ -1,0 +1,80 @@
+I-Logix-RPY-Archive version 8.5.2 C++ 2030848
+{ ISubsystem 
+	- _id = GUID f98dfb49-bd36-4b14-9ea4-207018f7f7f3;
+	- _myState = 8192;
+	- _name = "Default";
+	- _lastID = 7;
+	- weakCGTime = 5.21.2011::21:31:17;
+	- strongCGTime = 5.19.2011::10:5:59;
+	- _defaultComposite = GUID 844f18c4-60e4-480e-adb6-b429bdc06ff9;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 3;
+		- value = 
+		{ IClass 
+			- _id = GUID 844f18c4-60e4-480e-adb6-b429bdc06ff9;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _lastID = 1;
+			- weakCGTime = 5.21.2011::21:13:28;
+			- strongCGTime = 5.19.2011::10:5:59;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID c8d2d147-8c04-42c0-8005-c21822341335;
+			- _myState = 8192;
+			- _name = "A";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "SysML.sbs";
+					- _subsystem = "SysML::Blocks";
+					- _class = "";
+					- _name = "block";
+					- _id = GUID f685432f-691e-4ff1-be70-4d09d19457e1;
+				}
+			}
+			- _lastID = 5;
+			- weakCGTime = 5.21.2011::21:29:5;
+			- strongCGTime = 5.21.2011::21:29:5;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID c7ff763b-a78e-433e-aa41-584b86581b74;
+			- _myState = 8192;
+			- _name = "B";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "SysML.sbs";
+					- _subsystem = "SysML::Blocks";
+					- _class = "";
+					- _name = "block";
+					- _id = GUID f685432f-691e-4ff1-be70-4d09d19457e1;
+				}
+			}
+			- _lastID = 14;
+			- weakCGTime = 5.21.2011::21:29:10;
+			- strongCGTime = 5.21.2011::21:29:10;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 5.21.2011::21:11:52;
+}
+
