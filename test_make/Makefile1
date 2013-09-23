@@ -1,0 +1,9 @@
+LIBNAMES=a b c d
+
+LIBASHARED=$(LIBNAMES:%=%.xyz.shared)
+LIBSHARED=$(LIBASHARED:%.shared=%.so)
+
+all:
+	@echo $(LIBNAMES)
+	@echo $(LIBASHARED)
+	@echo $(LIBSHARED)
