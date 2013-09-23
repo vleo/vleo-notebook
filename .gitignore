@@ -3,3 +3,11 @@ Debug/
 *.vpw
 *.vpwhistu
 *.vtg
+
+test_c_cxx/testCodeViz/jrfonseca.gprof2dot/
+test_c_cxx/testCodeViz/jrfonseca.xdot/
+test_c_cxx/testCodeViz/mvertes.free.fr/
+.*.swp
+BSPErathostenes-master/
+LePUS3/
+morphin-read-only/
