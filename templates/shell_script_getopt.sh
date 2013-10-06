@@ -1,5 +1,6 @@
 #!/bin/sh
 ###### options processing ######
+# under the terms of GNU GPL
 TEMP=`getopt -o Ai:h -n 'test_getopt.sh' -- "$@"`
 
 if [ $? != 0 ] ; then TEMP="-h --" ; fi
