@@ -10,4 +10,4 @@ mylib.a :  mylib.o
 	ar cr mylib.a mylib.o
 
 clean:
-	@rm -f *.o main libmylib.so.1.0 mylib.a libmylib.so.1
+	@rm -f *.o main libmylib.so.1.0 mylib.a libmylib.so.1 mylib.s
