@@ -1,10 +1,13 @@
 #!/bin/sh
 ###### options processing ######
 # under the terms of GNU GPL
-TEMP=`getopt -o Ai:h -n 'test_getopt.sh' -- "$@"`
+TEMP=$(getopt -o Ai:h -n 'test_getopt.sh' -- "$@")
 
+# handle error from previous getopt call - show help message
 if [ $? != 0 ] ; then TEMP="-h --" ; fi
-eval set -- "$TEMP"
+# assign script $* arguments := getopt return string
+eval set -- "$TEMP" 
+
 while true ; do
         case "$1" in
 # change options here according to your needs
