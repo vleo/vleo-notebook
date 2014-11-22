@@ -1,2 +1,1 @@
-#include "xyz.h"
 main(){}
