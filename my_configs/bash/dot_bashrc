@@ -1,0 +1,48 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+# User specific aliases and functions
+
+function gvim { /usr/bin/gvim $* &>/dev/null; }
+
+function sorth { perl -E '@a=<>; %f=(1=>1,K=>1000,M=>1000000,G=>1000000000,T=>1000000000000); say sort { ($aa,$k1) = $a =~ m/^([\d\.]+)(K|M|G)/; $k1=1 unless $k1; ($bb,$k2) = $b =~ m/^([\d\.]+)(\w+)/; $k2=1 unless $k2; $aa*$f{$k1} <=> $bb*$f{$k2}; } @a'; }
+
+function timestamp { date +%Y%m%d%H%M%S; }
+
+function compxdump { hexdump -e'1/2 "(%6d" 1/2 " %4x" 1/2 " %6d" 1/2 " %4x)" "\n"' $1; }
+
+if false; then
+
+# MinSoc / OR1200 toolchain
+PATH="$PATH:/home/vleo/000_JOB/EISU_OR1200/MinSoc/tools/bin"
+PATH="$PATH:/home/vleo/000_JOB/EISU_OR1200/MinSoc/tools/or32-elf/bin/"
+
+# Altera
+#ALTREV=12.1sp1
+ALTREV=13.0sp1
+PATH="$PATH:/opt/altera/$ALTREV/quartus/bin/:\
+/opt/altera/$ALTREV/nios2eds/:\
+/opt/altera/$ALTREV/nios2eds/bin:\
+/opt/altera/$ALTREV/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/"
+
+# Mentor
+PATH="$PATH:/opt/mentor/modelsim/10.1.c/modeltech/linux/"
+
+# iForth
+PATH="$PATH:/home/vleo/dfwforth"
+
+export PATH
+
+LM_LICENSE_FILE="/opt/mentor/modelsim/license.dat"
+export LM_LICENSE_FILE
+
+MGLS_LICENSE_FILE="/opt/mentor/modelsim/license.dat"
+export MGLS_LICENSE_FILE
+
+#PYTHONPATH=/usr/local/lib/python2.7/site-packages
+#export PYTHONPATH
+
+fi

@@ -1,0 +1,42 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+# OR1200
+PATH="$PATH:/opt/openrisc/toolchain/bin"
+
+# Altera
+AVER=13.0sp1
+PATH="$PATH:/opt/altera/$AVER/quartus/bin/:\
+/opt/altera/$AVER/nios2eds/:\
+/opt/altera/$AVER/nios2eds/bin:\
+/opt/altera/$AVER/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/"
+
+QUARTUS_ROOTDIR="/opt/altera/$AVER/quartus/"
+export QUARTUS_ROOTDIR
+
+# Mentor
+PATH="$PATH:/opt/mentor/modelsim/10.1.c/modeltech/linux/"
+
+LM_LICENSE_FILE="/opt/mentor/modelsim/license.dat"
+
+export LM_LICENSE_FILE
+
+MGLS_LICENSE_FILE="/opt/mentor/modelsim/license.dat"
+
+export MGLS_LICENSE_FILE
+#--------------------------------------
+PATH="$PATH:/bigscratch/central/oldroot/opt/mathematica/bin/"
+#--------------------------------------
+
+PATH=$PATH:~/.local/bin
+
+export PATH
+

@@ -1,0 +1,85 @@
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_jump = 1
+
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_mode_map = {
+      \  "mode": "passive",
+      \   "active_filetypes": ["py"],
+      \   "passive_filetypes": [] }
+
+
+so /usr/share/vim/vim73/colors/torte.vim
+
+" ctags:
+" C-] or C-left_mouse - go to definition
+" C-T or C-reight_mouse - Jump back from the definition.
+" C-W C-] - Open the definition in a horizontal split
+" additional ctags kbd mappings:
+" C-\ - Open the definition in a new tab
+" A-] - Open the definition in a vertical split
+"
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+map <F2> : syntax match Tab /\t/<CR> : hi Tab gui=underline guifg=blue ctermbg=blue <CR>
+
+" toggle auto indent
+set paste
+map <F3> :set paste<CR>
+map <F4> :set nopaste<CR>
+" toggle hightlight search
+map <F5> :set hls!<bar>set hls?<CR>
+" clear search and cler the message - i.e. cls
+map <F6> :let @/=''<bar>:echo<CR>
+
+map <F7> :e! ++enc=cp1251<CR>
+map <F8> :e! ++enc=utf8<CR>
+map <F9> :e! ++enc=cp866<CR>
+map <F10> :e! ++enc=koi8<CR>
+
+
+" display width of TAB
+set tabstop=2
+" insert (or no) spaces when tab-key pressed
+set expandtab
+" indent width (<< and >> operation)
+set shiftwidth=2
+" width inserted on tab-key in insert mode
+set softtabstop=2
+
+
+set bg=dark
+set number
+
+set autoindent
+
+set ignorecase
+
+filetype plugin on
+
+" Hi light current line or word permanently
+:nnoremap <silent> <Leader>l :exe "let m = matchadd('WildMenu','\\%" . line('.') . "l')"<CR>
+:nnoremap <silent> <Leader>w :exe "let m=matchadd('WildMenu','\\<\\w*\\%" . line(".") . "l\\%" . col(".") . "c\\w*\\>')"<CR>
+:nnoremap <silent> <Leader><CR> :call clearmatches()<CR>
+
+" subst. TABs with spaces
+:noremap <silent> <Leader>t :%s/\t/  /g<CR>
+
+" run syntax checker
+:nnoremap <silent> <Leader>S :SyntasticCheck<CR>
+
+nmap <silent> <Leader>sy i-- synthesis read_comments_as_HDL on<CR>-- synthesis read_comments_as_HDL off
+
+autocmd BufWritePre *.py :%s/\s\+$//e

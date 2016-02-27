@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/bigscratch/newscratch/DownloadsC/SOFTWARE/GAMES/Minecraft/DISTROS/adventuresinminecraft/tmp/AdventuresInMinecraft/MyAdventures'
+let g:netrw_dirhist_2='/bigscratch/newscratch/DownloadsC/SOFTWARE/GAMES/Minecraft/DISTROS/adventuresinminecraft/tmp/AdventuresInMinecraft'
+let g:netrw_dirhist_3='/bigscratch/newscratch/DownloadsC/SOFTWARE/GAMES/Minecraft/DISTROS/adventuresinminecraft/tmp'
+let g:netrw_dirhist_4='/bigscratch/newscratch/DownloadsC/SOFTWARE/GAMES/Minecraft/DISTROS/adventuresinminecraft'
+let g:netrw_dirhist_5='/bigscratch/newscratch/DownloadsC/SOFTWARE/GAMES/Minecraft/DISTROS/adventuresinminecraft/tmp'
+let g:netrw_dirhist_6='/bigscratch/newscratch/DownloadsC/SOFTWARE/GAMES/Minecraft/DISTROS/adventuresinminecraft/tmp/CodeFiles'
+let g:netrw_dirhist_7='/bigscratch/newscratch/DownloadsC/SOFTWARE/GAMES/Minecraft/DISTROS/adventuresinminecraft/tmp/CodeFiles/Adventure2'

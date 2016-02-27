@@ -1,0 +1,83 @@
+[alias]
+	st = status .
+	ci = commit
+	co = checkout
+
+  # BRANCHING
+  # create new branch and switch to it
+  cb = checkout -b
+  # create new branch named lml on the remote and push local branch lml there
+  crb = push origin  # lml:lml
+  # link remote branch master to existing local master
+  lrb = br --set-upstream  # master origin/master
+  # list local branches OR CREATE NEW one w/o switch
+	br = branch
+  # create local tracking branched based on remote branch name given and switch to it
+  brr = checkout --track
+  # list remote branches
+  rb = branch -r
+
+  # VIEWING
+  # run meld
+	dt = difftool
+  # diff in terse form
+	ds = diff --stat
+  # show log in terse form
+	lg = log --oneline
+  # show ALL log entries
+	lga = log --walk-reflogs --pretty=format:%h
+  # list tags
+  tl = show-ref --tags --abbrev
+	# shorter name for tag
+  tg = tag
+  # translate symbolic reference to a hash
+  hsh = rev-parse
+  # gitk for totally everything
+  gitkall	 = !gitk --all `git reflog | cut -c1-7`&
+
+  # CLEANUP
+  # reset working tree to HEAD state
+	rvrt = reset --hard
+  # unstage
+  uns = reset HEAD
+  # apply commit reversing given HASH
+  uc = revert
+  # remove files/directories not in repo (clean working tree)
+	cln = clean -f -d -x
+	# total database cleanup - LOOSES INFORMATION
+	totclean = ! git reflog expire --expire=now --all \ngit gc --prune=now
+
+  # REPO SYNC
+  # in order to duplicate remote repo in local state:
+  # git fetch
+  # git rvrt 
+	mirror  = "!sh -c 'git fetch; git reset --hard origin/master'"
+  # push both regular commits and tags to server
+  pu = push --tags
+
+
+	# create empty root
+	#  first you need a new empty branch; let's call it `newroot`
+	#  git symbolic-ref HEAD refs/heads/newroot
+	#  git rm --cached -r .
+	#  git clean -f -d
+	#
+	#  # then you apply the same steps
+	#  git commit --allow-empty -m 'root commit'
+	#  git rebase --onto newroot --root master
+	#  git branch -d newroot
+  
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[user]
+	name = Vassili Leonov
+	email = vleo@linuxmedialabs.com
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[push]
+#	default = simple
