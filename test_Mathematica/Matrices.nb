@@ -1,0 +1,41 @@
+Notebook[{
+
+Cell[BoxData[\(
+
+Table[X[i, j, k], {i, 3}, {j, 3}, {k, 3}]
+
+\)],"Input"],
+
+
+Cell[BoxData[\(
+
+n\  = \ {{1, 1, 2}, {1, 2, 1}, {2, 1, 1}}
+
+\)], "Input"],
+
+Cell[BoxData[\(
+
+  Eigenvalues[n]
+
+\)], "Input"],
+
+Cell[BoxData[\(
+
+  Det[n]
+
+\)], "Input"],
+
+Cell[BoxData[\(
+
+{1, 2} . {3, 4}
+
+\)], "Input"]
+
+},
+
+FrontEndVersion->"5.1 for X",
+ScreenRectangle->{{0, 3320}, {0, 1200}},
+WindowSize->{1024, 892},
+WindowMargins->{{100, Automatic}, {Automatic, 100}}
+
+]
