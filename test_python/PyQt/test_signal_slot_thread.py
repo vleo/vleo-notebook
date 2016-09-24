@@ -19,30 +19,25 @@ class MyQThread(QThread):
     tracePrints.append(1)
     self.emit(sigTest)
     app.processEvents()
-    print("Leave thread")
     tracePrints.append(2)
     self.emit(sigQuit)
+    print("Leave thread")
 
 
-class TestSigSlot(QObject):
-
-  def __init__(self,app):
-    QObject.__init__(self)
-    self._thread = MyQThread()
-    self.connect(self._thread, sigTest, self.Called)
-    self.connect(self._thread, sigQuit, app.quit)
-    self._thread.start()
-
-  def Called(self):
-    print("Called !")
-    tracePrints.append(3)
+def callMe():
+  print("Called !")
+  tracePrints.append(3)
 
 
 if __name__ == "__main__":
   print('before QApp create')
   app = QCoreApplication(sys.argv)
   print('before Thread create')
-  obj = TestSigSlot(app)
-  print('after thread create')
+  thread = MyQThread()
+  app.connect(thread, sigTest, callMe)
+  app.connect(thread, sigQuit, app.quit)
+  print('before Thread start')
+  thread.start()
+  print('begore App exec_')
   app.exec_()
   print("After exec_:",tracePrints)

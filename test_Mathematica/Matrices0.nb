@@ -41,9 +41,9 @@ Wolfram Research.
 
 (*NotebookFileLineBreakTest
 NotebookFileLineBreakTest*)
-(*NotebookOptionsPosition[      2865,        101]*)
-(*NotebookOutlinePosition[      3498,        123]*)
-(*  CellTagsIndexPosition[      3454,        119]*)
+(*NotebookOptionsPosition[     17184,        799]*)
+(*NotebookOutlinePosition[     17817,        821]*)
+(*  CellTagsIndexPosition[     17773,        817]*)
 (*WindowFrame->Normal*)
 
 
@@ -97,12 +97,710 @@ Cell[BoxData[
 
 Cell[BoxData[
     \(11\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{"m", "=", 
+      RowBox[{"(", GridBox[{
+            {"a", "b"},
+            {"c", "d"}
+            }], ")"}]}]], "Input"],
+
+Cell[BoxData[
+    \({{a, b}, {c, d}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v\  = \ {x, y}\)], "Input"],
+
+Cell[BoxData[
+    \({x, y}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(m . v\)], "Input"],
+
+Cell[BoxData[
+    \({a\ x + b\ y, c\ x + d\ y}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v[\([1]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(x\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\(m[\([1]\)]\)\(\[IndentingNewLine]\)
+    \)\)], "Input"],
+
+Cell[BoxData[
+    \({a, b}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(p\ v\  + \ q\)], "Input"],
+
+Cell[BoxData[
+    \({q + p\ x, q + p\ y}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v'\  = \ {x', y'}\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        SuperscriptBox["x", "\[Prime]",
+          MultilineFunction->None], ",", 
+        SuperscriptBox["y", "\[Prime]",
+          MultilineFunction->None]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v\ \  . \ v'\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"x", " ", 
+        SuperscriptBox["x", "\[Prime]",
+          MultilineFunction->None]}], "+", 
+      RowBox[{"y", " ", 
+        SuperscriptBox["y", "\[Prime]",
+          MultilineFunction->None]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(m\  . \ m\)], "Input"],
+
+Cell[BoxData[
+    \({{a\^2 + b\ c, a\ b + b\ d}, {a\ c + c\ d, b\ c + d\^2}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(m . v\)], "Input"],
+
+Cell[BoxData[
+    \({a\ x + b\ y, c\ x + d\ y}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v . m\)], "Input"],
+
+Cell[BoxData[
+    \({a\ x + c\ y, b\ x + d\ y}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Range[3]\)], "Input"],
+
+Cell[BoxData[
+    \({1, 2, 3}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Array[#1 &, 3]\)], "Input"],
+
+Cell[BoxData[
+    \({1, 2, 3}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Range[1, 10, 2]\)], "Input"],
+
+Cell[BoxData[
+    \({1, 3, 5, 7, 9}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Part[v, 1]\)], "Input"],
+
+Cell[BoxData[
+    \(x\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Length[v]\)], "Input"],
+
+Cell[BoxData[
+    \(2\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ColumnForm[v . v']\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[GridBox[{
+          {
+            RowBox[{"x", " ", 
+              SuperscriptBox["x", "\[Prime]",
+                MultilineFunction->None]}]},
+          {
+            RowBox[{"y", " ", 
+              SuperscriptBox["y", "\[Prime]",
+                MultilineFunction->None]}]}
+          },
+        GridBaseline->{Baseline, {1, 1}},
+        ColumnAlignments->{Left}],
+      ColumnForm[ 
+        Plus[ 
+          Times[ x, 
+            Derivative[ 1][ x]], 
+          Times[ y, 
+            Derivative[ 1][ y]]]],
+      Editable->False]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(A = Array[a, 3]\)], "Input"],
+
+Cell[BoxData[
+    \({a[1], a[2], a[3]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(B\  = \ Array[b, 3]\)], "Input"],
+
+Cell[BoxData[
+    \({b[1], b[2], b[3]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(A\ B\)], "Input"],
+
+Cell[BoxData[
+    \({a[1]\ b[1], a[2]\ b[2], a[3]\ b[3]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Cross[A, B]\)], "Input"],
+
+Cell[BoxData[
+    \({\(-a[3]\)\ b[2] + a[2]\ b[3], 
+      a[3]\ b[1] - a[1]\ b[3], \(-a[2]\)\ b[1] + a[1]\ b[2]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(A\ \ B\)], "Input"],
+
+Cell[BoxData[
+    \({a[1]\ b[1], a[2]\ b[2], a[3]\ b[3]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{"f", "=", 
+      RowBox[{"(", GridBox[{
+            {\(a\_i\), \(b\_i\), \(c\_i\)}
+            }], ")"}]}]], "Input"],
+
+Cell[BoxData[
+    \({{a\_i, b\_i, c\_i}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{"g", "=", 
+      RowBox[{"(", GridBox[{
+            {\(a\_k\)},
+            {\(b\_k\)},
+            {\(c\_k\)}
+            }], ")"}]}]], "Input"],
+
+Cell[BoxData[
+    \({{a\_k}, {b\_k}, {c\_k}}\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(f . g\)], "Input"],
+
+Cell[BoxData[
+    \({{a\_i\ a\_k + b\_i\ b\_k + c\_i\ c\_k}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(g . f\)], "Input"],
+
+Cell[BoxData[
+    \({{a\_i\ a\_k, a\_k\ b\_i, a\_k\ c\_i}, {a\_i\ b\_k, b\_i\ b\_k, 
+        b\_k\ c\_i}, {a\_i\ c\_k, b\_i\ c\_k, c\_i\ c\_k}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(f\ g\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{\(Thread::"tdlen"\), \(\(:\)\(\ \)\), "\<\"Objects of unequal \
+length in \\!\\(\\(\\({\\({a\\_i, b\\_i, c\\_i}\\)}\\)\\)\\\\ \\(\\({\\(\\({a\
+\\_k}\\)\\), \\(\\({b\\_k}\\)\\), \\(\\({c\\_k}\\)\\)}\\)\\)\\) cannot be \
+combined. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"Thread::tdlen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    \({{a\_i, b\_i, c\_i}}\ {{a\_k}, {b\_k}, {c\_k}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(g\ f\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{\(Thread::"tdlen"\), \(\(:\)\(\ \)\), "\<\"Objects of unequal \
+length in \\!\\(\\(\\({\\(\\({a\\_k}\\)\\), \\(\\({b\\_k}\\)\\), \
+\\(\\({c\\_k}\\)\\)}\\)\\)\\\\ \\(\\({\\({a\\_i, b\\_i, c\\_i}\\)}\\)\\)\\) \
+cannot be combined. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\
+\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"Thread::tdlen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    \({{a\_i, b\_i, c\_i}}\ {{a\_k}, {b\_k}, {c\_k}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v\)], "Input"],
+
+Cell[BoxData[
+    \({x, y}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v\ v'\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{"x", " ", 
+          SuperscriptBox["x", "\[Prime]",
+            MultilineFunction->None]}], ",", 
+        RowBox[{"y", " ", 
+          SuperscriptBox["y", "\[Prime]",
+            MultilineFunction->None]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v'\ v\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{"x", " ", 
+          SuperscriptBox["x", "\[Prime]",
+            MultilineFunction->None]}], ",", 
+        RowBox[{"y", " ", 
+          SuperscriptBox["y", "\[Prime]",
+            MultilineFunction->None]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v\  . \ v'\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"x", " ", 
+        SuperscriptBox["x", "\[Prime]",
+          MultilineFunction->None]}], "+", 
+      RowBox[{"y", " ", 
+        SuperscriptBox["y", "\[Prime]",
+          MultilineFunction->None]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(v'\  . \ v\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"x", " ", 
+        SuperscriptBox["x", "\[Prime]",
+          MultilineFunction->None]}], "+", 
+      RowBox[{"y", " ", 
+        SuperscriptBox["y", "\[Prime]",
+          MultilineFunction->None]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(h = {A, B}\)], "Input"],
+
+Cell[BoxData[
+    \({{a[1], a[2], a[3]}, {b[1], b[2], b[3]}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(MatrixForm[Transpose[h]]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(a[1]\), \(b[1]\)},
+            {\(a[2]\), \(b[2]\)},
+            {\(a[3]\), \(b[3]\)}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(A\[Cross]B\)], "Input"],
+
+Cell[BoxData[
+    \({\(-a[3]\)\ b[2] + a[2]\ b[3], 
+      a[3]\ b[1] - a[1]\ b[3], \(-a[2]\)\ b[1] + a[1]\ b[2]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Ad = MatrixForm[DiagonalMatrix[A]]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(a[1]\), "0", "0"},
+            {"0", \(a[2]\), "0"},
+            {"0", "0", \(a[3]\)}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Ad[\([All, 2]\)]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+              {"0"},
+              {\(a[2]\)},
+              {"0"}
+              },
+            RowSpacings->1,
+            ColumnAlignments->{Left}],
+          Column], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(vv = MatrixForm[v]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+              {"x"},
+              {"y"}
+              },
+            RowSpacings->1,
+            ColumnAlignments->{Left}],
+          Column], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(mm\  = \ MatrixForm[m]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"a", "b"},
+            {"c", "d"}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(MatrixForm[m\  . v]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", 
+        TagBox[GridBox[{
+              {\(a\ x + b\ y\)},
+              {\(c\ x + d\ y\)}
+              },
+            RowSpacings->1,
+            ColumnAlignments->{Left}],
+          Column], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(MatrixForm[v\  . m\  . \ v]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[\(x\ \((a\ x + c\ y)\) + y\ \((b\ x + d\ y)\)\),
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(h\)], "Input"],
+
+Cell[BoxData[
+    \({{a[1], a[2], a[3]}, {b[1], b[2], b[3]}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Ad1\  = \ Ad[\([1]\)]\)], "Input"],
+
+Cell[BoxData[
+    \({{a[1], 0, 0}, {0, a[2], 0}, {0, 0, a[3]}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Ad1[\([1, 1]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(a[1]\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Inverse[Ad1] . Ad1\)], "Input"],
+
+Cell[BoxData[
+    \({{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(r\  = \ Array[Exp[2  Pi\ I  #1/#2] &, {5, 5}]\)], "Input"],
+
+Cell[BoxData[
+    \({{1, \(-1\), \[ExponentialE]\^\(\(2\ \[ImaginaryI]\ \[Pi]\)\/3\), \
+\[ImaginaryI], \[ExponentialE]\^\(\(2\ \[ImaginaryI]\ \[Pi]\)\/5\)}, {1, 
+        1, \[ExponentialE]\^\(-\(\(2\ \[ImaginaryI]\ \[Pi]\)\/3\)\), \(-1\), \
+\[ExponentialE]\^\(\(4\ \[ImaginaryI]\ \[Pi]\)\/5\)}, {1, \(-1\), 
+        1, \(-\[ImaginaryI]\), \[ExponentialE]\^\(-\(\(4\ \[ImaginaryI]\ \
+\[Pi]\)\/5\)\)}, {1, 1, \[ExponentialE]\^\(\(2\ \[ImaginaryI]\ \[Pi]\)\/3\), 
+        1, \[ExponentialE]\^\(-\(\(2\ \[ImaginaryI]\ \[Pi]\)\/5\)\)}, {1, \
+\(-1\), \[ExponentialE]\^\(-\(\(2\ \[ImaginaryI]\ \[Pi]\)\/3\)\), \
+\[ImaginaryI], 1}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ek = Eigenvalues[r]\)], "Input"],
+
+Cell[BoxData[
+    \($Aborted\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ev = Eigenvectors[r]\)], "Input"],
+
+Cell[BoxData[
+    \({{\(-1\), \(-1\), \(-1\), 1}, {\(-1\), 0, 1, 0}, {0, 1, 0, 
+        1}, {1, \(-2\), 1, 0}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(r . ev[\([#1]\)] - \ ek[\([#1]\)]\ ev[\([#1]\)] &\)[3]\)], "Input"],
+
+Cell[BoxData[
+    \({0, 0, 0, 0}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Inverse[r]\)], "Input"],
+
+Cell[BoxData[
+    \({{\(-\(\[ImaginaryI]\/4\)\), \(-\(1\/4\)\), \[ImaginaryI]\/4, 
+        1\/4}, {\(-\(1\/4\)\), 1\/4, \(-\(1\/4\)\), 
+        1\/4}, {\[ImaginaryI]\/4, \(-\(1\/4\)\), \(-\(\[ImaginaryI]\/4\)\), 
+        1\/4}, {1\/4, 1\/4, 1\/4, 1\/4}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Tr[r]\)], "Input"],
+
+Cell[BoxData[
+    \(3\ \[ExponentialE]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(I^2\)], "Input"],
+
+Cell[BoxData[
+    \(\(-1\)\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(N[2^64]\)], "Input"],
+
+Cell[BoxData[
+    \(1.8446744073709552`*^19\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(2^64\)], "Input"],
+
+Cell[BoxData[
+    \(18446744073709551616\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(1024*1024\)], "Input"],
+
+Cell[BoxData[
+    \(1048576\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(2^8\)], "Input"],
+
+Cell[BoxData[
+    \(256\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(1 + 2 + 4 + 8 + 16 + 32 + 64 + 128\)], "Input"],
+
+Cell[BoxData[
+    \(255\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ComplexExpand[E^\((I\ x)\)]\)], "Input"],
+
+Cell[BoxData[
+    \(Cos[x] + \[ImaginaryI]\ Sin[x]\)], "Output"]
 }, Open  ]]
 },
 FrontEndVersion->"5.1 for X",
 ScreenRectangle->{{0, 3320}, {0, 1200}},
 WindowSize->{1024, 892},
-WindowMargins->{{100, Automatic}, {Automatic, 100}}
+WindowMargins->{{222, Automatic}, {132, Automatic}}
 ]
 
 (*******************************************************************
@@ -146,6 +844,306 @@ Cell[2685, 88, 40, 1, 27, "Output"]
 Cell[CellGroupData[{
 Cell[2762, 94, 48, 1, 27, "Input"],
 Cell[2813, 97, 36, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2886, 103, 147, 5, 45, "Input"],
+Cell[3036, 110, 50, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3123, 116, 47, 1, 27, "Input"],
+Cell[3173, 119, 40, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3250, 125, 38, 1, 27, "Input"],
+Cell[3291, 128, 60, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3388, 134, 43, 1, 27, "Input"],
+Cell[3434, 137, 35, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3506, 143, 79, 2, 43, "Input"],
+Cell[3588, 147, 40, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3665, 153, 45, 1, 27, "Input"],
+Cell[3713, 156, 54, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3804, 162, 50, 1, 27, "Input"],
+Cell[3857, 165, 224, 6, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4118, 176, 45, 1, 27, "Input"],
+Cell[4166, 179, 251, 7, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4454, 191, 42, 1, 27, "Input"],
+Cell[4499, 194, 90, 1, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4626, 200, 38, 1, 27, "Input"],
+Cell[4667, 203, 60, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4764, 209, 38, 1, 27, "Input"],
+Cell[4805, 212, 60, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4902, 218, 41, 1, 27, "Input"],
+Cell[4946, 221, 43, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5026, 227, 47, 1, 27, "Input"],
+Cell[5076, 230, 43, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5156, 236, 48, 1, 27, "Input"],
+Cell[5207, 239, 49, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5293, 245, 43, 1, 27, "Input"],
+Cell[5339, 248, 35, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5411, 254, 42, 1, 27, "Input"],
+Cell[5456, 257, 35, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5528, 263, 51, 1, 27, "Input"],
+Cell[5582, 266, 582, 19, 45, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6201, 290, 48, 1, 27, "Input"],
+Cell[6252, 293, 52, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6341, 299, 52, 1, 27, "Input"],
+Cell[6396, 302, 52, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6485, 308, 37, 1, 27, "Input"],
+Cell[6525, 311, 70, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6632, 317, 44, 1, 27, "Input"],
+Cell[6679, 320, 126, 2, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6842, 327, 39, 1, 27, "Input"],
+Cell[6884, 330, 70, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6991, 336, 143, 4, 28, "Input"],
+Cell[7137, 342, 54, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7228, 348, 171, 6, 63, "Input"],
+Cell[7402, 356, 58, 1, 27, "Output"]
+}, Open  ]],
+Cell[7475, 360, 26, 0, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[7526, 364, 38, 1, 27, "Input"],
+Cell[7567, 367, 74, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7678, 373, 38, 1, 27, "Input"],
+Cell[7719, 376, 157, 2, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7913, 383, 37, 1, 27, "Input"],
+Cell[7953, 386, 418, 6, 20, "Message"],
+Cell[8374, 394, 80, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8491, 400, 37, 1, 27, "Input"],
+Cell[8531, 403, 418, 6, 20, "Message"],
+Cell[8952, 411, 80, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9069, 417, 34, 1, 27, "Input"],
+Cell[9106, 420, 40, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9183, 426, 38, 1, 27, "Input"],
+Cell[9224, 429, 290, 8, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9551, 442, 38, 1, 27, "Input"],
+Cell[9592, 445, 290, 8, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9919, 458, 43, 1, 27, "Input"],
+Cell[9965, 461, 251, 7, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10253, 473, 43, 1, 27, "Input"],
+Cell[10299, 476, 251, 7, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10587, 488, 43, 1, 27, "Input"],
+Cell[10633, 491, 74, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10744, 497, 57, 1, 27, "Input"],
+Cell[10804, 500, 372, 11, 76, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[11213, 516, 43, 1, 27, "Input"],
+Cell[11259, 519, 126, 2, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[11422, 526, 67, 1, 27, "Input"],
+Cell[11492, 529, 372, 11, 76, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[11901, 545, 49, 1, 27, "Input"],
+Cell[11953, 548, 350, 12, 76, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[12340, 565, 51, 1, 27, "Input"],
+Cell[12394, 568, 324, 11, 58, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[12755, 584, 55, 1, 27, "Input"],
+Cell[12813, 587, 318, 10, 58, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[13168, 602, 52, 1, 27, "Input"],
+Cell[13223, 605, 348, 11, 58, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[13608, 621, 60, 1, 27, "Input"],
+Cell[13671, 624, 148, 3, 40, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[13856, 632, 34, 1, 27, "Input"],
+Cell[13893, 635, 74, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[14004, 641, 54, 1, 27, "Input"],
+Cell[14061, 644, 76, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[14174, 650, 48, 1, 27, "Input"],
+Cell[14225, 653, 38, 1, 27, "Output"]
+}, Open  ]],
+Cell[14278, 657, 26, 0, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[14329, 661, 51, 1, 27, "Input"],
+Cell[14383, 664, 67, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[14487, 670, 78, 1, 27, "Input"],
+Cell[14568, 673, 637, 9, 40, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[15242, 687, 52, 1, 27, "Input"],
+Cell[15297, 690, 42, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[15376, 696, 53, 1, 27, "Input"],
+Cell[15432, 699, 124, 2, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[15593, 706, 89, 1, 27, "Input"],
+Cell[15685, 709, 46, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[15768, 715, 43, 1, 27, "Input"],
+Cell[15814, 718, 267, 4, 44, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[16118, 727, 38, 1, 27, "Input"],
+Cell[16159, 730, 52, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[16248, 736, 36, 1, 27, "Input"],
+Cell[16287, 739, 40, 1, 27, "Output"]
+}, Open  ]],
+Cell[16342, 743, 26, 0, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[16393, 747, 40, 1, 27, "Input"],
+Cell[16436, 750, 57, 1, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[16530, 756, 37, 1, 27, "Input"],
+Cell[16570, 759, 54, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[16661, 765, 42, 1, 27, "Input"],
+Cell[16706, 768, 41, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[16784, 774, 36, 1, 27, "Input"],
+Cell[16823, 777, 37, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[16897, 783, 67, 1, 27, "Input"],
+Cell[16967, 786, 37, 1, 27, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[17041, 792, 60, 1, 27, "Input"],
+Cell[17104, 795, 64, 1, 27, "Output"]
 }, Open  ]]
 }
 ]
