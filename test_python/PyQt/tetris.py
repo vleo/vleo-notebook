@@ -1,23 +1,26 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 
 """
-ZetCode PyQt4 tutorial
+ZetCode PyQt5 tutorial
 
 This is a Tetris game clone.
 
 author: Jan Bodnar
 website: zetcode.com
-last edited: October 2013
+last edited: January 2015
 """
 
 import sys, random
-from PyQt4 import QtCore, QtGui
+from PyQt5.QtWidgets import QMainWindow, QFrame, QDesktopWidget, QApplication
+from PyQt5.QtCore import Qt, QBasicTimer, pyqtSignal
+from PyQt5.QtGui import QPainter, QColor
 
 
-class Tetris(QtGui.QMainWindow):
+class Tetris(QMainWindow):
 
     def __init__(self):
-        super(Tetris, self).__init__()
+        super().__init__()
 
         self.initUI()
 
@@ -40,29 +43,29 @@ class Tetris(QtGui.QMainWindow):
 
     def center(self):
 
-        screen = QtGui.QDesktopWidget().screenGeometry()
+        screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
         self.move((screen.width()-size.width())/2,
             (screen.height()-size.height())/2)
 
 
-class Board(QtGui.QFrame):
+class Board(QFrame):
 
-    msg2Statusbar = QtCore.pyqtSignal(str)
+    msg2Statusbar = pyqtSignal(str)
 
     BoardWidth = 10
     BoardHeight = 22
     Speed = 300
 
     def __init__(self, parent):
-        super(Board, self).__init__(parent)
+        super().__init__(parent)
 
         self.initBoard()
 
 
     def initBoard(self):
 
-        self.timer = QtCore.QBasicTimer()
+        self.timer = QBasicTimer()
         self.isWaitingAfterLine = False
 
         self.curX = 0
@@ -70,26 +73,26 @@ class Board(QtGui.QFrame):
         self.numLinesRemoved = 0
         self.board = []
 
-        self.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.setFocusPolicy(Qt.StrongFocus)
         self.isStarted = False
         self.isPaused = False
         self.clearBoard()
 
 
     def shapeAt(self, x, y):
-        return self.board[(y * Board.BoardWidth) + int(x)]
+        return self.board[(y * Board.BoardWidth) + x]
 
 
     def setShapeAt(self, x, y, shape):
-        self.board[(y * Board.BoardWidth) + int(x)] = shape
+        self.board[(y * Board.BoardWidth) + x] = shape
 
 
     def squareWidth(self):
-        return self.contentsRect().width() / Board.BoardWidth
+        return self.contentsRect().width() // Board.BoardWidth
 
 
     def squareHeight(self):
-        return self.contentsRect().height() / Board.BoardHeight
+        return self.contentsRect().height() // Board.BoardHeight
 
 
     def start(self):
@@ -128,7 +131,7 @@ class Board(QtGui.QFrame):
 
     def paintEvent(self, event):
 
-        painter = QtGui.QPainter(self)
+        painter = QPainter(self)
         rect = self.contentsRect()
 
         boardTop = rect.bottom() - Board.BoardHeight * self.squareHeight()
@@ -161,29 +164,29 @@ class Board(QtGui.QFrame):
 
         key = event.key()
 
-        if key == QtCore.Qt.Key_P:
+        if key == Qt.Key_P:
             self.pause()
             return
 
         if self.isPaused:
             return
 
-        elif key == QtCore.Qt.Key_Left:
+        elif key == Qt.Key_Left:
             self.tryMove(self.curPiece, self.curX - 1, self.curY)
 
-        elif key == QtCore.Qt.Key_Right:
+        elif key == Qt.Key_Right:
             self.tryMove(self.curPiece, self.curX + 1, self.curY)
 
-        elif key == QtCore.Qt.Key_Down:
+        elif key == Qt.Key_Down:
             self.tryMove(self.curPiece.rotateRight(), self.curX, self.curY)
 
-        elif key == QtCore.Qt.Key_Up:
+        elif key == Qt.Key_Up:
             self.tryMove(self.curPiece.rotateLeft(), self.curX, self.curY)
 
-        elif key == QtCore.Qt.Key_Space:
+        elif key == Qt.Key_Space:
             self.dropDown()
 
-        elif key == QtCore.Qt.Key_D:
+        elif key == Qt.Key_D:
             self.oneLineDown()
 
         else:
@@ -284,10 +287,8 @@ class Board(QtGui.QFrame):
 
         self.curPiece = Shape()
         self.curPiece.setRandomShape()
-        self.curX = Board.BoardWidth / 2 + 1
+        self.curX = Board.BoardWidth // 2 + 1
         self.curY = Board.BoardHeight - 1 + self.curPiece.minY()
-
-#        print(self.curY)
 
         if not self.tryMove(self.curPiece, self.curX, self.curY):
 
@@ -324,15 +325,15 @@ class Board(QtGui.QFrame):
         colorTable = [0x000000, 0xCC6666, 0x66CC66, 0x6666CC,
                       0xCCCC66, 0xCC66CC, 0x66CCCC, 0xDAAA00]
 
-        color = QtGui.QColor(colorTable[shape])
+        color = QColor(colorTable[shape])
         painter.fillRect(x + 1, y + 1, self.squareWidth() - 2,
             self.squareHeight() - 2, color)
 
-        painter.setPen(color.light())
+        painter.setPen(color.lighter())
         painter.drawLine(x, y + self.squareHeight() - 1, x, y)
         painter.drawLine(x, y, x + self.squareWidth() - 1, y)
 
-        painter.setPen(color.dark())
+        painter.setPen(color.darker())
         painter.drawLine(x + 1, y + self.squareHeight() - 1,
             x + self.squareWidth() - 1, y + self.squareHeight() - 1)
         painter.drawLine(x + self.squareWidth() - 1,
@@ -475,13 +476,8 @@ class Shape(object):
         return result
 
 
-def main():
+if __name__ == '__main__':
 
-    app = QtGui.QApplication([])
+    app = QApplication([])
     tetris = Tetris()
     sys.exit(app.exec_())
-
-
-if __name__ == '__main__':
-    main()
-
