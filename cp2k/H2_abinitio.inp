@@ -1,0 +1,100 @@
+@SET BASE_NAME h2b
+@SET ID 01
+@SET RESTART 0
+
+# NONE, GEO_OPT, MD
+@SET RUNTYPE ENERGY
+
+&GLOBAL
+  PROJECT h2proj
+  ECHO_INPUT
+  #PRINT_LEVEL HIGH
+  RUN_TYPE ${RUNTYPE}
+&END GLOBAL
+
+@IF ${RESTART}
+&EXT_RESTART
+  RESTART_FILE_NAME ./${BASE_NAME}-${ID}.restart
+&END EXT_RESTART
+@ENDIF
+
+#&MOTION
+#  &GEO_OPT
+#  &END GEO_OPT
+#&END MOTION
+
+&FORCE_EVAL
+  METHOD QS
+
+  &DFT
+    BASIS_SET_FILE_NAME ALL_BASIS_SET
+    POTENTIAL_FILE_NAME POTENTIAL
+    LSD
+    MULTIPLICITY 2
+
+    &POISSON
+      PERIODIC NONE
+      PSOLVER WAVELET
+    &END POISSON
+
+    &QS
+      METHOD GAPW
+    &END QS
+
+    &XC
+      &XC_FUNCTIONAL NONE
+      &END XC_FUNCTIONAL
+
+      &HF
+          &SCREENING      
+            EPS_SCHWARZ          1.0E-10
+          &END SCREENING  
+      &END HF
+
+    &END XC
+
+    #&SCF
+    #  SCF_GUESS ATOMIC
+    #END SCF
+
+    &PRINT
+    &END PRINT
+
+  &END DFT
+  
+
+  &SUBSYS
+
+    &CELL
+      ABC 10 10 10 
+      PERIODIC NONE
+    &END CELL
+
+    &COORD
+# r = 0.7416 Ed = 4.477
+      H          5    5    5
+    &END COORD
+
+    &KIND H
+
+      #BASIS_SET TZV2P-GTH
+      &BASIS                                ! Basis set for H
+        2
+        1 0 0 1 1
+        0.35 1
+        1 0 0 1 1
+        0.6 1
+      &END
+
+      POTENTIAL ALL
+      &POTENTIAL           ! Usual all electron potential for H 
+       1    0    0
+       0.20000000    0
+      &END POTENTIAL
+
+    &END KIND
+
+  &END SUBSYS
+
+&END FORCE_EVAL
+

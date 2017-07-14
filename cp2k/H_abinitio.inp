@@ -1,0 +1,61 @@
+ 
+&GLOBAL
+  PROJECT h-mybasis
+  RUN_TYPE ENERGY
+  ECHO_INPUT
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep                         ! Electronic structure method (DFT,...)
+  
+  &DFT
+  LSD                                      ! Requests a spin-polarized calculation for non paired electrons
+  MULTIPLICITY 2                           ! Multiplicity = 2S+1 (S= total spin momentum)
+    &POISSON                               ! Solver requested for non periodic calculations  
+      PERIODIC NONE                        
+      PSOLVER  WAVELET                     ! Type of solver
+    &END POISSON
+    &QS                                    ! Parameters needed to set up the Quickstep framework
+      METHOD GAPW                          ! Method: gaussian and augmented plane waves 
+    &END QS
+    &XC                                    ! Parameters needed to compute the electronic exchange potential 
+      &XC_FUNCTIONAL NONE                  ! No xc_functional
+      &END XC_FUNCTIONAL
+      &HF                                  ! Hartree Fock exchange. In this case is 100% (no fraction specified).                    
+        &SCREENING                         ! Screening of the electronic repulsion up to the given threshold. This section is needed
+          EPS_SCHWARZ 1.0E-10              ! Threshold specification
+        &END SCREENING
+      &END HF 
+    &END XC
+  &END DFT
+  
+  &SUBSYS
+    &TOPOLOGY                              ! Section used to center the molecule in the simulation box. Useful for big molecules 
+      &CENTER_COORDINATES                  
+      &END
+    &END
+    &CELL
+      ABC 10.0 10.0 10.0
+      PERIODIC NONE                        ! Non periodic calculations. That's why the POISSON section is needed 
+    &END CELL
+    &COORD
+     H   0.0 0.0 0.0                           
+    &END COORD
+
+    &KIND H
+     &BASIS                                ! Basis set for H
+     2
+     1 0 0 1 1
+     0.35 1
+     1 0 0 1 1
+     0.6 1
+     &END
+
+     POTENTIAL ALL                         ! Species that the potential is for all electron calculations.
+     &POTENTIAL                            ! Usual all electron potential for H 
+     1    0    0
+     0.20000000    0
+     &END POTENTIAL
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL
