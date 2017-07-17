@@ -56,13 +56,27 @@
   pu = push --tags
 
 
-	# create empty root
+  # create new emty repo:
+  #  git init
+  #  touch README
+  #  git add .
+  #  git commit -m 'initial commit'
+  # create remote repo:
+  #  git remote add origin gitolite@filest.linuxmedialabs.com:NEWREPO
+  #  git push origin master:refs/heads/master
+  #  git push --set-upstream origin master
+
+
+	start = !git init && git commit --allow-empty -m \"Initial commit\"
+
+  # Following does not work... :-( it seems
+	# create empty root:
 	#  first you need a new empty branch; let's call it `newroot`
 	#  git symbolic-ref HEAD refs/heads/newroot
 	#  git rm --cached -r .
 	#  git clean -f -d
 	#
-	#  # then you apply the same steps
+	#  # then you apply this to rebase master to new empty root:
 	#  git commit --allow-empty -m 'root commit'
 	#  git rebase --onto newroot --root master
 	#  git branch -d newroot
@@ -80,4 +94,4 @@
 [difftool]
 	prompt = false
 [push]
-#	default = simple
+	default = simple
