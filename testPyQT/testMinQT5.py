@@ -3,9 +3,19 @@
 from PyQt5.QtCore import (QLineF, QPointF, QRectF, Qt)
 from PyQt5.QtGui import (QBrush, QColor, QPainter, QImage, QPixmap, QPicture, QPen,
                          QTextOption,QFont)
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QGraphicsView, QGraphicsScene, QGraphicsItem,
-                             QGridLayout, QVBoxLayout, QHBoxLayout,
-                             QLabel, QLineEdit, QPushButton)
+
+from PyQt5.QtWidgets import (QApplication)
+
+from PyQt5.QtWidgets import (QWidget, QMainWindow)
+from PyQt5.QtWidgets import (QLabel, QLineEdit, QPushButton)
+from PyQt5.QtWidgets import (QSlider, QSpinBox, QComboBox)
+from PyQt5.QtWidgets import (QStatusBar)
+from PyQt5.QtWidgets import (GraphicsView)
+
+from PyQt5.QtWidgets import (QGraphicsScene, QGraphicsItem)
+
+from PyQt5.QtWidgets import (QGridLayout, QVBoxLayout, QHBoxLayout)
+
 import sys
 
 if __name__ == '__main__':
