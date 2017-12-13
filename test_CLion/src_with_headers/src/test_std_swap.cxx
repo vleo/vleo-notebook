@@ -1,5 +1,7 @@
 #include <algorithm>    // for std::swap
 #include "xyz"
+#include "xx.h"
+#include "Boost"
 int main ()
 {
     class MyClass { };

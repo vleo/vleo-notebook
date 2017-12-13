@@ -1,3 +1,0 @@
-/home/vleo/notebook/test_CLion/src_with_headers/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/vleo/notebook/test_CLion/src_with_headers/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/vleo/notebook/test_CLion/src_with_headers/cmake-build-debug/CMakeFiles/test_CLion_exec.dir
