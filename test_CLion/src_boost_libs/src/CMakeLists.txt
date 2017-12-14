@@ -7,7 +7,6 @@ message(CRM="${CMAKE_RULE_MESSAGES}")
 get_property(RMV GLOBAL PROPERTY RULE_MESSAGES)
 message("RMV=${RMV}")
 
-
 add_executable(testQt test.cpp)	
 
 target_link_libraries(testQt Qt5::Widgets)
