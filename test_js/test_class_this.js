@@ -1,30 +1,30 @@
 class C {
   constructor() {
-		var self = this
+    var self = this
     this.x = 123
     this.g = this.g.bind(this)
-		this.hb = hv => s => hv(s)
+    this.hb = hv => s => hv(s)
   }
 
   f() {
     console.log("inside f, this ===> ",this)
-		if (typeof this !== 'undefined') {
+    if (typeof this !== 'undefined') {
       this.y = 321
-		}
+    }
   }
 
   g() {
     console.log("inside f, this ===> ",this)
-		if (typeof this !== 'undefined') {
+    if (typeof this !== 'undefined') {
       this.y = 321
-		}
+    }
   }
 
   h(self) {
     console.log("inside f, self ===> ",self)
-		if (typeof self !== 'undefined') {
+    if (typeof self !== 'undefined') {
       self.y = 321
-		}
+    }
   }
 
   prn() {
@@ -33,11 +33,11 @@ class C {
 }
 
 function execMe(f){
-	f()
+  f()
 }
 
 function execMe2(s,f){
-	f(s)
+  f(s)
 }
  
 c = new(C)
