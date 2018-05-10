@@ -1,5 +1,5 @@
 AC_INIT([helloworld], [1.0], [vleo@linuxmedialabs.com])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign nostdinc])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign nostdinc subdir-objects])
 
 AC_ARG_ENABLE(
   [debug],
