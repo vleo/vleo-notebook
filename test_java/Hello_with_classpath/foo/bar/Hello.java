@@ -1,3 +1,4 @@
+package foo.bar;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class Hello {
@@ -12,9 +13,6 @@ public class Hello {
     String formattedDate = formatter.format(now);
     // Finally, add our formatted date to our output
     System.out.println(formattedDate + "> Hello, " + args[0] + "!");
-    // String.format
-    Long l = 123L;
-    System.out.println(String.format("Print Long as s: %s",l));
   }
 }
 
