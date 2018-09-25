@@ -1,0 +1,397 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: DSS jsonrequest API
+  description: DSS jsonrequest API
+schemes:
+  - http
+host: 'localhost:8070'
+basePath: /
+produces:
+  - application/json
+  
+x-get_transactions_list_parm_t: &get_transactions_list_parm_t
+  parameters:
+  - name: user_id
+    in: query
+    required: true
+    type: string
+  - name:  transaction_status
+    type: array
+    items:
+      type: string
+#      enum:
+#          - initialized
+#          - pushSent
+#          - dataSent
+#          - confirmed
+#          - declined
+  - name: hmac_code
+    in: query
+    required: true
+    type: string  
+
+x-get_transaction_data_parm_t: &get_transaction_data_parm_t
+  parameters:
+  - name: transaction_id
+    in: query
+    required: true
+    type: string
+  - name: op_hmac
+    in: query
+    required: true
+    type: string
+    
+definitions:
+  request_body_t:
+    type: object
+    required:
+      - auth_code
+    properties:
+      system_id:
+        type: string
+      user_id:
+        type: string
+      transaction_status:
+        type: array
+        items:
+          type: string
+          enum:
+            - initialized
+            - pushSent
+            - dataSent
+      auth_code:
+        type: string
+      transaction_id:
+        type: string
+      confirm_code:
+        type: string
+  jsonrequest_t:
+    type: object
+    required:
+      - $schema
+      - request_version
+      - request_type
+      - request
+    properties:
+      $schema:
+        type: string
+        enum:
+          - paycontrol-request-sAhema-v1.json
+      request_version:
+        type: integer
+        enum:
+          - 1
+      request_type:
+        type: string
+        enum:
+          - get_transactions
+          - get_transaction_data
+          - confirm_transaction
+          - decline_transaction
+      request:
+        $ref: '#/definitions/request_body_t'
+  reply_body_t:
+    type: object
+    properties:
+      result:
+        type: object
+      transaction_list:
+        type: array
+        items:
+          type: string
+      transaction_data:
+        type: object
+        properties:
+          confirm_code_length:
+            type: integer
+          transaction_data:
+            type: object
+            properties:
+              binary_data:
+                type: string
+              transaction_text:
+                type: string
+      auth_code:
+        type: string
+  jsonreply_t:
+    type: object
+    required:
+      - answer
+      - answer_type
+      - answer_version
+    properties:
+      answer:
+        $ref: '#/definitions/reply_body_t'
+      answer_type:
+        type: string
+        enum:
+          - transaction_list
+          - transaction_data
+          - result_only
+      answer_version:
+        type: integer
+        enum:
+          - 1
+  register_device_parm_t:
+    type: object
+    properties:
+      mobile_device_id:
+        type: string
+      push_service_token:
+        type: string
+        
+  handle_transaction_parm_t:
+    type: object
+    required:
+      - transaction_id
+      - op_hmac
+      - operation
+    properties:
+      transaction_id:
+        type: string
+      op_hmac:
+        type: string
+      doc_hmac:
+        type: string
+      operation:
+        enum:
+          - confirm
+          - decline
+  get_document_parm_t:
+    type: object
+    required:
+      - docLink
+      - op_hmac
+    properties:
+      docLink:
+        type: string
+      op_hmac:
+        type: string
+  rest_result_t:
+    type: object
+    required:
+      - error_code
+    properties:
+      error_code:
+        type: integer
+      error_description:
+        type: string
+  transactions_list_t:
+    type: object
+    required:
+      - result
+    properties:
+      transaction_list:
+        type: array
+        items:
+          type: object
+          properties:
+            uid:
+              type: string
+            state:
+              type: string
+            timeout:
+              type: integer
+      result:
+        $ref: '#/definitions/rest_result_t'
+  transaction_data_t:
+    type: object
+    required:
+      - result
+    properties:
+      uid:
+        type: string
+      userId:
+        type: string
+      userType:
+        type: string
+      docId:
+        type: string
+      docInfo:
+        type: string
+      docLink:
+        type: string
+      clientId:
+        type: string
+      createData:
+        type: string
+      stateDate:
+        type: string
+      timeout:
+        type: integer
+      state:
+        type: string
+      refId:
+        type: string
+      confirmText:
+        type: string
+      confirmResult:
+        type: integer
+      sign:
+        type: string
+      result:
+        $ref: '#/definitions/rest_result_t'
+  document_data_t:
+    type: object
+    required:
+      - result
+    properties:
+      document_body_base64:
+        type: string
+      result:
+        $ref: '#/definitions/rest_result_t'
+  handle_transaction_result_t:
+    type: object
+    required:
+      - result
+    properties:
+      result:
+        $ref: '#/definitions/rest_result_t'
+  Error:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+responses:
+  Jsonrequest_v1_Response:
+    description: DSS json
+    schema:
+      $ref: '#/definitions/jsonreply_t'
+  Register_Device_Response:
+    description: register device
+    schema:
+      $ref: '#/definitions/rest_result_t'
+  Get_Transactions_Response:
+    description: get transactions list
+    schema:
+      $ref: '#/definitions/transactions_list_t'
+  Get_Transaction_Data_Response:
+    description: get given transaction data
+    schema:
+      $ref: '#/definitions/transaction_data_t'
+  Get_Document_Response:
+    description: get document
+    schema:
+      $ref: '#/definitions/document_data_t'
+  Handle_Transaction_Response:
+    description: confirm transaction
+    schema:
+      $ref: '#/definitions/handle_transaction_result_t'
+  Standard500ErrorResponse:
+    description: An unexpected error occured.
+    schema:
+      $ref: '#/definitions/Error'
+  Standard501ErrorResponse:
+    description: Unimplemented (stub only)
+    schema:
+      $ref: '#/definitions/Error'
+paths:
+  /MyDssServerExternal/InteractionService.svc/jsonrequest_v1:
+    post:
+      operationId: jsonrequestPost
+      summary: json request
+      description: multiple DSS functions via singe json request
+      parameters:
+        - name: json_request
+          in: body
+          description: json request body
+          required: true
+          schema:
+            $ref: '#/definitions/jsonrequest_t'
+      responses:
+        '200':
+          $ref: '#/responses/Jsonrequest_v1_Response'
+        '500':
+          $ref: '#/responses/Standard500ErrorResponse'
+        '501':
+          $ref: '#/responses/Standard501ErrorResponse'
+  /rest/v2/register_device:
+    post:
+      operationId: restRegisterDevice
+      summary: register device
+      description: register device id and push id
+      parameters:
+        - name: register_device_parms
+          in: body
+          description: register device by device_id and push_id
+          required: true
+          schema:
+            $ref: '#/definitions/register_device_parm_t'
+      responses:
+        '200':
+          $ref: '#/responses/Register_Device_Response'
+        '500':
+          $ref: '#/responses/Standard500ErrorResponse'
+        '501':
+          $ref: '#/responses/Standard501ErrorResponse'
+  /rest/v2/get_transactions:
+    get:
+      operationId: restGetTransactions
+      summary: get transactions
+      description: get list of pending transactions for a user
+      <<: *get_transactions_list_parm_t
+      responses:
+        '200':
+          $ref: '#/responses/Get_Transactions_Response'
+        '500':
+          $ref: '#/responses/Standard500ErrorResponse'
+        '501':
+          $ref: '#/responses/Standard501ErrorResponse'
+  /rest/v2/get_transaction_data:
+    get:
+      operationId: restGetTransactionData
+      summary: get transaction data
+      description: get given transaction data (binary and text)
+      parameters:
+        - name: get_transaction_data_parms
+          in: query
+          description: get transaction data by transaction_id and auth_code
+          required: true
+          type: string
+      responses:
+        '200':
+          $ref: '#/responses/Get_Transaction_Data_Response'
+        '500':
+          $ref: '#/responses/Standard500ErrorResponse'
+        '501':
+          $ref: '#/responses/Standard501ErrorResponse'
+  /rest/v2/handle_transaction:
+    put:
+      operationId: restHandleTransaction
+      summary: confirm_or_decline
+      description: confirm or decline given transaction
+      parameters:
+        - name: confirm_transaction_parms
+          in: body
+          description: confirm transaction by transaction_id and confirm_code
+          required: true
+          schema:
+            $ref: '#/definitions/handle_transaction_parm_t'
+      responses:
+        '200':
+          $ref: '#/responses/Handle_Transaction_Response'
+        '500':
+          $ref: '#/responses/Standard500ErrorResponse'
+        '501':
+          $ref: '#/responses/Standard501ErrorResponse'
+  /rest/v2/get_document:
+    get:
+      operationId: restGetDocument
+      summary: get document body
+      description: get base46 full document body
+      parameters:
+        - name: get_document_parms
+          in: body
+          description: get document body by document link or uid
+          required: true
+          schema:
+            $ref: '#/definitions/get_document_parm_t'
+      responses:
+        '200':
+          $ref: '#/responses/Get_Document_Response'
+        '500':
+          $ref: '#/responses/Standard500ErrorResponse'
+        '501':
+          $ref: '#/responses/Standard501ErrorResponse'

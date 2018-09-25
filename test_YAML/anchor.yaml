@@ -1,0 +1,10 @@
+foo:
+  <<: &bar
+    baz:
+      - one
+      - two
+  K1: "three"
+
+xyz: 
+  <<: *bar
+  K2 : "five"
