@@ -1,0 +1,9 @@
+Install sdkman:
+
+curl -s https://get.sdkman.io > sdkman.sh
+chmod +x sdkman.sh
+./sdkman.sh
+
+Install groovy:
+
+sdk install groovy
