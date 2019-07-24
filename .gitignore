@@ -14,3 +14,7 @@ BSPErathostenes-master/
 LePUS3/
 morphin-read-only/
 test_c_cxx/obfuscated
+.idea
+venv
+test_springFW/*/target
+test_springFW/*/lib
