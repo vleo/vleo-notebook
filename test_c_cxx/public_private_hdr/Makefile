@@ -1,6 +1,9 @@
-main: main.c xyz.o
+INCPATH = ./inc
+CFLAGS += -I $(INCPATH)
 
-xyz.o: xyz.c xyz.h xyz.r
+src/zzqq: src/zzqq.c src/xyz.o
+
+src/xyz.o: src/xyz.c inc/xyz.h
 
 clean:
-	rm -f *.o main
+	rm -f *.o src/*.o zzqq
