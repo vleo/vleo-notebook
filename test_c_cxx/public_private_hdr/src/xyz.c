@@ -1,5 +1,9 @@
 #include <stdlib.h>
-#include "xyz.r"
+#include "xyz.h"
+
+struct xyz
+{ int i; 
+};
 
 xyz_t* xyz_constr()
 {

@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net" modified="2020-07-24T17:38:19.881Z" agent="5.0 (X11)" etag="sSHNg8WnW4yMfWUAeyBH" version="13.5.2" type="github">
+  <diagram id="glxlAXFnUvr_IqEY8CBl" name="Page-1">
+    <mxGraphModel dx="1138" dy="681" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-3" value="src + Jenkinsfile (gradle)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontColor=#000000;" edge="1" parent="1" source="-XNHo_berZdc047SYOUG-2" target="-XNHo_berZdc047SYOUG-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-XNHo_berZdc047SYOUG-2" value="&lt;div&gt;CI&lt;/div&gt;&lt;div&gt;BitBucket&lt;/div&gt;&lt;div&gt;sbtatlas&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#52A3FF;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-4" value="docker containers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=#000000;" edge="1" parent="1" source="-XNHo_berZdc047SYOUG-5" target="-XNHo_berZdc047SYOUG-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-8" value="&lt;div&gt;deployment&lt;/div&gt;&lt;div&gt;Jenkins scripts&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontColor=#000000;" edge="1" parent="1" source="-XNHo_berZdc047SYOUG-5" target="eMJa7o6aNLYLbKuFDY04-6">
+          <mxGeometry x="0.5001" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-XNHo_berZdc047SYOUG-5" value="&lt;div&gt;CI&lt;br&gt;Jenkins&lt;br&gt;sbt-jenkins&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="40" y="200" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-XNHo_berZdc047SYOUG-6" value="CI&lt;br&gt;Nexus&lt;br&gt;nexus:8099" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#eeeeee;strokeColor=#36393d;" parent="1" vertex="1">
+          <mxGeometry x="40" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-XNHo_berZdc047SYOUG-7" value="DEV&lt;br&gt;OpenShift&lt;br&gt;dev-gen" style="whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#B20000;fillColor=#E56565;" parent="1" vertex="1">
+          <mxGeometry x="40" y="520" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-18" value="&lt;div&gt;deployment&lt;/div&gt;&lt;div&gt;Jenkins scripts&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;" edge="1" parent="1" source="eMJa7o6aNLYLbKuFDY04-6" target="eMJa7o6aNLYLbKuFDY04-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-6" value="&lt;div&gt;CDL&lt;br&gt;&lt;/div&gt;&lt;div&gt;BitBucket&lt;/div&gt;&lt;div&gt;sbrf-sbtatlas&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#52A3FF;" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-9" value="&lt;div&gt;CDL&lt;br&gt;Jenkins&lt;br&gt;sbt-qa-jenkins&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="360" y="200" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-10" value="CDL&lt;br&gt;Nexus&lt;br&gt;sbrf-nexus" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#eeeeee;strokeColor=#36393d;" vertex="1" parent="1">
+          <mxGeometry x="440" y="360" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-11" value="&lt;div&gt;CDP&lt;br&gt;Jenkins&lt;br&gt;nlb-jenkins-psi&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="520" y="200" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-12" value="&lt;div&gt;CDP&lt;br&gt;Jenkins&lt;br&gt;nlb-jenkins&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="680" y="200" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-13" value="ИФТ&lt;br&gt;OpenShift&lt;br&gt;dev-gen2" style="whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#B20000;fillColor=#E56565;" vertex="1" parent="1">
+          <mxGeometry x="280" y="520" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-14" value="ПСИ&lt;br&gt;OpenShift&lt;br&gt;psi-gen" style="whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#B20000;fillColor=#E56565;" vertex="1" parent="1">
+          <mxGeometry x="480" y="520" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-15" value="НТ&lt;br&gt;OpenShift&lt;br&gt;lt-gen" style="whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#B20000;fillColor=#E56565;" vertex="1" parent="1">
+          <mxGeometry x="480" y="640" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-16" value="ПРОМ&lt;br&gt;OpenShift&lt;br&gt;???" style="whiteSpace=wrap;html=1;aspect=fixed;strokeColor=#B20000;fillColor=#E56565;" vertex="1" parent="1">
+          <mxGeometry x="680" y="520" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMJa7o6aNLYLbKuFDY04-17" value="&lt;div align=&quot;left&quot;&gt;https://{AC}.sigma.sbrf.ru&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;https://console-openshift-console.apps.{OS}.sigma.sbrf.ru&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="320" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
